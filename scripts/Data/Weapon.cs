@@ -1,7 +1,9 @@
-using Godot;
 using System;
+using Godot;
 
-public partial class Weapon : Node
+namespace DND;
+
+public class Weapon
 {
     public enum WeaponType
     {

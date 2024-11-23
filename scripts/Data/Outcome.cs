@@ -1,7 +1,9 @@
-using Godot;
 using System;
+using Godot;
 
-public partial class Outcome : Node
+namespace DND;
+
+public class Outcome
 {
     public enum OutcomeType
     {

@@ -1,7 +1,8 @@
 using Godot;
-using System;
 
-public partial class Stat : Node
+namespace DND;
+
+public class Stat
 {
     public enum StatType
     {
