@@ -17,11 +17,28 @@ public partial class Game : Node
     {
         scenario.Locations.ForEach(LoopLocation);
     }
-    public void LoopLocation(Location location){}
 
+    public void LoopLocation(Location location)
+    {
+
+    }
+
+    public void CreateActionButtons(Event @event)
+    {
+
+    }
+
+    public void OnActionButtonPressed(Action action)
+    {
+
+    }
     public Scenario LoadScenarioFromFile(string filename)
     {
         return null;
     }
 
+    public void EndGame()
+    {
+
+    }
 }
