@@ -9,4 +9,11 @@ public class Weapon
     public String Description { get; set; }
     public Texture2D Sprite { get; set; }
     public Stat Stat { get; set; }
+
+    public override string ToString()
+    {
+        return $"Name: {Name}\n\r" +
+               $"Description: {Description}\n\r" +
+               $"Stat: {Stat}\n\r";
+    }
 }

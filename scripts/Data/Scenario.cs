@@ -32,7 +32,6 @@ public partial class Scenario : Node
         return $"Scenario Name: {Name}\n\r" +
                $"Locations:{locationsSummary}\n\r" +
                $"Weapons:{weaponsSummary}\n\r" +
-               $"Enemies:{enemiesSummary}";
-
+               $"Enemies:{enemiesSummary}\n\r";
     }
 }

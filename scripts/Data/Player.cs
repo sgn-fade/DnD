@@ -16,4 +16,13 @@ public partial class Player : Node
     {
 
     }
+
+    public override string ToString()
+    {
+        var playerStatsSummary = PlayerStats != null
+            ? string.Join("\n", PlayerStats)
+            : "None";
+        
+        return $"Player stats: {playerStatsSummary}\n\r";
+    }
 }

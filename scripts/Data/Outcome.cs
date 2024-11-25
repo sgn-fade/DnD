@@ -13,4 +13,10 @@ public class Outcome
     }
     public OutcomeType Type { get; set; }
     public String Body { get; set; }
+
+    public override string ToString()
+    {
+        return $"Type: {Type}\n\r" +
+               $"Body: {Body}\n\r";
+    }
 }

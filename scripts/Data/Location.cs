@@ -16,17 +16,17 @@ public partial class Location : Node
     public override string ToString()
     {
         var eventsSummary = Events != null
-            ? string.Join(", ", Events.Select(e => e.Name))
+            ? string.Join("\n", Events)
             : "None";
 
         var encountersSummary = EnemyEncounters != null
-            ? string.Join(", ", EnemyEncounters.Select(e => e.Name))
+            ? string.Join("\n", EnemyEncounters)
             : "None";
 
-        return $"Name: {Name}, " +
-               $"Tier: {Tier}, " +
-               $"Description: {Description}, " +
-               $"\n\rEvents: [{eventsSummary}], " +
-               $"\n\rEnemy Encounters: [{encountersSummary}]";
+        return $"Name: {Name}\n\r" +
+               $"Tier: {Tier}\n\r" +
+               $"Description: {Description}\n\r" +
+               $"Events: [{eventsSummary}]\n\r" +
+               $"Enemy Encounters: [{encountersSummary}]\n\r";
     }
 }
