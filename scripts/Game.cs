@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Linq;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace DND;
 
@@ -9,8 +11,9 @@ public partial class Game : Node
     private Scenario _scenario;
     public override void _Ready()
     {
-        _scenario = LoadScenarioFromFile("fileExample.json");
-        StartGame(_scenario);
+        _scenario = LoadScenarioFromFile("scripts/the_long_way.json");
+        Console.WriteLine(_scenario);
+        _scenario = null;
     }
 
     public void StartGame(Scenario scenario)
@@ -34,7 +37,8 @@ public partial class Game : Node
     }
     public Scenario LoadScenarioFromFile(string filename)
     {
-        return null;
+        var jsonString = File.ReadAllText(filename);
+        return JsonConvert.DeserializeObject<Scenario>(jsonString);
     }
 
     public void EndGame()

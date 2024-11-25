@@ -7,9 +7,7 @@ public class Outcome
 {
     public enum OutcomeType
     {
-        Fight, 
         Death,
-        Reward, 
         NextEvent,
         NextLocation,
     }

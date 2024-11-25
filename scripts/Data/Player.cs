@@ -14,6 +14,6 @@ public partial class Player : Node
 
     public void GeneratePlayerStats()
     {
-        
+
     }
 }
