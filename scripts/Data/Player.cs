@@ -9,7 +9,10 @@ public partial class Player : Node
 
     public override void _Ready()
     {
-        PlayerStats.Add(new Stat());
+        PlayerStats.Add(new Stat("Dexterity", 0));
+        PlayerStats.Add(new Stat("Strength", 0));
+        PlayerStats.Add(new Stat("Constitution", 0));
+        PlayerStats.Add(new Stat("Intelligence", 0));
     }
 
     public void GeneratePlayerStats()

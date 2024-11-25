@@ -55,7 +55,7 @@
             {
               "description": "Climb a tree to look around",
               "required_stat": {
-                "stat_type": "dexterity",
+                "type": "dexterity",
                 "value": 9
               },
               "positive_outcome": {
@@ -93,7 +93,7 @@
           "description": "A goblin on the road",
           "enemies": [
             "theodor"
-            ],
+          ],
           "battle_outcome": {
             "type": "next_event",
             "body": "goblin_encounter",
