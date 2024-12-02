@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://ynrvfkiwdjvi"]
+
+[ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="1_msigu"]
+[ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.404511, 0.404511, 0.404511, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 122.0
+offset_right = 1116.0
+offset_bottom = 885.0
+texture = ExtResource("1_msigu")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1143.0
+offset_top = 128.0
+offset_right = 1925.0
+offset_bottom = 383.0
+theme_override_fonts/font = ExtResource("2_4ikvk")
+theme_override_font_sizes/font_size = 30
+text = "DescriptionDescription
+DescriptionDescriptionDescription
+Description
+Description
+DescriptionDescriptionDescription
+DescriptionDescriptionDescription"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 594.0
+offset_right = 1905.0
+offset_bottom = 869.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "action descriptiondescriptiondescriptiondescription"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "action descriptiondescriptiondescriptiondescription"
+
+[node name="Button3" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "action descriptiondescriptiondescriptiondescription"

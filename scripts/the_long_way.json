@@ -1,115 +1,115 @@
 {
   "enemies": [
-    {
-      "name": "theodor",
-      "description": "A small goblin with a big heart",
-      "type": "goblin",
-      "hp": 10,
-      "damage": 3
-    }
+	{
+	  "name": "theodor",
+	  "description": "A small goblin with a big heart",
+	  "type": "goblin",
+	  "hp": 10,
+	  "damage": 3
+	}
   ],
   "name": "the_long_way",
   "locations": [
-    {
-      "name": "deep_forest",
-      "type": "dead_forest",
-      "tier": 1,
-      "description": "A deep forest, full of evil creatures",
-      "events": [
-        {
-          "name": "start",
-          "description": "You decided to start your own long path to dragons shelter",
-          "actions": [
-            {
-              "description": "Start your path",
-              "required_stat": {
-              },
-              "positive_outcome": {
-                "type": "next_event",
-                "body": "big_tree",
-                "item_to_give": {
-                }
-              },
-              "negative_outcome": {
-              }
-            },
-            {
-              "description": "Change your mind and stay home under the covers",
-              "required_stat": {
-              },
-              "positive_outcome": {
-                "type": "death",
-                "body": null,
-                "item_to_give": {
-                }
-              },
-              "negative_outcome": {
-              }
-            }
-          ]
-        },
-        {
-          "name": "big_tree",
-          "description": "An old tree which saw the birth of the world",
-          "actions": [
-            {
-              "description": "Climb a tree to look around",
-              "required_stat": {
-                "type": "dexterity",
-                "value": 9
-              },
-              "positive_outcome": {
-                "type": "next_event",
-                "body": "Tree's crown",
-                "item_to_give": {
-                }
-              },
-              "negative_outcome": {
-                "type": "death",
-                "body": null,
-                "item_to_give": {
-                }
-              }
-            },
-            {
-              "description": "To take your road",
-              "required_stat": {
-              },
-              "positive_outcome": {
-                "type": "next_event",
-                "body": "goblin_encounter",
-                "item_to_give": {
-                }
-              },
-              "negative_outcome": {
-              }
-            }
-          ]
-        }
-      ],
-      "enemy_encounters": [
-        {
-          "name": "goblin_encounter",
-          "description": "A goblin on the road",
-          "enemies": [
-            "theodor"
-          ],
-          "battle_outcome": {
-            "type": "next_event",
-            "body": "goblin_encounter",
-            "item_to_give": {
-            }
-          },
-          "win_outcome": {
-            "type": null,
-            "body": null,
-            "item_to_give": {
-              "type": "gold",
-              "body": "5"
-            }
-          }
-        }
-      ]
-    }
+	{
+	  "name": "deep_forest",
+	  "type": "dead_forest",
+	  "tier": 1,
+	  "description": "A deep forest, full of evil creatures",
+	  "events": [
+		{
+		  "name": "start",
+		  "description": "You decided to start your own long path to dragons shelter",
+		  "actions": [
+			{
+			  "description": "Start your path",
+			  "required_stat": {
+			  },
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "big_tree",
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			},
+			{
+			  "description": "Change your mind and stay home under the covers",
+			  "required_stat": {
+			  },
+			  "positive_outcome": {
+				"type": "death",
+				"body": null,
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			}
+		  ]
+		},
+		{
+		  "name": "big_tree",
+		  "description": "An old tree which saw the birth of the world",
+		  "actions": [
+			{
+			  "description": "Climb a tree to look around",
+			  "required_stat": {
+				"type": "dexterity",
+				"value": 9
+			  },
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "Tree's crown",
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+				"type": "death",
+				"body": null,
+				"item_to_give": {
+				}
+			  }
+			},
+			{
+			  "description": "To take your road",
+			  "required_stat": {
+			  },
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "goblin_encounter",
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			}
+		  ]
+		}
+	  ],
+	  "enemy_encounters": [
+		{
+		  "name": "goblin_encounter",
+		  "description": "A goblin on the road",
+		  "enemies": [
+			"theodor"
+		  ],
+		  "battle_outcome": {
+			"type": "next_event",
+			"body": "goblin_encounter",
+			"item_to_give": {
+			}
+		  },
+		  "win_outcome": {
+			"type": null,
+			"body": null,
+			"item_to_give": {
+			  "type": "gold",
+			  "body": "5"
+			}
+		  }
+		}
+	  ]
+	}
   ]
 }
