@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=8 format=3 uid="uid://ynrvfkiwdjvi"]
 
+[ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="1_msigu"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
+[ext_resource type="Texture2D" uid="uid://b5mmkqfbmrw0e" path="res://sprites/knigth_icon.png" id="4_gwsrt"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
 
 [node name="UI" type="CanvasLayer"]
@@ -15,11 +17,11 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Background" type="ColorRect" parent="GameUI"]
+[node name="Background" type="TextureRect" parent="GameUI"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.404511, 0.404511, 0.404511, 1)
+texture = ExtResource("1_6bhrj")
 
 [node name="LocationName" type="Label" parent="GameUI"]
 layout_mode = 0
@@ -73,18 +75,21 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Action" type="Button" parent="GameUI/Actions"]
+modulate = Color(0.955963, 0.955963, 0.955963, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "action descriptiondescriptiondescriptiondescription"
 
 [node name="Action2" type="Button" parent="GameUI/Actions"]
+modulate = Color(0.955963, 0.955963, 0.955963, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 text = "action descriptiondescriptiondescriptiondescription"
 
 [node name="Action3" type="Button" parent="GameUI/Actions"]
+modulate = Color(0.955963, 0.955963, 0.955963, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
@@ -95,92 +100,83 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerIcon" type="ColorRect" parent="GameUI/Player"]
+[node name="PlayerIcon" type="TextureRect" parent="GameUI/Player"]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 889.0
+offset_top = 890.0
 offset_right = 208.0
-offset_bottom = 1065.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="GameUI/Player/PlayerIcon"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 50.0
-offset_right = 256.0
-offset_bottom = 191.0
-theme_override_font_sizes/font_size = 40
-text = "player
-icon"
+offset_bottom = 1066.0
+texture = ExtResource("4_gwsrt")
+stretch_mode = 4
 
 [node name="WeaponIcon" type="ColorRect" parent="GameUI/Player"]
 layout_mode = 0
-offset_left = 699.0
-offset_top = 884.0
-offset_right = 888.0
-offset_bottom = 1060.0
+offset_left = 208.0
+offset_top = 890.0
+offset_right = 381.0
+offset_bottom = 1065.0
 color = Color(0, 0, 0, 1)
 
 [node name="label" type="Label" parent="GameUI/Player/WeaponIcon"]
 layout_mode = 0
-offset_left = 42.0
+offset_left = 21.0
 offset_top = 50.0
-offset_right = 256.0
+offset_right = 235.0
 offset_bottom = 191.0
 theme_override_font_sizes/font_size = 40
 text = "weapon
 icon"
 
-[node name="WeaponIcon2" type="ColorRect" parent="GameUI/Player"]
+[node name="GoldIcon" type="ColorRect" parent="GameUI/Player"]
 layout_mode = 0
-offset_left = 914.0
-offset_top = 884.0
-offset_right = 1103.0
-offset_bottom = 1060.0
+offset_left = 797.0
+offset_top = 964.0
+offset_right = 908.0
+offset_bottom = 1056.0
 color = Color(0, 0, 0, 1)
 
-[node name="label" type="Label" parent="GameUI/Player/WeaponIcon2"]
+[node name="label" type="Label" parent="GameUI/Player/GoldIcon"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 48.0
-offset_right = 256.0
-offset_bottom = 189.0
+offset_left = -1.0
+offset_top = 11.0
+offset_right = 213.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 40
 text = "GOLD
 COUNT"
 
 [node name="HPbar" type="ColorRect" parent="GameUI/Player"]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 925.0
-offset_right = 681.0
-offset_bottom = 962.0
+offset_left = 389.0
+offset_top = 920.0
+offset_right = 909.0
+offset_bottom = 957.0
 color = Color(1, 0, 0.0117647, 1)
 
 [node name="value" type="Label" parent="GameUI/Player/HPbar"]
 layout_mode = 0
-offset_left = 314.0
+offset_left = 18.0
 offset_top = 4.0
-offset_right = 537.0
+offset_right = 241.0
 offset_bottom = 35.0
 theme_override_font_sizes/font_size = 30
 text = "100 / 100"
 
 [node name="Name" type="Label" parent="GameUI/Player"]
 layout_mode = 0
-offset_left = 227.0
-offset_top = 898.0
-offset_right = 450.0
-offset_bottom = 926.0
+offset_left = 396.0
+offset_top = 893.0
+offset_right = 619.0
+offset_bottom = 924.0
 theme_override_font_sizes/font_size = 30
 text = "PLAYER NAME"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Player"]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 973.0
-offset_right = 621.0
-offset_bottom = 1033.0
+offset_left = 407.0
+offset_top = 981.0
+offset_right = 740.0
+offset_bottom = 1051.0
 theme_override_constants/separation = -10
 alignment = 1
 
