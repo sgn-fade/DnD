@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=9 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="1_msigu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
 [ext_resource type="Texture2D" uid="uid://b5mmkqfbmrw0e" path="res://sprites/knigth_icon.png" id="4_gwsrt"]
+[ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="4_p5k4m"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
 
 [node name="UI" type="CanvasLayer"]
@@ -69,33 +70,60 @@ DescriptionDescriptionDescription"
 
 [node name="Actions" type="VBoxContainer" parent="GameUI"]
 layout_mode = 0
-offset_left = 1132.0
-offset_top = 791.0
-offset_right = 1897.0
-offset_bottom = 1066.0
-theme_override_constants/separation = 20
+offset_left = 1130.0
+offset_top = 799.0
+offset_right = 1895.0
+offset_bottom = 1074.0
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Action" type="Button" parent="GameUI/Actions"]
-modulate = Color(0.955963, 0.955963, 0.955963, 1)
+[node name="Action" type="TextureButton" parent="GameUI/Actions"]
+self_modulate = Color(0.772549, 0.282353, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
-text = "action descriptiondescriptiondescriptiondescription"
+texture_normal = ExtResource("4_p5k4m")
+stretch_mode = 4
 
-[node name="Action2" type="Button" parent="GameUI/Actions"]
-modulate = Color(0.955963, 0.955963, 0.955963, 1)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
-text = "action descriptiondescriptiondescriptiondescription"
+[node name="Label" type="Label" parent="GameUI/Actions/Action"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 317.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 60
+text = "action descdescdescdesc"
 
-[node name="Action3" type="Button" parent="GameUI/Actions"]
-modulate = Color(0.955963, 0.955963, 0.955963, 1)
+[node name="Action2" type="TextureButton" parent="GameUI/Actions"]
+self_modulate = Color(0.772549, 0.282353, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
-text = "action descriptiondescriptiondescriptiondescription"
+texture_normal = ExtResource("4_p5k4m")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="GameUI/Actions/Action2"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 317.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 60
+text = "action descdescdescdesc"
+
+[node name="Action3" type="TextureButton" parent="GameUI/Actions"]
+self_modulate = Color(0.772549, 0.282353, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_p5k4m")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="GameUI/Actions/Action3"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 317.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 60
+text = "action descdescdescdesc"
 
 [node name="Player" type="Control" parent="GameUI"]
 anchors_preset = 0
