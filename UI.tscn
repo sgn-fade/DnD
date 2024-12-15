@@ -34,12 +34,13 @@ text = "LOCATION NAME"
 
 [node name="EventName" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_left = 1314.0
-offset_top = 62.0
-offset_right = 1702.0
-offset_bottom = 113.0
+offset_left = 1313.0
+offset_top = 25.0
+offset_right = 1701.0
+offset_bottom = 76.0
 theme_override_font_sizes/font_size = 50
 text = "EVENT NAME"
+horizontal_alignment = 1
 
 [node name="LocationImage" type="TextureRect" parent="GameUI"]
 layout_mode = 0
@@ -52,10 +53,11 @@ stretch_mode = 4
 
 [node name="Description" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_left = 1143.0
-offset_top = 128.0
-offset_right = 1925.0
-offset_bottom = 383.0
+offset_left = 1190.0
+offset_top = 164.0
+offset_right = 1972.0
+offset_bottom = 419.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4ikvk")
 theme_override_font_sizes/font_size = 30
 text = "DescriptionDescription
@@ -67,10 +69,10 @@ DescriptionDescriptionDescription"
 
 [node name="Actions" type="VBoxContainer" parent="GameUI"]
 layout_mode = 0
-offset_left = 1140.0
-offset_top = 698.0
-offset_right = 1905.0
-offset_bottom = 973.0
+offset_left = 1132.0
+offset_top = 791.0
+offset_right = 1897.0
+offset_bottom = 1066.0
 theme_override_constants/separation = 20
 alignment = 1
 
