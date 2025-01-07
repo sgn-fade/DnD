@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_mbrmr"]
 [ext_resource type="PackedScene" uid="uid://ynrvfkiwdjvi" path="res://UI.tscn" id="2_pg7le"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI")]
 script = ExtResource("1_mbrmr")
+_gameUI = NodePath("UI")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2_pg7le")]
+[node name="UI" parent="." instance=ExtResource("2_pg7le")]

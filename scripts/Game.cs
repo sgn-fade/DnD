@@ -9,11 +9,12 @@ namespace DND;
 public partial class Game : Node
 {
     private Scenario _scenario;
+    [Export] private UI _gameUI;
     public override void _Ready()
     {
         _scenario = LoadScenarioFromFile("scripts/the_long_way.json");
         Console.WriteLine(_scenario);
-        _scenario = null;
+        StartGame(_scenario);
     }
 
     public void StartGame(Scenario scenario)
@@ -23,9 +24,15 @@ public partial class Game : Node
 
     public void LoopLocation(Location location)
     {
-
+        _gameUI.ChangeLocation(location);
+        location.Events.ForEach(EventProcess);
     }
 
+    public void EventProcess(Event @event)
+    {
+        _gameUI.ChangeEvent(@event);
+    }
+    
     public void CreateActionButtons(Event @event)
     {
 

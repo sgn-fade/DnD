@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=10 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
+[ext_resource type="Script" path="res://scripts/UI.cs" id="1_b7tif"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="1_msigu"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
@@ -9,8 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="4_p5k4m"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription")]
 follow_viewport_enabled = true
+script = ExtResource("1_b7tif")
+_locationName = NodePath("GameUI/LocationName")
+_locationDescription = NodePath("GameUI/LocationDescription")
+_locationImage = NodePath("GameUI/LocationImage")
+_eventName = NodePath("GameUI/EventName")
+_eventDescription = NodePath("GameUI/EventDescription")
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
@@ -27,11 +34,31 @@ texture = ExtResource("1_6bhrj")
 [node name="LocationName" type="Label" parent="GameUI"]
 layout_mode = 0
 offset_left = 330.0
-offset_top = 66.0
+offset_top = 7.0
 offset_right = 718.0
-offset_bottom = 117.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 50
 text = "LOCATION NAME"
+
+[node name="LocationDescription" type="Label" parent="GameUI"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 1092.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0.374139, 0.374139, 0.374139, 1)
+theme_override_font_sizes/font_size = 23
+text = "A deep forest, full of evil creatures"
+horizontal_alignment = 1
+text_overrun_behavior = 2
+
+[node name="LocationImage" type="TextureRect" parent="GameUI"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 122.0
+offset_right = 1116.0
+offset_bottom = 885.0
+texture = ExtResource("1_msigu")
+stretch_mode = 4
 
 [node name="EventName" type="Label" parent="GameUI"]
 layout_mode = 0
@@ -43,16 +70,7 @@ theme_override_font_sizes/font_size = 50
 text = "EVENT NAME"
 horizontal_alignment = 1
 
-[node name="LocationImage" type="TextureRect" parent="GameUI"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 122.0
-offset_right = 1116.0
-offset_bottom = 885.0
-texture = ExtResource("1_msigu")
-stretch_mode = 4
-
-[node name="Description" type="Label" parent="GameUI"]
+[node name="EventDescription" type="Label" parent="GameUI"]
 layout_mode = 0
 offset_left = 1190.0
 offset_top = 164.0
