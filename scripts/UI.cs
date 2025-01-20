@@ -27,7 +27,7 @@ public partial class UI : CanvasLayer
 		_locationDescription.Text = location.Description;
 		_locationImage.Texture = location.Background;
 	}
-
+	
 	public void ChangeEvent(Event @event)
 	{
 		_eventName.Text = @event.Name;
