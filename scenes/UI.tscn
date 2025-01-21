@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
 [ext_resource type="Texture2D" uid="uid://b5mmkqfbmrw0e" path="res://sprites/knigth_icon.png" id="4_gwsrt"]
-[ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="4_p5k4m"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
+[ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent")]
 follow_viewport_enabled = true
 script = ExtResource("1_b7tif")
 _locationName = NodePath("GameUI/LocationName")
@@ -18,6 +18,7 @@ _locationDescription = NodePath("GameUI/LocationDescription")
 _locationImage = NodePath("GameUI/LocationImage")
 _eventName = NodePath("GameUI/EventName")
 _eventDescription = NodePath("GameUI/EventDescription")
+_buttonsParent = NodePath("GameUI/Actions")
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
@@ -95,53 +96,14 @@ offset_bottom = 1074.0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Action" type="TextureButton" parent="GameUI/Actions"]
-self_modulate = Color(0.772549, 0.282353, 0, 1)
+[node name="ActionButton" parent="GameUI/Actions" instance=ExtResource("5_371ss")]
 layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("4_p5k4m")
-stretch_mode = 4
 
-[node name="Label" type="Label" parent="GameUI/Actions/Action"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 24.0
-offset_right = 317.0
-offset_bottom = 84.0
-theme_override_font_sizes/font_size = 60
-text = "action descdescdescdesc"
-
-[node name="Action2" type="TextureButton" parent="GameUI/Actions"]
-self_modulate = Color(0.772549, 0.282353, 0, 1)
+[node name="ActionButton2" parent="GameUI/Actions" instance=ExtResource("5_371ss")]
 layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("4_p5k4m")
-stretch_mode = 4
 
-[node name="Label" type="Label" parent="GameUI/Actions/Action2"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 24.0
-offset_right = 317.0
-offset_bottom = 84.0
-theme_override_font_sizes/font_size = 60
-text = "action descdescdescdesc"
-
-[node name="Action3" type="TextureButton" parent="GameUI/Actions"]
-self_modulate = Color(0.772549, 0.282353, 0, 1)
+[node name="ActionButton3" parent="GameUI/Actions" instance=ExtResource("5_371ss")]
 layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("4_p5k4m")
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="GameUI/Actions/Action3"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 24.0
-offset_right = 317.0
-offset_bottom = 84.0
-theme_override_font_sizes/font_size = 60
-text = "action descdescdescdesc"
 
 [node name="Player" type="Control" parent="GameUI"]
 anchors_preset = 0
