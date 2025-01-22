@@ -3,19 +3,14 @@ using System;
 
 public partial class ActionButtons : TextureButton
 {
-	[Export] private Label _actionDescription;
-	public DND.Action _linkedAction;
-	
-	public override void _Ready()
-	{
-	}
+    [Export] private Label _actionDescription;
+    private DND.Action _linkedAction;
 
-	public override void _Process(double delta)
-	{
-	}
-
-	public void ChangeAction()
-	{
-		_actionDescription.Text = _linkedAction.Description;
-	}
+    public void ChangeAction(DND.Action newAction)
+    {
+        _linkedAction = newAction;
+        if (_linkedAction != null)
+            _actionDescription.Text = _linkedAction.Description;
+        Visible = _linkedAction != null;
+    }
 }
