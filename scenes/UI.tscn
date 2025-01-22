@@ -5,8 +5,8 @@
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
-[ext_resource type="Texture2D" uid="uid://b5mmkqfbmrw0e" path="res://sprites/knigth_icon.png" id="4_gwsrt"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
+[ext_resource type="Script" path="res://scripts/PlayerUI.cs" id="5_4nfjf"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent")]
@@ -103,10 +103,18 @@ layout_mode = 2
 [node name="ActionButton3" parent="GameUI/Actions" instance=ExtResource("5_371ss")]
 layout_mode = 2
 
-[node name="Player" type="Control" parent="GameUI"]
+[node name="Player" type="Control" parent="GameUI" node_paths=PackedStringArray("_playerIcon", "_playerName", "_playerHealth", "_strength", "_dexterity", "_constitution", "_intelligence")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("5_4nfjf")
+_playerIcon = NodePath("PlayerIcon")
+_playerName = NodePath("Name")
+_playerHealth = NodePath("HPbar/value")
+_strength = NodePath("Stats/Label")
+_dexterity = NodePath("Stats/Label2")
+_constitution = NodePath("Stats/Label3")
+_intelligence = NodePath("Stats/Label4")
 
 [node name="PlayerIcon" type="TextureRect" parent="GameUI/Player"]
 layout_mode = 0
@@ -114,7 +122,6 @@ offset_left = 19.0
 offset_top = 890.0
 offset_right = 208.0
 offset_bottom = 1066.0
-texture = ExtResource("4_gwsrt")
 stretch_mode = 4
 
 [node name="WeaponIcon" type="ColorRect" parent="GameUI/Player"]
@@ -179,50 +186,61 @@ offset_bottom = 924.0
 theme_override_font_sizes/font_size = 30
 text = "PLAYER NAME"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Player"]
-layout_mode = 0
+[node name="Stats" type="Control" parent="GameUI/Player"]
+anchors_preset = 0
 offset_left = 407.0
 offset_top = 981.0
 offset_right = 740.0
-offset_bottom = 1051.0
-theme_override_constants/separation = -10
-alignment = 1
+offset_bottom = 1141.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/Player/VBoxContainer"]
+[node name="Label5" type="Label" parent="GameUI/Player/Stats"]
 layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="Label" type="Label" parent="GameUI/Player/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+offset_right = 333.0
+offset_bottom = 40.0
 theme_override_font_sizes/font_size = 40
 text = "STR DXT CST INT"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUI/Player/VBoxContainer"]
+[node name="Label" type="Label" parent="GameUI/Player/Stats"]
 layout_mode = 2
-theme_override_constants/separation = 65
-
-[node name="Label" type="Label" parent="GameUI/Player/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+offset_left = -125.0
+offset_top = 38.0
+offset_right = 208.0
+offset_bottom = 78.0
 theme_override_font_sizes/font_size = 40
-text = "1"
+text = "999
+"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="GameUI/Player/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="GameUI/Player/Stats"]
 layout_mode = 2
+offset_left = -39.0
+offset_top = 38.0
+offset_right = 294.0
+offset_bottom = 78.0
 theme_override_font_sizes/font_size = 40
-text = "1"
+text = "999
+"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="GameUI/Player/VBoxContainer/HBoxContainer2"]
+[node name="Label3" type="Label" parent="GameUI/Player/Stats"]
 layout_mode = 2
+offset_left = 48.0
+offset_top = 38.0
+offset_right = 381.0
+offset_bottom = 78.0
 theme_override_font_sizes/font_size = 40
-text = "1"
+text = "999
+"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="GameUI/Player/VBoxContainer/HBoxContainer2"]
+[node name="Label4" type="Label" parent="GameUI/Player/Stats"]
 layout_mode = 2
+offset_left = 133.0
+offset_top = 38.0
+offset_right = 466.0
+offset_bottom = 78.0
 theme_override_font_sizes/font_size = 40
-text = "1"
+text = "999"
 horizontal_alignment = 1
 
 [node name="Enemy" type="Control" parent="GameUI"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5mmkqfbmrw0e"
-path="res://.godot/imported/knigth_icon.png-914d755ee6e208ffb834c6c0424d46ed.ctex"
+uid="uid://ctlbgyfqenni4"
+path="res://.godot/imported/RogueIcon.png-ff73fb35833697f2388cdf0805514913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/knigth_icon.png"
-dest_files=["res://.godot/imported/knigth_icon.png-914d755ee6e208ffb834c6c0424d46ed.ctex"]
+source_file="res://sprites/RogueIcon.png"
+dest_files=["res://.godot/imported/RogueIcon.png-ff73fb35833697f2388cdf0805514913.ctex"]
 
 [params]
 

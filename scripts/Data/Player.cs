@@ -9,25 +9,37 @@ public partial class Player : Node
     {
         Warrior,
         Rogue,
-        Wizard,
+        Mage,
     }
     public new string Name { get; set; }
     public PlayerClasses Class { get; set; }
     public List<Stat> Stats { get; set; }
     public int Hp { get; set; }
+    public int MaxHp { get; set; }
     public int Damage { get; set; }
     public int CurrentXp { get; set; }
     public int MaxXp { get; set; }
     public int Level { get; set; }
-    
+
+    public static Player Instance { get; set; }
+
+    public delegate void PlayerDataUpdated();
+    public static  event PlayerDataUpdated OnPlayerDataUpdated;
     public override void _Ready()
     {
-        Stats.Add(new Stat("Dexterity", 0));
-        Stats.Add(new Stat("Strength", 0));
-        Stats.Add(new Stat("Constitution", 0));
-        Stats.Add(new Stat("Intelligence", 0));
+        Stats = new List<Stat>();
+        Instance = this;
+        Stats.Add(new Stat("Strength", 10));
+        Stats.Add(new Stat("Dexterity", 10));
+        Stats.Add(new Stat("Constitution", 10));
+        Stats.Add(new Stat("Intelligence", 10));
+        Class = PlayerClasses.Warrior;
     }
 
+    public void Start()
+    {
+        OnPlayerDataUpdated?.Invoke();
+    }
     public void GeneratePlayerStats()
     {
 
