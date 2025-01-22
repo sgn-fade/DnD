@@ -5,14 +5,16 @@ using Godot;
 
 namespace DND;
 
-public partial class Location : Node
+public class Location
 {
-    public String Name { get; set; }
+    public new string Name { get; set; }
     public int Tier { get; set; }
+    public string Type { get; set; }
     public String Description { get; set; }
     public List<Event> Events { get; set; }
     public List<EnemyEncounter> EnemyEncounters { get; set; }
-    public Texture2D Background { get; set; }
+
+
     public override string ToString()
     {
         var eventsSummary = Events != null
@@ -25,6 +27,7 @@ public partial class Location : Node
 
         return $"Name: {Name}\n\r" +
                $"Tier: {Tier}\n\r" +
+               $"Type: {Type}\n\r" +
                $"Description: {Description}\n\r" +
                $"Events: [{eventsSummary}]\n\r" +
                $"Enemy Encounters: [{encountersSummary}]\n\r";

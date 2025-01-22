@@ -2,7 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using DND;
-
 using Action = System.Action;
 
 public partial class UI : CanvasLayer
@@ -16,6 +15,7 @@ public partial class UI : CanvasLayer
 
     private List<ActionButtons> _actionButtons;
     [Export] private Control _buttonsParent;
+
     public override void _Ready()
     {
         _actionButtons = new List<ActionButtons>();
@@ -33,27 +33,29 @@ public partial class UI : CanvasLayer
     {
         _locationName.Text = location.Name;
         _locationDescription.Text = location.Description;
-        _locationImage.Texture = location.Background;
+        _locationImage.Texture = ConvertLocationTypeToBackground(location.Type);
     }
 
     public void ChangeEvent(Event @event)
     {
         _eventName.Text = @event.Name;
         _eventDescription.Text = @event.Description;
-        GD.Print(_actionButtons.Count);
-        GD.Print(@event.Actions.Count);
-        for (int i = 0; i < @event.Actions.Count; i++)
+        for (var i = 0; i < _actionButtons.Count; i++)
         {
-            _actionButtons[i]._linkedAction = @event.Actions[i];
-            _actionButtons[i].ChangeAction();
+            _actionButtons[i].ChangeAction(i < @event.Actions.Count ? @event.Actions[i] : null);
         }
+    }
 
-        if (_actionButtons.Count > @event.Actions.Count)
+    private Texture2D ConvertLocationTypeToBackground(string type)
+    {
+        return type switch
         {
-            for (int i = 2; i > @event.Actions.Count - 1; i--)
-            {
-                _actionButtons[i].Visible = false;
-            }
-        }
+            "dungeon" => TextureStorage.Instance.Dungeon,
+            "dead_forest" => TextureStorage.Instance.DeadForest,
+            "endless_bridge" => TextureStorage.Instance.EndlessBridge,
+            "castle_ruins" => TextureStorage.Instance.CastleRuins,
+            "firebound_plato" => TextureStorage.Instance.FireboundPlato,
+            _ => TextureStorage.Instance.Dungeon
+        };
     }
 }
