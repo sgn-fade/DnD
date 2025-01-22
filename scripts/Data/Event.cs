@@ -4,7 +4,7 @@ using Godot;
 
 namespace DND;
 
-public partial class Event : Node
+public class Event
 {
     public String Name { get; set; }
     public String Description { get; set; }

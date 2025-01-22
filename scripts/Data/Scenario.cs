@@ -5,7 +5,7 @@ using Godot;
 
 namespace DND;
 
-public partial class Scenario : Node
+public class Scenario
 {
     public String Name { get; set; }
     public List<Location> Locations { get; set; }

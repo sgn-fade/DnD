@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=9 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="1_b7tif"]
-[ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="1_msigu"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
@@ -58,7 +57,6 @@ offset_left = 11.0
 offset_top = 122.0
 offset_right = 1116.0
 offset_bottom = 885.0
-texture = ExtResource("1_msigu")
 stretch_mode = 4
 
 [node name="EventName" type="Label" parent="GameUI"]
