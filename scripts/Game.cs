@@ -48,7 +48,15 @@ public partial class Game : Node
         switch (outcome.Type)
         {
             case "next_event":
-                EventProcess(_currentLocation.Events.First(e => e.Name == outcome.Body));
+                try
+                {
+                    EventProcess(_currentLocation.Events.First(e => e.Name == outcome.Body));
+
+                }
+                catch (InvalidOperationException e)
+                {
+
+                }
                 break;
             case "change_location":
                 LoopLocation(_scenario.Locations.First(l => l.Name == outcome.Body));

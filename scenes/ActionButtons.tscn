@@ -9,14 +9,15 @@ size_flags_vertical = 3
 texture_normal = ExtResource("1_424wy")
 stretch_mode = 4
 script = ExtResource("2_6x05e")
-_actionDescription = NodePath("ActionDescription")
+_actionDescription = NodePath("RichTextLabel")
 
-[node name="ActionDescription" type="Label" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 24.0
-offset_right = 317.0
-offset_bottom = 84.0
-scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 200
-text = "action descdescdescdesc"
+offset_left = 23.0
+offset_top = 36.0
+offset_right = 2150.0
+offset_bottom = 174.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 80
+text = "action desc"

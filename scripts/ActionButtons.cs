@@ -3,7 +3,7 @@ using System;
 
 public partial class ActionButtons : TextureButton
 {
-    [Export] private Label _actionDescription;
+    [Export] private RichTextLabel _actionDescription;
     private DND.Action _linkedAction;
 
     public delegate void ActionPressed(DND.Action action);
@@ -18,12 +18,31 @@ public partial class ActionButtons : TextureButton
     {
         _linkedAction = newAction;
         if (_linkedAction != null)
+        {
             _actionDescription.Text = _linkedAction.Description;
+            if (_linkedAction.RequiredStat.Type != null)
+            {
+                var color = GetColorByStatType(_linkedAction.RequiredStat.Type);
+                _actionDescription.AppendText($"[color={color}] [{_linkedAction.RequiredStat.Value}][/color]");
+            }
+        }
         Visible = _linkedAction != null;
     }
 
     public void OnButtonPressed()
     {
         OnActionPressed?.Invoke(_linkedAction);
+    }
+
+    public String GetColorByStatType(String statType)
+    {
+        return statType switch
+        {
+            "strength" => "red",
+            "dexterity" => "yellow",
+            "constitution" => "green",
+            "intelligence" => "blue",
+            _ => "black"
+        };
     }
 }
