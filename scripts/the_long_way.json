@@ -85,6 +85,25 @@
 			  }
 			}
 		  ]
+		},
+		{
+		  "name": "Tree's crown",
+		  "description": "an amazing view unfolds before you",
+		  "actions": [
+			{
+			  "description": "go downstairs",
+			  "required_stat": {
+			  },
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "goblin_encounter",
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			}
+		  ]
 		}
 	  ],
 	  "enemy_encounters": [
@@ -101,7 +120,7 @@
 			}
 		  },
 		  "win_outcome": {
-			"type": null,
+			"type": "give_item",
 			"body": null,
 			"item_to_give": {
 			  "type": "gold",

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace DND;
@@ -29,10 +30,10 @@ public partial class Player : Node
     {
         Stats = new List<Stat>();
         Instance = this;
-        Stats.Add(new Stat("Strength", 10));
-        Stats.Add(new Stat("Dexterity", 10));
-        Stats.Add(new Stat("Constitution", 10));
-        Stats.Add(new Stat("Intelligence", 10));
+        Stats.Add(new Stat("strength", 10));
+        Stats.Add(new Stat("dexterity", 10));
+        Stats.Add(new Stat("constitution", 10));
+        Stats.Add(new Stat("intelligence", 10));
         Class = PlayerClasses.Warrior;
     }
 
@@ -59,7 +60,11 @@ public partial class Player : Node
     {
         Level++;
     }
-    
+
+    public int GetPlayerStat(String type)
+    {
+        return Stats.Find(s => s.Type == type).Value;
+    }
     public override string ToString()
     {
         var playerStatsSummary = Stats != null

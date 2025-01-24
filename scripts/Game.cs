@@ -11,6 +11,7 @@ public partial class Game : Node
     private Scenario _scenario;
     [Export] private UI _gameUI;
     private Location _currentLocation;
+
     public override void _Ready()
     {
         _scenario = LoadScenarioFromFile("scripts/the_long_way.json");
@@ -40,16 +41,29 @@ public partial class Game : Node
 
     public void OnActionButtonPressed(Action action)
     {
-        switch (action.PositiveOutcome.Type)
+        var outcome = (action.RequiredStat == null || CheckPlayerStat(action.RequiredStat))
+            ? action.PositiveOutcome
+            : action.NegativeOutcome;
+
+        switch (outcome.Type)
         {
-            case "next_event": EventProcess(_currentLocation.Events.First(e => e.Name == action.PositiveOutcome.Body));
+            case "next_event":
+                EventProcess(_currentLocation.Events.First(e => e.Name == outcome.Body));
                 break;
-            case "change_location": LoopLocation(_scenario.Locations.First(l => l.Name == action.PositiveOutcome.Body));
+            case "change_location":
+                LoopLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
                 break;
-            case "death": EndGame();
+            case "death":
+                EndGame();
                 break;
             default: return;
         }
+    }
+
+    public bool CheckPlayerStat(Stat stat)
+    {
+        if (stat.Type == null) return true;
+        return stat.Value <= Player.Instance.GetPlayerStat(stat.Type);
     }
     public Scenario LoadScenarioFromFile(string filename)
     {
