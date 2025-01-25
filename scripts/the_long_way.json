@@ -36,6 +36,8 @@
 			{
 			  "description": "Change your mind and stay home under the covers",
 			  "required_stat": {
+				"type": "strength",
+				"value": 9
 			  },
 			  "positive_outcome": {
 				"type": "death",

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/ActionButtons.cs" id="2_6x05e"]
 
 [node name="Action" type="TextureButton" node_paths=PackedStringArray("_actionDescription")]
-self_modulate = Color(0.772549, 0.282353, 0, 1)
+self_modulate = Color(0.990975, 0.868123, 0.799655, 1)
 size_flags_vertical = 3
 texture_normal = ExtResource("1_424wy")
 stretch_mode = 4
@@ -15,9 +15,13 @@ _actionDescription = NodePath("RichTextLabel")
 layout_mode = 0
 offset_left = 23.0
 offset_top = 36.0
-offset_right = 2150.0
+offset_right = 1305.0
 offset_bottom = 174.0
 scale = Vector2(0.4, 0.4)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 80
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 70
 text = "action desc"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
