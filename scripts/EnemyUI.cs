@@ -16,6 +16,7 @@ public partial class EnemyUI : Control
 		{
 			if (value == null) return;
 			_enemy = value;
+			Visible = true;
 			_damageLabel.Text = value.Damage.ToString();
 			_healthLabel.Text = value.Hp.ToString();
 			_enemySprite.Texture = GetSpriteByType(_enemy.Type);

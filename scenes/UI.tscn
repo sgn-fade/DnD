@@ -115,10 +115,10 @@ script = ExtResource("5_4nfjf")
 _playerIcon = NodePath("PlayerIcon")
 _playerName = NodePath("Name")
 _playerHealth = NodePath("HPbar/value")
-_strength = NodePath("Stats/Label")
-_dexterity = NodePath("Stats/Label2")
-_constitution = NodePath("Stats/Label3")
-_intelligence = NodePath("Stats/Label4")
+_strength = NodePath("Stats/s/Label")
+_dexterity = NodePath("Stats/d/Label2")
+_constitution = NodePath("Stats/c/Label3")
+_intelligence = NodePath("Stats/i/Label4")
 
 [node name="PlayerIcon" type="TextureRect" parent="GameUI/Player"]
 layout_mode = 0
@@ -190,64 +190,118 @@ offset_bottom = 924.0
 theme_override_font_sizes/font_size = 30
 text = "PLAYER NAME"
 
-[node name="Stats" type="Control" parent="GameUI/Player"]
-anchors_preset = 0
+[node name="Stats" type="HBoxContainer" parent="GameUI/Player"]
+layout_mode = 0
 offset_left = 407.0
 offset_top = 981.0
 offset_right = 740.0
 offset_bottom = 1141.0
 
-[node name="Label5" type="Label" parent="GameUI/Player/Stats"]
+[node name="s" type="Control" parent="GameUI/Player/Stats"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 2
-offset_right = 333.0
-offset_bottom = 40.0
-theme_override_font_sizes/font_size = 40
-text = "STR DXT CST INT"
 
-[node name="Label" type="Label" parent="GameUI/Player/Stats"]
+[node name="Label5" type="Label" parent="GameUI/Player/Stats/s"]
 layout_mode = 2
-offset_left = -125.0
+offset_left = 2.0
+offset_right = 1482.0
+offset_bottom = 155.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
+text = "STR"
+structured_text_bidi_override_options = [null]
+
+[node name="Label" type="Label" parent="GameUI/Player/Stats/s"]
+layout_mode = 2
+offset_left = -26.0
 offset_top = 38.0
-offset_right = 208.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 40
+offset_right = 307.0
+offset_bottom = 138.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
 text = "999
 "
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="GameUI/Player/Stats"]
+[node name="d" type="Control" parent="GameUI/Player/Stats"]
+modulate = Color(0.97549, 0.849616, 0.119545, 1)
 layout_mode = 2
-offset_left = -39.0
+
+[node name="Label6" type="Label" parent="GameUI/Player/Stats/d"]
+layout_mode = 2
+offset_left = 88.0
+offset_right = 1568.0
+offset_bottom = 155.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
+text = "DXT "
+structured_text_bidi_override_options = [null]
+
+[node name="Label2" type="Label" parent="GameUI/Player/Stats/d"]
+layout_mode = 2
+offset_left = 60.0
 offset_top = 38.0
-offset_right = 294.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 40
+offset_right = 393.0
+offset_bottom = 138.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
 text = "999
 "
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="GameUI/Player/Stats"]
+[node name="c" type="Control" parent="GameUI/Player/Stats"]
+modulate = Color(0.126298, 0.715686, 0.195637, 1)
 layout_mode = 2
-offset_left = 48.0
+
+[node name="Label7" type="Label" parent="GameUI/Player/Stats/c"]
+layout_mode = 2
+offset_left = 176.0
+offset_right = 1656.0
+offset_bottom = 155.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
+text = "CST"
+structured_text_bidi_override_options = [null]
+
+[node name="Label3" type="Label" parent="GameUI/Player/Stats/c"]
+layout_mode = 2
+offset_left = 147.0
 offset_top = 38.0
-offset_right = 381.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 40
+offset_right = 480.0
+offset_bottom = 138.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
 text = "999
 "
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="GameUI/Player/Stats"]
+[node name="i" type="Control" parent="GameUI/Player/Stats"]
+modulate = Color(0.156863, 0.404844, 1, 1)
 layout_mode = 2
-offset_left = 133.0
+
+[node name="Label8" type="Label" parent="GameUI/Player/Stats/i"]
+layout_mode = 2
+offset_left = 254.0
+offset_right = 1734.0
+offset_bottom = 155.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
+text = " INT"
+structured_text_bidi_override_options = [null]
+
+[node name="Label4" type="Label" parent="GameUI/Player/Stats/i"]
+layout_mode = 2
+offset_left = 233.0
 offset_top = 38.0
-offset_right = 466.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 40
+offset_right = 566.0
+offset_bottom = 138.0
+scale = Vector2(0.4, 0.4)
+theme_override_font_sizes/font_size = 100
 text = "999"
 horizontal_alignment = 1
 
 [node name="Enemy" type="Control" parent="GameUI" node_paths=PackedStringArray("_damageLabel", "_healthLabel", "_enemySprite")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
