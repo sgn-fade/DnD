@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace DND;
@@ -9,6 +10,7 @@ public partial class EnemyEncounter : Node
     public String Description { get; set; }
     public Outcome OnBattleEnd { get; set; }
     public Outcome OnEnemyKilled { get; set; }
+    public List<String> Enemies { get; set; }
 
     public override string ToString()
     {

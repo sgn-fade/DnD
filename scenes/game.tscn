@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=12 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="PackedScene" uid="uid://ynrvfkiwdjvi" path="res://scenes/UI.tscn" id="2_jjhn5"]
@@ -7,10 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dxrgc1tsa447s" path="res://sprites/bridge.png" id="5_32cxt"]
 [ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="6_rm2q3"]
 [ext_resource type="Texture2D" uid="uid://ctlbgyfqenni4" path="res://sprites/RogueIcon.png" id="7_wwlh8"]
+[ext_resource type="Texture2D" uid="uid://burrthly1f81" path="res://sprites/skeleton.png" id="8_cbeen"]
+[ext_resource type="Script" path="res://scripts/BattleManager.cs" id="8_rrw85"]
+[ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="9_7i45f"]
+[ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="10_8vk0g"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI", "_battleManager")]
 script = ExtResource("1_kfrmt")
 _gameUI = NodePath("UI")
+_battleManager = NodePath("BattleManager")
 
 [node name="UI" parent="." instance=ExtResource("2_jjhn5")]
 
@@ -20,3 +25,10 @@ DeadForest = ExtResource("4_tdosb")
 EndlessBridge = ExtResource("5_32cxt")
 Warrior = ExtResource("6_rm2q3")
 Rogue = ExtResource("7_wwlh8")
+Skeleton = ExtResource("8_cbeen")
+Slime = ExtResource("9_7i45f")
+Plant = ExtResource("10_8vk0g")
+
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUI")]
+script = ExtResource("8_rrw85")
+_gameUI = NodePath("../UI")

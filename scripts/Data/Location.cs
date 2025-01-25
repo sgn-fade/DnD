@@ -13,7 +13,11 @@ public class Location
     public String Description { get; set; }
     public List<Event> Events { get; set; }
     public List<EnemyEncounter> EnemyEncounters { get; set; }
-
+    public List<EnemyEncounter> enemy_encounters
+    {
+        get => EnemyEncounters;
+        set => EnemyEncounters = value;
+    }
 
     public override string ToString()
     {

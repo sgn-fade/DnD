@@ -1,7 +1,15 @@
-﻿namespace DND;
+using System.Linq;
+using Godot;
 
-public class BattleManager
+namespace DND;
+
+public partial class BattleManager : Node2D
 {
-    public bool StartBattleWith(Enemy enemy){return false;}
+	[Export] private UI _gameUI;
+	public void StartBattleWith(Enemy enemy)
+	{
+		var enemyUi = _gameUI.StartBattleMode();
+		enemyUi.Enemy = enemy;
+	}
 
 }

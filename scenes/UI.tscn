@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=10 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="1_b7tif"]
@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
 [ext_resource type="Script" path="res://scripts/PlayerUI.cs" id="5_4nfjf"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
+[ext_resource type="Script" path="res://scripts/EnemyUI.cs" id="6_uisg5"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent", "_enemyUi")]
 follow_viewport_enabled = true
 script = ExtResource("1_b7tif")
 _locationName = NodePath("GameUI/LocationName")
@@ -18,6 +19,7 @@ _locationImage = NodePath("GameUI/LocationImage")
 _eventName = NodePath("GameUI/EventName")
 _eventDescription = NodePath("GameUI/EventDescription")
 _buttonsParent = NodePath("GameUI/Actions")
+_enemyUi = NodePath("GameUI/Enemy")
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
@@ -42,9 +44,10 @@ text = "LOCATION NAME"
 
 [node name="LocationDescription" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_top = 62.0
-offset_right = 1092.0
-offset_bottom = 117.0
+offset_left = -20.0
+offset_top = 61.0
+offset_right = 1072.0
+offset_bottom = 116.0
 theme_override_colors/font_color = Color(0.374139, 0.374139, 0.374139, 1)
 theme_override_font_sizes/font_size = 23
 text = "A deep forest, full of evil creatures"
@@ -61,9 +64,9 @@ stretch_mode = 4
 
 [node name="EventName" type="Label" parent="GameUI"]
 layout_mode = 0
-offset_left = 1313.0
+offset_left = 1309.0
 offset_top = 25.0
-offset_right = 1701.0
+offset_right = 1697.0
 offset_bottom = 76.0
 theme_override_font_sizes/font_size = 50
 text = "EVENT NAME"
@@ -244,12 +247,16 @@ theme_override_font_sizes/font_size = 40
 text = "999"
 horizontal_alignment = 1
 
-[node name="Enemy" type="Control" parent="GameUI"]
+[node name="Enemy" type="Control" parent="GameUI" node_paths=PackedStringArray("_damageLabel", "_healthLabel", "_enemySprite")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("6_uisg5")
+_damageLabel = NodePath("DMG/dmg")
+_healthLabel = NodePath("Heart/hp")
+_enemySprite = NodePath("EnemySprite")
 
-[node name="Sprite" type="TextureRect" parent="GameUI/Enemy"]
+[node name="EnemySprite" type="TextureRect" parent="GameUI/Enemy"]
 layout_mode = 0
 offset_left = 557.0
 offset_top = 472.0
@@ -258,44 +265,54 @@ offset_bottom = 685.0
 texture = ExtResource("3_fp1a0")
 stretch_mode = 4
 
-[node name="Sprite2" type="TextureRect" parent="GameUI/Enemy"]
+[node name="DMG" type="TextureRect" parent="GameUI/Enemy"]
 layout_mode = 0
-offset_left = 589.0
-offset_top = 656.0
-offset_right = 641.0
-offset_bottom = 715.0
+offset_left = 556.0
+offset_top = 643.0
+offset_right = 608.0
+offset_bottom = 702.0
+scale = Vector2(1.4, 1.4)
 texture = ExtResource("4_ej0i7")
 stretch_mode = 4
 
-[node name="Sprite3" type="TextureRect" parent="GameUI/Enemy"]
+[node name="dmg" type="Label" parent="GameUI/Enemy/DMG"]
 layout_mode = 0
-offset_left = 695.0
-offset_top = 661.0
-offset_right = 749.0
-offset_bottom = 742.0
+offset_left = -14.2857
+offset_top = 12.1428
+offset_right = 268.715
+offset_bottom = 112.143
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "1"
+horizontal_alignment = 1
+
+[node name="Heart" type="TextureRect" parent="GameUI/Enemy"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 649.0
+offset_right = 754.0
+offset_bottom = 730.0
+scale = Vector2(1.4, 1.4)
 texture = ExtResource("5_0sea5")
 stretch_mode = 4
 
-[node name="hp" type="Label" parent="GameUI/Enemy"]
+[node name="hp" type="Label" parent="GameUI/Enemy/Heart"]
+modulate = Color(0.994303, 0.693168, 0.799951, 1)
 layout_mode = 0
-offset_left = 711.0
-offset_top = 668.0
-offset_right = 751.0
-offset_bottom = 708.0
-theme_override_font_sizes/font_size = 40
-text = "1"
-
-[node name="dmg" type="Label" parent="GameUI/Enemy"]
-layout_mode = 0
-offset_left = 605.0
-offset_top = 667.0
-offset_right = 645.0
-offset_bottom = 707.0
+offset_left = -25.7143
+offset_top = 11.4286
+offset_right = 331.286
+offset_bottom = 116.429
+scale = Vector2(0.3, 0.3)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
 text = "1"
+horizontal_alignment = 1
 
 [node name="MenuUI" type="Control" parent="."]
 layout_mode = 3

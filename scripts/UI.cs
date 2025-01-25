@@ -15,6 +15,7 @@ public partial class UI : CanvasLayer
 
     private List<ActionButtons> _actionButtons;
     [Export] private Control _buttonsParent;
+    [Export] private EnemyUI _enemyUi;
 
     public override void _Ready()
     {
@@ -57,5 +58,10 @@ public partial class UI : CanvasLayer
             "firebound_plato" => TextureStorage.Instance.FireboundPlato,
             _ => TextureStorage.Instance.Dungeon
         };
+    }
+
+    public EnemyUI StartBattleMode()
+    {
+        return _enemyUi;
     }
 }

@@ -3,7 +3,7 @@
 	{
 	  "name": "theodor",
 	  "description": "A small goblin with a big heart",
-	  "type": "goblin",
+	  "type": "skeleton",
 	  "hp": 10,
 	  "damage": 3
 	}
@@ -34,10 +34,10 @@
 			  }
 			},
 			{
-			  "description": "Change your mind and stay home under the covers",
+			  "description": "Stay home under the covers",
 			  "required_stat": {
 				"type": "strength",
-				"value": 9
+				"value": 99
 			  },
 			  "positive_outcome": {
 				"type": "death",

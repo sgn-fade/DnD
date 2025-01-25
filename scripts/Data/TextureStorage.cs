@@ -15,6 +15,11 @@ public partial class TextureStorage : Node2D
     [Export] public Texture2D Warrior { get; set; }
     [Export] public Texture2D Rogue { get; set; }
     [Export] public Texture2D Mage { get; set; }
+    [Export] public Texture2D Skeleton { get; set; }
+    [Export] public Texture2D Slime { get; set; }
+    [Export] public Texture2D Plant { get; set; }
+
+
     public static TextureStorage Instance { get; set; }
 
     public override void _Ready()

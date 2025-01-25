@@ -11,6 +11,7 @@ public partial class Game : Node
     private Scenario _scenario;
     [Export] private UI _gameUI;
     private Location _currentLocation;
+    [Export] private BattleManager _battleManager;
 
     public override void _Ready()
     {
@@ -48,15 +49,15 @@ public partial class Game : Node
         switch (outcome.Type)
         {
             case "next_event":
-                try
+                var @event = _currentLocation.Events.FirstOrDefault(e => e.Name == outcome.Body);
+                if (@event == null)
                 {
-                    EventProcess(_currentLocation.Events.First(e => e.Name == outcome.Body));
+                    var encounter = _currentLocation.EnemyEncounters.FirstOrDefault(e => e.Name == outcome.Body);
 
+                    _battleManager.StartBattleWith(_scenario.GetEnemyByName(encounter.Enemies.FirstOrDefault()));
+                    return;
                 }
-                catch (InvalidOperationException e)
-                {
-
-                }
+                EventProcess(@event);
                 break;
             case "change_location":
                 LoopLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
@@ -73,6 +74,7 @@ public partial class Game : Node
         if (stat.Type == null) return true;
         return stat.Value <= Player.Instance.GetPlayerStat(stat.Type);
     }
+
     public Scenario LoadScenarioFromFile(string filename)
     {
         var jsonString = File.ReadAllText(filename);
