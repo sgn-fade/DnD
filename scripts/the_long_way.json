@@ -98,7 +98,7 @@
 			  },
 			  "positive_outcome": {
 				"type": "next_event",
-				"body": "goblin_encounter",
+				"body": "big_tree",
 				"item_to_give": {
 				}
 			  },

@@ -73,4 +73,19 @@ public partial class Player : Node
         
         return $"Player stats: {playerStatsSummary}\n\r";
     }
+
+    public void TakeDamage(int damage)
+    {
+        Hp -= damage;
+        if (Hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    
+    private void Die()
+    {
+        throw new NotImplementedException();
+    }
 }

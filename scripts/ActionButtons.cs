@@ -23,7 +23,9 @@ public partial class ActionButtons : TextureButton
             if (_linkedAction.RequiredStat.Type != null)
             {
                 var color = GetColorByStatType(_linkedAction.RequiredStat.Type);
-                _actionDescription.AppendText($"[color={color}] [{_linkedAction.RequiredStat.Value}][/color]");
+                _actionDescription.AppendText($"[color={color}] [outline_size={80}]" +
+                                              $"[{_linkedAction.RequiredStat.Value}]" +
+                                              $"[/outline_size][/color]");
             }
         }
         Visible = _linkedAction != null;
