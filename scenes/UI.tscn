@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
 [ext_resource type="Script" path="res://scripts/EnemyUI.cs" id="6_uisg5"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent", "_enemyUi")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent")]
 follow_viewport_enabled = true
 script = ExtResource("1_b7tif")
 _locationName = NodePath("GameUI/LocationName")
@@ -19,7 +19,6 @@ _locationImage = NodePath("GameUI/LocationImage")
 _eventName = NodePath("GameUI/EventName")
 _eventDescription = NodePath("GameUI/EventDescription")
 _buttonsParent = NodePath("GameUI/Actions")
-_enemyUi = NodePath("GameUI/Enemy")
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3

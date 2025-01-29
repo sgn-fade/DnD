@@ -12,10 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="9_7i45f"]
 [ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="10_8vk0g"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI", "_battleManager")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI")]
 script = ExtResource("1_kfrmt")
 _gameUI = NodePath("UI")
-_battleManager = NodePath("BattleManager")
 
 [node name="UI" parent="." instance=ExtResource("2_jjhn5")]
 
