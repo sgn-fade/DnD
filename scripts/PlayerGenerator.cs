@@ -8,6 +8,7 @@ public class PlayerGenerator
     public PlayerGenerator()
     {
         Player = new Player();
+        Player.Class = Player.PlayerClasses.Mage;
         Player.GeneratePlayerStats();
     }
 }

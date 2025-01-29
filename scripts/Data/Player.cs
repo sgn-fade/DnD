@@ -43,7 +43,27 @@ public partial class Player : Node
     }
     public void GeneratePlayerStats()
     {
-
+        switch (Class)
+        {
+            case PlayerClasses.Warrior:
+                Stats.Add(new Stat("strength", 15));
+                Stats.Add(new Stat("dexterity", 8));
+                Stats.Add(new Stat("constitution", 11));
+                Stats.Add(new Stat("intelligence", 6));
+                break;
+            case PlayerClasses.Rogue:
+                Stats.Add(new Stat("strength", 8));
+                Stats.Add(new Stat("dexterity", 15));
+                Stats.Add(new Stat("constitution", 9));
+                Stats.Add(new Stat("intelligence", 8));
+                break;
+            case PlayerClasses.Mage:
+                Stats.Add(new Stat("strength", 6));
+                Stats.Add(new Stat("dexterity", 9));
+                Stats.Add(new Stat("constitution", 8));
+                Stats.Add(new Stat("intelligence", 17));
+                break;
+        }
     }
 
     public void AddXp(int value)
