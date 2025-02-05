@@ -5,6 +5,7 @@ using DND;
 public partial class PlayerCreationUI : CanvasLayer
 {
     [Export] private Label _classDescription;
+    [Export] private TextureRect _classIcon;
     
     private SwitchButton _currentButton;
     
@@ -22,6 +23,7 @@ public partial class PlayerCreationUI : CanvasLayer
         }
         _currentButton = button;
         _classDescription.Text = GetClassDescription(@class);
+        _classIcon.Texture = GetClassIcon(@class);
     }
 
     public override void _ExitTree()

@@ -1,14 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://drgwohpxha8xp"]
+[gd_scene load_steps=15 format=3 uid="uid://drgwohpxha8xp"]
 
 [ext_resource type="Script" path="res://scripts/PlayerCreationUI.cs" id="1_k2pds"]
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_ph1v4"]
 [ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="2_siy3q"]
 [ext_resource type="Texture2D" uid="uid://c0qsw6ropimj5" path="res://sprites/tempPressedButton.png" id="3_k8w27"]
 [ext_resource type="Script" path="res://scripts/SwitchButton.cs" id="5_bdnec"]
+[ext_resource type="Script" path="res://scripts/Data/TextureStorage.cs" id="6_qlke8"]
+[ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="7_5qmgs"]
+[ext_resource type="Texture2D" uid="uid://dxrgc1tsa447s" path="res://sprites/bridge.png" id="8_matgn"]
+[ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="9_2334n"]
+[ext_resource type="Texture2D" uid="uid://ctlbgyfqenni4" path="res://sprites/RogueIcon.png" id="10_j34jr"]
+[ext_resource type="Texture2D" uid="uid://ckr0x7rf4vxy5" path="res://sprites/mage_icon.png" id="11_im8jl"]
+[ext_resource type="Texture2D" uid="uid://burrthly1f81" path="res://sprites/skeleton.png" id="12_sc1ya"]
+[ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="13_ok7kh"]
+[ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="14_7o7d4"]
 
-[node name="PlayerCreationUI" type="CanvasLayer" node_paths=PackedStringArray("_classDescription")]
+[node name="PlayerCreationUI" type="CanvasLayer" node_paths=PackedStringArray("_classDescription", "_classIcon")]
 script = ExtResource("1_k2pds")
 _classDescription = NodePath("ClassDescription")
+_classIcon = NodePath("ClassIcon")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -97,6 +107,23 @@ offset_left = 1186.0
 offset_top = 328.0
 offset_right = 1822.0
 offset_bottom = 794.0
+
+[node name="ClassIcon" type="TextureRect" parent="."]
+offset_left = 1410.0
+offset_top = 129.0
+offset_right = 1568.0
+offset_bottom = 287.0
+
+[node name="TextureStorage" type="Node2D" parent="."]
+script = ExtResource("6_qlke8")
+DeadForest = ExtResource("7_5qmgs")
+EndlessBridge = ExtResource("8_matgn")
+Warrior = ExtResource("9_2334n")
+Rogue = ExtResource("10_j34jr")
+Mage = ExtResource("11_im8jl")
+Skeleton = ExtResource("12_sc1ya")
+Slime = ExtResource("13_ok7kh")
+Plant = ExtResource("14_7o7d4")
 
 [connection signal="toggled" from="VBoxContainer/WarriorButton" to="." method="OnWarriorButtonToggle"]
 [connection signal="toggled" from="VBoxContainer/RogueButton" to="." method="OnRogueButtonToggle"]
