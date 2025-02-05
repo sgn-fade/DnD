@@ -1,70 +1,53 @@
 using Godot;
 using System;
+using DND;
 
 public partial class PlayerCreationUI : CanvasLayer
 {
-    //Todo ontoggle another buttons when 1 toggled
     [Export] private Label _classDescription;
     
-    [Export] private TextureButton[] _textureButtons;
+    private SwitchButton _currentButton;
     
-    private void OnWarriorButtonToggle(bool toggleOn)
+    public override void _Ready()
     {
-        if (toggleOn)
-        {
-            _textureButtons[0].Disabled = true;
-            foreach (var button in _textureButtons)
-            {
-                if (button != _textureButtons[0])
-                {
-                    button.ButtonPressed = false;
-                    button.Disabled = false;
-                }
-            }
-            _classDescription.Text = "alolaloal";
-
-        }
-        else
-            _classDescription.Text = "";
+        SwitchButton.OnButtonSwitched += OnButtonSwitched;
     }
-    private void OnRogueButtonToggle(bool toggleOn)
+
+    private void OnButtonSwitched(Player.PlayerClasses @class, SwitchButton button)
     {
-        if (toggleOn)
+        if (_currentButton != null)
         {
-            _textureButtons[1].Disabled = true;
-            foreach (var button in _textureButtons)
-            {
-                if (button != _textureButtons[1])
-                {
-                    button.ButtonPressed = false;
-                    button.Disabled = false;
-
-                }
-            }
-            _classDescription.Text = "2222222";
-
+            _currentButton.Disabled = false;
+            _currentButton.ButtonPressed = false;
         }
-        else
-            _classDescription.Text = "";
+        _currentButton = button;
+        _classDescription.Text = GetClassDescription(@class);
     }
-    private void OnMageButtonToggle(bool toggleOn)
+
+    public override void _ExitTree()
     {
-        if (toggleOn)
+        SwitchButton.OnButtonSwitched -= OnButtonSwitched;
+    }
+    
+    public Texture2D GetClassIcon(Player.PlayerClasses @class)
+    {
+        return @class switch
         {
-            _textureButtons[2].Disabled = true;
-            foreach (var button in _textureButtons)
-            {
-                if (button != _textureButtons[2])
-                {
-                    button.ButtonPressed = false;
-                    button.Disabled = false;
-
-                }
-            }
-            _classDescription.Text = "333333333";
-
-        }
-        else
-            _classDescription.Text = "";
+            Player.PlayerClasses.Warrior => TextureStorage.Instance.Warrior,
+            Player.PlayerClasses.Rogue => TextureStorage.Instance.Rogue,
+            Player.PlayerClasses.Mage => TextureStorage.Instance.Mage,
+            _ => throw new ArgumentOutOfRangeException(nameof(@class), @class, null)
+        };
+    }
+    
+    public String GetClassDescription(Player.PlayerClasses @class)
+    {
+        return @class switch
+        {
+            Player.PlayerClasses.Warrior => "Warrior",
+            Player.PlayerClasses.Rogue => "Rogue",
+            Player.PlayerClasses.Mage => "Mage",
+            _ => throw new ArgumentOutOfRangeException(nameof(@class), @class, null)
+        };
     }
 }

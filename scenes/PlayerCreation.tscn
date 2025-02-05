@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://drgwohpxha8xp"]
+[gd_scene load_steps=6 format=3 uid="uid://drgwohpxha8xp"]
 
 [ext_resource type="Script" path="res://scripts/PlayerCreationUI.cs" id="1_k2pds"]
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_ph1v4"]
 [ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="2_siy3q"]
 [ext_resource type="Texture2D" uid="uid://c0qsw6ropimj5" path="res://sprites/tempPressedButton.png" id="3_k8w27"]
+[ext_resource type="Script" path="res://scripts/SwitchButton.cs" id="5_bdnec"]
 
-[node name="PlayerCreationUI" type="CanvasLayer" node_paths=PackedStringArray("_classDescription", "_textureButtons")]
+[node name="PlayerCreationUI" type="CanvasLayer" node_paths=PackedStringArray("_classDescription")]
 script = ExtResource("1_k2pds")
 _classDescription = NodePath("ClassDescription")
-_textureButtons = [NodePath("VBoxContainer/WarriorButton"), NodePath("VBoxContainer/RogueButton"), NodePath("VBoxContainer/MageButton")]
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -16,7 +16,6 @@ offset_bottom = 1080.0
 texture = ExtResource("1_ph1v4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
 offset_left = 36.0
 offset_top = 272.0
 offset_right = 195.0
@@ -30,6 +29,7 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_siy3q")
 texture_disabled = ExtResource("3_k8w27")
+script = ExtResource("5_bdnec")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/WarriorButton"]
 layout_mode = 0
@@ -51,8 +51,11 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_siy3q")
 texture_disabled = ExtResource("3_k8w27")
+script = ExtResource("5_bdnec")
+_linkedClasses = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/RogueButton"]
+layout_mode = 0
 offset_left = 53.4286
 offset_top = 3.71429
 offset_right = 96.4286
@@ -71,8 +74,11 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_siy3q")
 texture_disabled = ExtResource("3_k8w27")
+script = ExtResource("5_bdnec")
+_linkedClasses = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MageButton"]
+layout_mode = 0
 offset_left = 53.1429
 offset_top = 4.0
 offset_right = 96.1429
