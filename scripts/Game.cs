@@ -53,10 +53,10 @@ public partial class Game : Node
                 if (@event == null)
                 {
                     var encounter = _currentLocation.EnemyEncounters.FirstOrDefault(e => e.Name == outcome.Body);
-
-                    _battleManager.StartBattleWith(_scenario.GetEnemyByName(encounter.Enemies.FirstOrDefault()));
+                    _battleManager.StartBattleWith(_scenario.GetEnemyByName(encounter?.Enemies.FirstOrDefault()));
                     return;
                 }
+
                 EventProcess(@event);
                 break;
             case "change_location":

@@ -65,14 +65,6 @@ public partial class Player : Node
     {
         return Stats.Find(s => s.Type == type).Value;
     }
-    public override string ToString()
-    {
-        var playerStatsSummary = Stats != null
-            ? string.Join("\n", Stats)
-            : "None";
-        
-        return $"Player stats: {playerStatsSummary}\n\r";
-    }
 
     public void TakeDamage(int damage)
     {
@@ -86,6 +78,6 @@ public partial class Player : Node
     
     private void Die()
     {
-        throw new NotImplementedException();
+        //TODO death screen implementation
     }
 }
