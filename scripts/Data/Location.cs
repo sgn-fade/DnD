@@ -7,7 +7,7 @@ namespace DND;
 
 public class Location
 {
-    public new string Name { get; set; }
+    public string Name { get; set; }
     public int Tier { get; set; }
     public string Type { get; set; }
     public String Description { get; set; }
@@ -17,23 +17,5 @@ public class Location
     {
         get => EnemyEncounters;
         set => EnemyEncounters = value;
-    }
-
-    public override string ToString()
-    {
-        var eventsSummary = Events != null
-            ? string.Join("\n", Events)
-            : "None";
-
-        var encountersSummary = EnemyEncounters != null
-            ? string.Join("\n", EnemyEncounters)
-            : "None";
-
-        return $"Name: {Name}\n\r" +
-               $"Tier: {Tier}\n\r" +
-               $"Type: {Type}\n\r" +
-               $"Description: {Description}\n\r" +
-               $"Events: [{eventsSummary}]\n\r" +
-               $"Enemy Encounters: [{encountersSummary}]\n\r";
     }
 }

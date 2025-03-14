@@ -19,18 +19,7 @@ public partial class EnemyUI : Control
 			Visible = true;
 			_damageLabel.Text = value.Damage.ToString();
 			_healthLabel.Text = value.Hp.ToString();
-			_enemySprite.Texture = GetSpriteByType(_enemy.Type);
+			_enemySprite.Texture = TextureStorage.Instance.GetEnemyIcon(_enemy.Type);
 		}
-	}
-
-	private Texture2D GetSpriteByType(string type)
-	{
-		return type switch
-		{
-			"skeleton" => TextureStorage.Instance.Skeleton,
-			"slime" => TextureStorage.Instance.Slime,
-			"plant" => TextureStorage.Instance.Plant,
-			_ => TextureStorage.Instance.Warrior,
-		};
 	}
 }

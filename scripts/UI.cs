@@ -34,7 +34,7 @@ public partial class UI : CanvasLayer
     {
         _locationName.Text = location.Name;
         _locationDescription.Text = location.Description;
-        _locationImage.Texture = ConvertLocationTypeToBackground(location.Type);
+        _locationImage.Texture = TextureStorage.Instance.GetLocationBackground(location.Type);
     }
 
     public void ChangeEvent(Event @event)
@@ -47,21 +47,17 @@ public partial class UI : CanvasLayer
         }
     }
 
-    private Texture2D ConvertLocationTypeToBackground(string type)
-    {
-        return type switch
-        {
-            "dungeon" => TextureStorage.Instance.Dungeon,
-            "dead_forest" => TextureStorage.Instance.DeadForest,
-            "endless_bridge" => TextureStorage.Instance.EndlessBridge,
-            "castle_ruins" => TextureStorage.Instance.CastleRuins,
-            "firebound_plato" => TextureStorage.Instance.FireboundPlato,
-            _ => TextureStorage.Instance.Dungeon
-        };
-    }
 
     public EnemyUI StartBattleMode()
     {
         return _enemyUi;
+    }
+
+    private void SwitchActionButtonsVisible(bool state)
+    {
+        foreach (var button in _actionButtons)
+        {
+            button.Visible = state;
+        }
     }
 }

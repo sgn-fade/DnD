@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Player="*res://scripts/Data/Player.cs"
+Player="*res://scripts/Player.cs"
 
 [display]
 
