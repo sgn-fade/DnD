@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ynrvfkiwdjvi"]
+[gd_scene load_steps=9 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
 [ext_resource type="Script" path="res://scripts/UI.cs" id="1_b7tif"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
-[ext_resource type="Script" path="res://scripts/PlayerUI.cs" id="5_4nfjf"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
 [ext_resource type="Script" path="res://scripts/EnemyUI.cs" id="6_uisg5"]
 
@@ -20,12 +19,21 @@ _eventName = NodePath("GameUI/EventName")
 _eventDescription = NodePath("GameUI/EventDescription")
 _buttonsParent = NodePath("GameUI/Actions")
 _enemyUi = NodePath("GameUI/Enemy")
+_textSpawnSpeed = 0.03
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="GameUI"]
 layout_mode = 0
@@ -76,17 +84,12 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 1190.0
 offset_top = 164.0
-offset_right = 1828.0
+offset_right = 1821.0
 offset_bottom = 419.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4ikvk")
 theme_override_font_sizes/font_size = 30
-text = "DescriptionDescription
-DescriptionDescriptionDescription
-Description
-Description
-DescriptionDescriptionDescription
-DescriptionDescriptionDescription"
+text = "text"
 autowrap_mode = 3
 
 [node name="Actions" type="VBoxContainer" parent="GameUI"]
@@ -107,18 +110,10 @@ layout_mode = 2
 [node name="ActionButton3" parent="GameUI/Actions" instance=ExtResource("5_371ss")]
 layout_mode = 2
 
-[node name="Player" type="Control" parent="GameUI" node_paths=PackedStringArray("_playerIcon", "_playerName", "_playerHealth", "_strength", "_dexterity", "_constitution", "_intelligence")]
+[node name="Player" type="Control" parent="GameUI"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_4nfjf")
-_playerIcon = NodePath("PlayerIcon")
-_playerName = NodePath("Name")
-_playerHealth = NodePath("HPbar/value")
-_strength = NodePath("Stats/s/Label")
-_dexterity = NodePath("Stats/d/Label2")
-_constitution = NodePath("Stats/c/Label3")
-_intelligence = NodePath("Stats/i/Label4")
 
 [node name="PlayerIcon" type="TextureRect" parent="GameUI/Player"]
 layout_mode = 0

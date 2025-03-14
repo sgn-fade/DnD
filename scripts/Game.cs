@@ -15,6 +15,7 @@ public partial class Game : Node
 
     public override void _Ready()
     {
+        PlayerViewModel.Instance.Init(new PlayerData());
         _scenario = LoadScenarioFromFile("scripts/the_long_way.json");
         StartGame(_scenario);
         ActionButtons.OnActionPressed += OnActionButtonPressed;

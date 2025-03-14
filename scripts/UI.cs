@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DND;
 using Action = System.Action;
 
@@ -16,6 +17,7 @@ public partial class UI : CanvasLayer
     private List<ActionButtons> _actionButtons;
     [Export] private Control _buttonsParent;
     [Export] private EnemyUI _enemyUi;
+    [Export] private float _textSpawnSpeed;
 
     public override void _Ready()
     {
@@ -40,14 +42,29 @@ public partial class UI : CanvasLayer
     public void ChangeEvent(Event @event)
     {
         _eventName.Text = @event.Name;
-        _eventDescription.Text = @event.Description;
+        TypeText(@event.Description);
         for (var i = 0; i < _actionButtons.Count; i++)
         {
             _actionButtons[i].ChangeAction(i < @event.Actions.Count ? @event.Actions[i] : null);
         }
     }
 
-
+    private async void TypeText(string text)
+    {
+        try
+        {
+            _eventDescription.Text = "";
+            foreach (var letter in text)
+            {
+                _eventDescription.Text += letter;
+                await Task.Delay((int)(_textSpawnSpeed * 1000));
+            }
+        }
+        catch (Exception e)
+        {
+            throw; // TODO handle exception
+        }
+    }
     public EnemyUI StartBattleMode()
     {
         return _enemyUi;
