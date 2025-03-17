@@ -1,0 +1,257 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1xk843m3gu66"]
+
+[ext_resource type="Script" path="res://scripts/PlayerView.cs" id="1_b3px6"]
+[ext_resource type="Texture2D" uid="uid://civjxvenaw1ev" path="res://sprites/statBackground.png" id="2_q0fmt"]
+[ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="3_ux4ru"]
+[ext_resource type="Texture2D" uid="uid://b1u7bbq7v68y3" path="res://sprites/XpBar.png" id="4_u31vs"]
+[ext_resource type="Texture2D" uid="uid://5eb1xykpylxm" path="res://sprites/XpBar-progress.png" id="5_xwr5r"]
+
+[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_playerName", "_playerHealth", "_strength", "_dexterity", "_constitution", "_intelligence", "_goldCount")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_b3px6")
+_playerIcon = NodePath("PlayerIcon")
+_weaponIcon = NodePath("PlayerIcon")
+_playerName = NodePath("Name")
+_playerHealth = NodePath("HPbar/value")
+_strength = NodePath("Stats/s/Label")
+_dexterity = NodePath("Stats/s2/Label")
+_constitution = NodePath("Stats/s3/Label")
+_intelligence = NodePath("Stats/s4/Label")
+_goldCount = NodePath("GoldIcon/label")
+
+[node name="PlayerIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 890.0
+offset_right = 208.0
+offset_bottom = 1066.0
+stretch_mode = 4
+
+[node name="WeaponIcon" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 890.0
+offset_right = 381.0
+offset_bottom = 1065.0
+color = Color(0, 0, 0, 1)
+
+[node name="label" type="Label" parent="WeaponIcon"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 50.0
+offset_right = 235.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 40
+text = "weapon
+icon"
+
+[node name="GoldIcon" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 797.0
+offset_top = 964.0
+offset_right = 908.0
+offset_bottom = 1056.0
+color = Color(0, 0, 0, 1)
+
+[node name="label" type="Label" parent="GoldIcon"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 11.0
+offset_right = 213.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 40
+text = "GOLD
+COUNT"
+
+[node name="HPbar" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 920.0
+offset_right = 909.0
+offset_bottom = 957.0
+color = Color(1, 0, 0.0117647, 1)
+
+[node name="value" type="Label" parent="HPbar"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 4.0
+offset_right = 241.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 30
+text = "100 / 100"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 893.0
+offset_right = 619.0
+offset_bottom = 924.0
+theme_override_font_sizes/font_size = 30
+text = "PLAYER NAME"
+
+[node name="Stats" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 964.0
+offset_right = 724.0
+offset_bottom = 1124.0
+theme_override_constants/separation = 90
+
+[node name="s" type="Control" parent="Stats"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/s"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_q0fmt")
+
+[node name="TextureRect2" type="TextureRect" parent="Stats/s"]
+modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_ux4ru")
+
+[node name="Label" type="Label" parent="Stats/s"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 155.0
+offset_bottom = 159.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 130
+text = "32
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="s2" type="Control" parent="Stats"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/s2"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_q0fmt")
+
+[node name="TextureRect2" type="TextureRect" parent="Stats/s2"]
+modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_ux4ru")
+
+[node name="Label" type="Label" parent="Stats/s2"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 155.0
+offset_bottom = 159.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 130
+text = "32
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="s3" type="Control" parent="Stats"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/s3"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_q0fmt")
+
+[node name="TextureRect2" type="TextureRect" parent="Stats/s3"]
+modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_ux4ru")
+
+[node name="Label" type="Label" parent="Stats/s3"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 155.0
+offset_bottom = 159.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 130
+text = "32
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="s4" type="Control" parent="Stats"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/s4"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_q0fmt")
+
+[node name="TextureRect2" type="TextureRect" parent="Stats/s4"]
+modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_ux4ru")
+
+[node name="Label" type="Label" parent="Stats/s4"]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 16.0
+offset_right = 155.0
+offset_bottom = 159.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 130
+text = "32
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 885.0
+offset_right = 705.0
+offset_bottom = 925.0
+scale = Vector2(3, 3)
+value = 56.0
+texture_under = ExtResource("4_u31vs")
+texture_progress = ExtResource("5_xwr5r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 1044.0
+offset_right = 791.0
+offset_bottom = 1095.0
+theme_override_font_sizes/font_size = 30
+text = "1"

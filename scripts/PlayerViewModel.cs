@@ -10,6 +10,11 @@ public partial class PlayerViewModel : Node
     public static PlayerViewModel Instance { get; set; }
     [Export] private PlayerView _playerView;
 
+    public override void _Ready()
+    {
+        Instance = this;
+    }
+
     public void Init(PlayerData playerData)
     {
         PlayerData = playerData;
@@ -19,10 +24,11 @@ public partial class PlayerViewModel : Node
     public void AddXp(int value)
     {
         PlayerData.CurrentXp += value;
-        while ( PlayerData.CurrentXp >  PlayerData.MaxXp)
+        while (PlayerData.Level < PlayerData.XpThresholds.Length &&
+               PlayerData.CurrentXp >=  PlayerData.XpThresholds[PlayerData.Level])
         {
+            PlayerData.CurrentXp -=  PlayerData.XpThresholds[PlayerData.Level];
             LevelUp();
-            PlayerData.CurrentXp -=  PlayerData.MaxXp;
         }
     }
 

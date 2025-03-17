@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DND;
 
-public partial class PlayerData
+public class PlayerData
 {
     public enum PlayerClasses
     {
@@ -11,7 +11,8 @@ public partial class PlayerData
         Rogue,
         Mage,
     }
-    public string Name { get; set; }
+
+    public string Name { get; set; } = "unknown";
     public PlayerClasses Class { get; set; } = PlayerClasses.Warrior;
 
     public List<Stat> Stats { get; set; } = new()
@@ -22,11 +23,11 @@ public partial class PlayerData
         new Stat("intelligence", 10)
     };
 
-    public int Hp { get; set; }
-    public int MaxHp { get; set; }
-    public int Damage { get; set; }
+    public int Hp { get; set; } = 1;
+    public int MaxHp { get; set; } = 1;
+    public int Damage { get; set; } = 1;
     public int CurrentXp { get; set; }
-    public int MaxXp { get; set; }
+    public readonly int[] XpThresholds = { 0, 10, 50, 100, 150, 300, 500, 850, 1100, 1500 };
     public int Level { get; set; }
 
     public int GetPlayerStat(String type)

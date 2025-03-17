@@ -28,6 +28,10 @@ public partial class PlayerView : Control
         _dexterity.Text = $"{data.Stats[1].Value}";
         _constitution.Text = $"{data.Stats[2].Value}";
         _intelligence.Text = $"{data.Stats[3].Value}";
+    }
+
+    public void DisplayLevelUp()
+    {
 
     }
 }
