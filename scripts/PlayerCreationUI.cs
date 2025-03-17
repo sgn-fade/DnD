@@ -14,7 +14,7 @@ public partial class PlayerCreationUI : CanvasLayer
         SwitchButton.OnButtonSwitched += OnButtonSwitched;
     }
 
-    private void OnButtonSwitched(Player.PlayerClasses @class, SwitchButton button)
+    private void OnButtonSwitched(PlayerData.PlayerClasses @class, SwitchButton button)
     {
         if (_currentButton != null)
         {
@@ -23,7 +23,7 @@ public partial class PlayerCreationUI : CanvasLayer
         }
         _currentButton = button;
         _classDescription.Text = GetClassDescription(@class);
-        _classIcon.Texture = GetClassIcon(@class);
+        _classIcon.Texture = TextureStorage.Instance.GetPlayerIcon(@class);
     }
 
     public override void _ExitTree()
@@ -31,24 +31,13 @@ public partial class PlayerCreationUI : CanvasLayer
         SwitchButton.OnButtonSwitched -= OnButtonSwitched;
     }
     
-    public Texture2D GetClassIcon(Player.PlayerClasses @class)
+    public String GetClassDescription(PlayerData.PlayerClasses @class)
     {
         return @class switch
         {
-            Player.PlayerClasses.Warrior => TextureStorage.Instance.Warrior,
-            Player.PlayerClasses.Rogue => TextureStorage.Instance.Rogue,
-            Player.PlayerClasses.Mage => TextureStorage.Instance.Mage,
-            _ => throw new ArgumentOutOfRangeException(nameof(@class), @class, null)
-        };
-    }
-    
-    public String GetClassDescription(Player.PlayerClasses @class)
-    {
-        return @class switch
-        {
-            Player.PlayerClasses.Warrior => "Warrior",
-            Player.PlayerClasses.Rogue => "Rogue",
-            Player.PlayerClasses.Mage => "Mage",
+            PlayerData.PlayerClasses.Warrior => "Warrior",
+            PlayerData.PlayerClasses.Rogue => "Rogue",
+            PlayerData.PlayerClasses.Mage => "Mage",
             _ => throw new ArgumentOutOfRangeException(nameof(@class), @class, null)
         };
     }

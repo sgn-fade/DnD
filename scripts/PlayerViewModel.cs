@@ -30,16 +30,23 @@ public partial class PlayerViewModel : Node
             PlayerData.CurrentXp -=  PlayerData.XpThresholds[PlayerData.Level];
             LevelUp();
         }
+        _playerView.UpdateXpStat(PlayerData.CurrentXp, PlayerData.XpThresholds[PlayerData.Level]);
     }
 
     public void LevelUp()
     {
         PlayerData.Level++;
+        _playerView.UpdateLevel(PlayerData.Level);
     }
     public void TakeDamage(int damage)
     {
         PlayerData.Hp -= damage;
-        if (PlayerData.Hp <= 0) Die();
+        if (PlayerData.Hp <= 0)
+        {
+            Die();
+            return;
+        }
+        _playerView.UpdateAll(PlayerData);
     }
     private void Die()
     {
@@ -53,6 +60,6 @@ public partial class PlayerViewModel : Node
 
     private void UpdateDataView()
     {
-        _playerView.UpdatePlayerView(PlayerData);
+        _playerView.UpdateAll(PlayerData);
     }
 }

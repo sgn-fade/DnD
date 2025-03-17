@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=15 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_kfrmt"]
-[ext_resource type="PackedScene" uid="uid://ynrvfkiwdjvi" path="res://scenes/UI.tscn" id="2_jjhn5"]
 [ext_resource type="Script" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="4_tdosb"]
 [ext_resource type="Texture2D" uid="uid://dxrgc1tsa447s" path="res://sprites/bridge.png" id="5_32cxt"]
@@ -12,12 +11,14 @@
 [ext_resource type="Script" path="res://scripts/BattleManager.cs" id="8_rrw85"]
 [ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="9_7i45f"]
 [ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="10_8vk0g"]
+[ext_resource type="PackedScene" uid="uid://bpbk5scyi3bpf" path="res://scenes/game_ui.tscn" id="12_bdg28"]
+[ext_resource type="PackedScene" uid="uid://c1xk843m3gu66" path="res://scenes/player_view.tscn" id="13_e0nws"]
+[ext_resource type="Script" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
-_gameUI = NodePath("UI")
-
-[node name="UI" parent="." instance=ExtResource("2_jjhn5")]
+_battleManager = NodePath("BattleManager")
+_gameUi = NodePath("UI/GameUI")
 
 [node name="TextureStorage" type="Node2D" parent="."]
 script = ExtResource("3_2troa")
@@ -30,6 +31,16 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUI")]
+[node name="BattleManager" type="Node2D" parent="."]
 script = ExtResource("8_rrw85")
-_gameUI = NodePath("../UI")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" instance=ExtResource("12_bdg28")]
+_textSpawnSpeed = 0.03
+
+[node name="PlayerView" parent="UI" instance=ExtResource("13_e0nws")]
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
+script = ExtResource("14_hnhso")
+_playerView = NodePath("../UI/PlayerView")

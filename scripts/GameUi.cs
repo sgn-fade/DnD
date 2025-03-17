@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using DND;
 using Action = System.Action;
 
-public partial class UI : CanvasLayer
+public partial class GameUi : Control
 {
     [Export] private Label _locationName;
     [Export] private Label _locationDescription;

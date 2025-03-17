@@ -9,9 +9,9 @@ namespace DND;
 public partial class Game : Node
 {
     private Scenario _scenario;
-    [Export] private UI _gameUi;
     private Location _currentLocation;
     [Export] private BattleManager _battleManager;
+    [Export] private GameUi _gameUi;
 
     public override void _Ready()
     {

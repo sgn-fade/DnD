@@ -4,8 +4,8 @@ using DND;
 
 public partial class SwitchButton : TextureButton
 {
-	[Export] private Player.PlayerClasses _linkedClasses;
-	public delegate void ButtonSwitched(Player.PlayerClasses @class, SwitchButton button);
+	[Export] private PlayerData.PlayerClasses _linkedClasses;
+	public delegate void ButtonSwitched(PlayerData.PlayerClasses @class, SwitchButton button);
 
 	public static event ButtonSwitched OnButtonSwitched;
 	public override void _Ready()
