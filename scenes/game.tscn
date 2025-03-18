@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=16 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="Script" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bpbk5scyi3bpf" path="res://scenes/game_ui.tscn" id="12_bdg28"]
 [ext_resource type="PackedScene" uid="uid://c1xk843m3gu66" path="res://scenes/player_view.tscn" id="13_e0nws"]
 [ext_resource type="Script" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
+[ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
@@ -40,6 +41,19 @@ script = ExtResource("8_rrw85")
 _textSpawnSpeed = 0.03
 
 [node name="PlayerView" parent="UI" instance=ExtResource("13_e0nws")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(1832, 1077)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("14_p61aq")]
 
 [node name="Node" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
 script = ExtResource("14_hnhso")

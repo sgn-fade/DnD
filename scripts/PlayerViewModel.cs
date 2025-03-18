@@ -57,7 +57,6 @@ public partial class PlayerViewModel : Node
         if (stat.Type == null) return true;
         return stat.Value <= PlayerData.GetPlayerStat(stat.Type);
     }
-
     private void UpdateDataView()
     {
         _playerView.UpdateAll(PlayerData);

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://5eb1xykpylxm" path="res://sprites/XpBar-progress.png" id="5_xwr5r"]
 [ext_resource type="Texture2D" uid="uid://dqplha3lpno05" path="res://sprites/XpBar-bckground.png" id="6_trjnp"]
 
-[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_playerName", "_playerHealth", "_playerExp", "_playerLevel", "_strength", "_dexterity", "_constitution", "_intelligence", "_goldCount")]
+[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_playerName", "_playerHealth", "_playerExp", "_playerLevel", "_strength", "_dexterity", "_constitution", "_intelligence")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -24,7 +24,6 @@ _strength = NodePath("Stats/s/Label")
 _dexterity = NodePath("Stats/s2/Label")
 _constitution = NodePath("Stats/s3/Label")
 _intelligence = NodePath("Stats/s4/Label")
-_goldCount = NodePath("")
 
 [node name="PlayerIcon" type="TextureRect" parent="."]
 layout_mode = 0
