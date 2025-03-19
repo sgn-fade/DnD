@@ -41,6 +41,7 @@ script = ExtResource("8_rrw85")
 _textSpawnSpeed = 0.03
 
 [node name="PlayerView" parent="UI" instance=ExtResource("13_e0nws")]
+mouse_filter = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
 offset_right = 1920.0

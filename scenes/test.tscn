@@ -1,13 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5vumecwl6g46"]
+[gd_scene load_steps=9 format=3 uid="uid://b5vumecwl6g46"]
 
-[ext_resource type="Script" path="res://scenes/Dice.cs" id="1_3qlcf"]
-[ext_resource type="ArrayMesh" uid="uid://d0rcuapglp0yx" path="res://models/d20-col_Solid.res" id="1_56rgd"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7cfni"]
-friction = 0.76
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5pppp"]
-points = PackedVector3Array(0.525578, 0.850484, -0.000166476, 0.850484, -0.000166476, -0.525745, -0.000166476, 0.525578, -0.850651, -0.525745, 0.850484, -0.000166476, -0.000166476, 0.525578, 0.850484, 0.850484, -0.000166476, 0.525578, 0.525578, -0.850651, -0.000166476, -0.000166476, -0.525745, -0.850651, -0.850651, -0.000166476, -0.525745, -0.850651, -0.000166476, 0.525578, -0.000166476, -0.525745, 0.850484, -0.525745, -0.850651, -0.000166476)
+[ext_resource type="PackedScene" uid="uid://buttm1t441o2q" path="res://scenes/dice.tscn" id="1_5hh2o"]
+[ext_resource type="Script" path="res://scenes/DiceRoller.cs" id="1_o7wko"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1d1cs"]
 size = Vector3(55, 1, 33)
@@ -27,62 +21,12 @@ size = Vector3(1, 35.12, 27.705)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7vxav"]
 points = PackedVector3Array(-0.5, -17.56, -0.5, -0.5, -17.56, 0.5, -0.5, 17.56, -0.5, 0.5, -17.56, -0.5, 0.5, -17.56, 0.5, -0.5, 17.56, 0.5, 0.5, 17.56, -0.5, 0.5, 17.56, 0.5)
 
-[node name="Node3D" type="Node3D"]
+[node name="DiceManager" type="Node3D"]
+script = ExtResource("1_o7wko")
+_diceScene = ExtResource("1_5hh2o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 18.9901, 0)
-
-[node name="dice" type="RigidBody3D" parent="."]
-transform = Transform3D(0.924712, 0.380667, 0, -0.380667, 0.924712, 0, 0, 0, 1, 0, 4.00853, 0)
-physics_material_override = SubResource("PhysicsMaterial_7cfni")
-can_sleep = false
-script = ExtResource("1_3qlcf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="dice"]
-transform = Transform3D(0.978362, -0.16, 0.13118, 0.165635, 0.985629, -0.0331632, -0.123988, 0.0541736, 0.990804, 0, 0, 0)
-mesh = ExtResource("1_56rgd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dice"]
-shape = SubResource("ConvexPolygonShape3D_5pppp")
-
-[node name="dice2" type="RigidBody3D" parent="."]
-transform = Transform3D(0.924712, 0.380667, 0, -0.380667, 0.924712, 0, 0, 0, 1, 0, 4.00853, -5.18799)
-physics_material_override = SubResource("PhysicsMaterial_7cfni")
-can_sleep = false
-script = ExtResource("1_3qlcf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="dice2"]
-transform = Transform3D(0.978362, -0.16, 0.13118, 0.165635, 0.985629, -0.0331632, -0.123988, 0.0541736, 0.990804, 0, 0, 0)
-mesh = ExtResource("1_56rgd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dice2"]
-shape = SubResource("ConvexPolygonShape3D_5pppp")
-
-[node name="dice3" type="RigidBody3D" parent="."]
-transform = Transform3D(0.924712, 0.380667, 0, -0.380667, 0.924712, 0, 0, 0, 1, -5.40177, 4.00853, 0)
-physics_material_override = SubResource("PhysicsMaterial_7cfni")
-can_sleep = false
-script = ExtResource("1_3qlcf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="dice3"]
-transform = Transform3D(0.978362, -0.16, 0.13118, 0.165635, 0.985629, -0.0331632, -0.123988, 0.0541736, 0.990804, 0, 0, 0)
-mesh = ExtResource("1_56rgd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dice3"]
-shape = SubResource("ConvexPolygonShape3D_5pppp")
-
-[node name="dice4" type="RigidBody3D" parent="."]
-transform = Transform3D(0.924712, 0.380667, 0, -0.380667, 0.924712, 0, 0, 0, 1, -5.40739, 4.00853, -4.83336)
-physics_material_override = SubResource("PhysicsMaterial_7cfni")
-can_sleep = false
-script = ExtResource("1_3qlcf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="dice4"]
-transform = Transform3D(0.978362, -0.16, 0.13118, 0.165635, 0.985629, -0.0331632, -0.123988, 0.0541736, 0.990804, 0, 0, 0)
-mesh = ExtResource("1_56rgd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dice4"]
-shape = SubResource("ConvexPolygonShape3D_5pppp")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
 
 [node name="env" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63557, 0, 0)

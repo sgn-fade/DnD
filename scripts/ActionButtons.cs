@@ -33,6 +33,7 @@ public partial class ActionButtons : TextureButton
 
     public void OnButtonPressed()
     {
+        GD.Print(1111);
         OnActionPressed?.Invoke(_linkedAction);
     }
 
