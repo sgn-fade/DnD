@@ -48,7 +48,6 @@ public partial class PlayerView : Control
         _constitution.Text = $"{stats[2].Value}";
         _intelligence.Text = $"{stats[3].Value}";
     }
-
     public void UpdateAll(PlayerData data)
     {
         _playerIcon.Texture = TextureStorage.Instance.GetPlayerIcon(data.Class);

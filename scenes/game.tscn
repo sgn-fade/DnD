@@ -46,11 +46,11 @@ mouse_filter = 1
 [node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-gui_disable_input = true
 size = Vector2i(1832, 1077)
 render_target_update_mode = 4
 
