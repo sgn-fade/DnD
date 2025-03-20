@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://drgwohpxha8xp"]
+[gd_scene load_steps=17 format=3 uid="uid://drgwohpxha8xp"]
 
 [ext_resource type="Script" path="res://scripts/PlayerCreationUI.cs" id="1_k2pds"]
-[ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_ph1v4"]
-[ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="2_siy3q"]
-[ext_resource type="Texture2D" uid="uid://c0qsw6ropimj5" path="res://sprites/tempPressedButton.png" id="3_k8w27"]
+[ext_resource type="Texture2D" uid="uid://b00djl7cwvyak" path="res://sprites/heroChoiceBackground.png" id="2_s05dh"]
+[ext_resource type="Texture2D" uid="uid://b27iyqow6m6dx" path="res://sprites/heroChoiceButton.png" id="3_kwee0"]
+[ext_resource type="Texture2D" uid="uid://dvopupr1k8uvu" path="res://sprites/heroChoiceButtonPressed.png" id="4_u4sm7"]
 [ext_resource type="Script" path="res://scripts/SwitchButton.cs" id="5_bdnec"]
 [ext_resource type="Script" path="res://scripts/Data/TextureStorage.cs" id="6_qlke8"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="7_5qmgs"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://burrthly1f81" path="res://sprites/skeleton.png" id="12_sc1ya"]
 [ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="13_ok7kh"]
 [ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="14_7o7d4"]
+[ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="15_agk8e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5h1o"]
 
 [node name="PlayerCreationUI" type="CanvasLayer" node_paths=PackedStringArray("_classDescription", "_classIcon")]
 script = ExtResource("1_k2pds")
@@ -23,25 +26,27 @@ _classIcon = NodePath("ClassIcon")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_ph1v4")
+texture = ExtResource("2_s05dh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 36.0
-offset_top = 272.0
-offset_right = 195.0
-offset_bottom = 347.0
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 700.0
+offset_top = 269.0
+offset_right = 768.0
+offset_bottom = 285.0
 scale = Vector2(7, 7)
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="WarriorButton" type="TextureButton" parent="VBoxContainer"]
+self_modulate = Color(0.592157, 0, 0, 1)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("2_siy3q")
-texture_disabled = ExtResource("3_k8w27")
+texture_normal = ExtResource("3_kwee0")
+texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/WarriorButton"]
+visible = false
 layout_mode = 0
 offset_left = 44.8571
 offset_top = 4.28572
@@ -57,14 +62,16 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="RogueButton" type="TextureButton" parent="VBoxContainer"]
+self_modulate = Color(0, 0.443137, 0, 1)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("2_siy3q")
-texture_disabled = ExtResource("3_k8w27")
+texture_normal = ExtResource("3_kwee0")
+texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 _linkedClasses = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/RogueButton"]
+visible = false
 layout_mode = 0
 offset_left = 53.4286
 offset_top = 3.71429
@@ -80,14 +87,16 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="MageButton" type="TextureButton" parent="VBoxContainer"]
+modulate = Color(0, 0.176471, 0.541176, 1)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("2_siy3q")
-texture_disabled = ExtResource("3_k8w27")
+texture_normal = ExtResource("3_kwee0")
+texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 _linkedClasses = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MageButton"]
+visible = false
 layout_mode = 0
 offset_left = 53.1429
 offset_top = 4.0
@@ -103,16 +112,16 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="ClassDescription" type="Label" parent="."]
-offset_left = 1186.0
-offset_top = 328.0
-offset_right = 1822.0
-offset_bottom = 794.0
+offset_left = 902.0
+offset_top = 404.0
+offset_right = 1538.0
+offset_bottom = 870.0
 
 [node name="ClassIcon" type="TextureRect" parent="."]
-offset_left = 1410.0
-offset_top = 129.0
-offset_right = 1568.0
-offset_bottom = 287.0
+offset_left = 537.0
+offset_top = 422.0
+offset_right = 695.0
+offset_bottom = 580.0
 
 [node name="TextureStorage" type="Node2D" parent="."]
 script = ExtResource("6_qlke8")
@@ -124,6 +133,23 @@ Mage = ExtResource("11_im8jl")
 Skeleton = ExtResource("12_sc1ya")
 Slime = ExtResource("13_ok7kh")
 Plant = ExtResource("14_7o7d4")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 693.0
+offset_top = 138.0
+offset_right = 1693.0
+offset_bottom = 248.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("15_agk8e")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x5h1o")
+text = "Nameless hero"
+alignment = 1
+expand_to_text_length = true
+context_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+caret_blink = true
+caret_blink_interval = 0.55
 
 [connection signal="toggled" from="VBoxContainer/WarriorButton" to="." method="OnWarriorButtonToggle"]
 [connection signal="toggled" from="VBoxContainer/RogueButton" to="." method="OnRogueButtonToggle"]
