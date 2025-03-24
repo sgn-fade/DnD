@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhf4ifkun8uhb"]
 
 [ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="1_424wy"]
-[ext_resource type="Script" path="res://scripts/ActionButtons.cs" id="2_6x05e"]
+[ext_resource type="Script" uid="uid://dp4gbpfdiluuy" path="res://scripts/ActionButtons.cs" id="2_6x05e"]
 
 [node name="Action" type="TextureButton" node_paths=PackedStringArray("_actionDescription")]
 self_modulate = Color(0.990975, 0.868123, 0.799655, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b5vumecwl6g46"]
 
 [ext_resource type="PackedScene" uid="uid://buttm1t441o2q" path="res://scenes/dice.tscn" id="1_5hh2o"]
-[ext_resource type="Script" path="res://scenes/DiceRoller.cs" id="1_o7wko"]
+[ext_resource type="Script" uid="uid://bk4yqmuow0jrw" path="res://scenes/DiceRoller.cs" id="1_o7wko"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1d1cs"]
 size = Vector3(55, 1, 33)

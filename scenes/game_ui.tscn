@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpbk5scyi3bpf"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_3bum0"]
-[ext_resource type="Script" path="res://scripts/GameUi.cs" id="1_3hw4f"]
+[ext_resource type="Script" uid="uid://brslqkyp7e2k1" path="res://scripts/GameUi.cs" id="1_3hw4f"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_bqlr4"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="3_15erd"]
-[ext_resource type="Script" path="res://scripts/EnemyUI.cs" id="4_x1her"]
+[ext_resource type="Script" uid="uid://cd43ga6b0eked" path="res://scripts/EnemyUI.cs" id="4_x1her"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="5_4iqhh"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="6_bgdkk"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="7_b5lw0"]

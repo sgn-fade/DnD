@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://buttm1t441o2q"]
 
-[ext_resource type="Script" path="res://scenes/Dice.cs" id="1_yl6fc"]
+[ext_resource type="Script" uid="uid://devwp5jvdhenk" path="res://scenes/Dice.cs" id="1_yl6fc"]
 [ext_resource type="ArrayMesh" uid="uid://d0rcuapglp0yx" path="res://models/d20-col_Solid.res" id="2_dghh4"]
-[ext_resource type="Script" path="res://scenes/DiceLabel.cs" id="3_7ujbd"]
+[ext_resource type="Script" uid="uid://dgdgetik5hhoo" path="res://scenes/DiceLabel.cs" id="3_7ujbd"]
 [ext_resource type="PackedScene" uid="uid://bgj3ns2s5s1vj" path="res://scenes/DiceRay.tscn" id="3_pfmmj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7cfni"]
