@@ -8,6 +8,7 @@ public partial class Dice : RigidBody3D
 {
 	private List<DiceLabel> _labels;
 	[Export] private float _rollStrength;
+	public System.Action<int> DiceRolled;
 	public override void _Ready()
 	{
 		Sleeping = false;
@@ -57,15 +58,13 @@ public partial class Dice : RigidBody3D
 
 	private void ActiveLabelByOppositeValue(int oppositeValue)
 	{
-		GD.Print("find " + oppositeValue);
 		foreach (var label in _labels)
 		{
 
-			GD.Print("has " + label.Text.Text);
 			if (oppositeValue.ToString() == label.Text.Text)
 			{
-				GD.Print("complete " + oppositeValue);
 				label.Active();
+				DiceRolled?.Invoke(oppositeValue);
 				return;
 			}
 		}

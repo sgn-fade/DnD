@@ -17,4 +17,9 @@ public partial class DiceRoller : Node3D
 		}
 	}
 
+	public void RequestDiceRoll()
+	{
+
+	}
+
 }
