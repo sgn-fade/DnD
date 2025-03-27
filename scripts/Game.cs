@@ -12,6 +12,7 @@ public partial class Game : Node
     private Location _currentLocation;
     [Export] private BattleManager _battleManager;
     [Export] private GameUi _gameUi;
+    [Export] private DiceRoller _diceRoller;
 
     public override void _Ready()
     {
@@ -38,11 +39,23 @@ public partial class Game : Node
         _gameUi.ChangeEvent(@event);
     }
 
-    public void OnActionButtonPressed(Action action)
+    public async void OnActionButtonPressed(Action action)
     {
-        var outcome = (action.RequiredStat == null || PlayerViewModel.Instance.CheckStat(action.RequiredStat))
-            ? action.PositiveOutcome
-            : action.NegativeOutcome;
+        Outcome outcome;
+        if (!PlayerViewModel.Instance.CheckStat(action.RequiredStat) && action.RequiredStat != null)
+        {
+            _diceRoller.RollDice();
+            Variant[] result = await ToSignal(_diceRoller, "DiceRolled");
+            int diceValue = (int)result[0];
+
+            outcome = PlayerViewModel.Instance.CheckStat(action.RequiredStat, diceValue)
+                ? action.PositiveOutcome
+                : action.NegativeOutcome;
+        }
+        else
+        {
+            outcome = action.PositiveOutcome;
+        }
 
         ResolveOutcome(outcome);
     }
@@ -78,6 +91,8 @@ public partial class Game : Node
 
     public void EndGame()
     {
+        GD.PrintRich("[color=red]YOU DIED!![/color]");
+
         GetTree().Quit();
     }
 }

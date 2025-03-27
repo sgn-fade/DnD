@@ -8,7 +8,7 @@ public partial class Dice : RigidBody3D
 {
 	private List<DiceLabel> _labels;
 	[Export] private float _rollStrength;
-	public System.Action<int> DiceRolled;
+	public System.Action<int> RollEnded;
 	public override void _Ready()
 	{
 		Sleeping = false;
@@ -64,7 +64,7 @@ public partial class Dice : RigidBody3D
 			if (oppositeValue.ToString() == label.Text.Text)
 			{
 				label.Active();
-				DiceRolled?.Invoke(oppositeValue);
+				RollEnded?.Invoke(oppositeValue);
 				return;
 			}
 		}

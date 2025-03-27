@@ -52,10 +52,10 @@ public partial class PlayerViewModel : Node
     {
         //TODO death screen implementation
     }
-    public bool CheckStat(Stat stat)
+    public bool CheckStat(Stat stat, int additionalBuff = 0)
     {
         if (stat.Type == null) return true;
-        return stat.Value <= PlayerData.GetPlayerStat(stat.Type);
+        return stat.Value <= PlayerData.GetPlayerStat(stat.Type) + additionalBuff;
     }
     private void UpdateDataView()
     {

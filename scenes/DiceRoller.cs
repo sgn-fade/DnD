@@ -5,21 +5,20 @@ public partial class DiceRoller : Node3D
 {
 	[Export] private PackedScene _diceScene;
 	private Dice _dice;
+	[Signal]
+	public delegate void DiceRolledEventHandler(int value);
 
-	public override void _Input(InputEvent @event)
+	public void RollDice()
 	{
-		if (Input.IsActionPressed("space"))
-		{
-			_dice?.QueueFree();
-			_dice = _diceScene.Instantiate<Dice>();
-			AddChild(_dice);
-			_dice.GlobalPosition = new Vector3(0, 4, 0);
-		}
+		_dice?.QueueFree();
+		_dice = _diceScene.Instantiate<Dice>();
+		AddChild(_dice);
+		_dice.GlobalPosition = new Vector3(0, 4, 0);
+		_dice.RollEnded += RollEnded;
 	}
 
-	public void RequestDiceRoll()
+	private void RollEnded(int value)
 	{
-
+		EmitSignal(SignalName.DiceRolled, value);
 	}
-
 }

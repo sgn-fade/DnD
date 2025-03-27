@@ -58,7 +58,7 @@
 			  "description": "Climb a tree to look around",
 			  "required_stat": {
 				"type": "dexterity",
-				"value": 9
+				"value": 18
 			  },
 			  "positive_outcome": {
 				"type": "next_event",

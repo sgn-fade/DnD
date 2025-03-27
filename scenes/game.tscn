@@ -16,10 +16,11 @@
 [ext_resource type="Script" uid="uid://cdjrgfspqf3l7" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
 [ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi", "_diceRoller")]
 script = ExtResource("1_kfrmt")
 _battleManager = NodePath("BattleManager")
 _gameUi = NodePath("UI/GameUI")
+_diceRoller = NodePath("UI/SubViewportContainer/SubViewport/Node3D")
 
 [node name="TextureStorage" type="Node2D" parent="."]
 script = ExtResource("3_2troa")
