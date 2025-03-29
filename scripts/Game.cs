@@ -92,7 +92,6 @@ public partial class Game : Node
     public void EndGame()
     {
         GD.PrintRich("[color=red]YOU DIED!![/color]");
-
         GetTree().Quit();
     }
 }

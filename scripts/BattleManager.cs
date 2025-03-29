@@ -5,11 +5,11 @@ namespace DND;
 
 public partial class BattleManager : Node2D
 {
-	[Export] private GameUi _gameGameUi;
+	[Export] private GameUi _gameUi;
 	public void StartBattleWith(Enemy enemy)
 	{
 
-		var enemyUi = _gameGameUi.StartBattleMode();
+		var enemyUi = _gameUi.StartBattleMode();
 		enemyUi.Enemy = enemy;
 	}
 }
