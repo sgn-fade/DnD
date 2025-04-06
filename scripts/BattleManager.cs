@@ -15,9 +15,15 @@ public partial class BattleManager : Node2D
     {
         _player = PlayerViewModel.Instance;
         _isPlayerTurn = true;
+        LoadPlayerSkills();
         var enemyUi = _gameUi.StartBattleMode();
         enemyUi.Enemy = enemy;
         _enemy = enemy;
+    }
+
+    private void LoadPlayerSkills()
+    {
+        //TODO buttons fill
     }
 
     public void NextTurn()
@@ -38,7 +44,7 @@ public partial class BattleManager : Node2D
 
     private void PlayerWin()
     {
-        //TODO end battle by player win 
+        //TODO end battle by player win
     }
 
     private void EnemyTurn()
