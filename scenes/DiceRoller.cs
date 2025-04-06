@@ -8,6 +8,12 @@ public partial class DiceRoller : Node3D
 	[Signal]
 	public delegate void DiceRolledEventHandler(int value);
 
+	public static DiceRoller Instance;
+	public override void _Ready()
+	{
+		Instance = this;
+	}
+
 	public void RollDice()
 	{
 		_dice?.QueueFree();

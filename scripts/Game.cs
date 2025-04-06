@@ -12,7 +12,6 @@ public partial class Game : Node
     private Location _currentLocation;
     [Export] private BattleManager _battleManager;
     [Export] private GameUi _gameUi;
-    [Export] private DiceRoller _diceRoller;
 
     public override void _Ready()
     {
@@ -24,10 +23,10 @@ public partial class Game : Node
 
     public void StartGame(Scenario scenario)
     {
-        scenario.Locations.ForEach(LoopLocation);
+        ProcessLocation(scenario.Locations.First());
     }
 
-    public void LoopLocation(Location location)
+    public void ProcessLocation(Location location)
     {
         _currentLocation = location;
         _gameUi.ChangeLocation(location);
@@ -44,8 +43,9 @@ public partial class Game : Node
         Outcome outcome;
         if (!PlayerViewModel.Instance.CheckStat(action.RequiredStat) && action.RequiredStat != null)
         {
-            _diceRoller.RollDice();
-            Variant[] result = await ToSignal(_diceRoller, "DiceRolled");
+            var diceRoller = DiceRoller.Instance;
+            diceRoller.RollDice();
+            Variant[] result = await ToSignal(diceRoller, "DiceRolled");
             int diceValue = (int)result[0];
 
             outcome = PlayerViewModel.Instance.CheckStat(action.RequiredStat, diceValue)
@@ -75,7 +75,7 @@ public partial class Game : Node
                     EventProcess(@event);
                 break;
             case "change_location":
-                LoopLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
+                ProcessLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
                 break;
             case "death":
                 EndGame();
