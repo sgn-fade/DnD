@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4w7pldrci3h"]
+
+[ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="1_xafvn"]
+[ext_resource type="Script" uid="uid://l33cvvfur7tf" path="res://scripts/SkillButton.cs" id="2_ka5vw"]
+
+[node name="SkillButton" type="TextureButton"]
+offset_left = -9.5
+offset_top = -9.5
+offset_right = 9.5
+offset_bottom = 9.5
+pivot_offset = Vector2(9.5, 9.5)
+texture_normal = ExtResource("1_xafvn")
+script = ExtResource("2_ka5vw")
