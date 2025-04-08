@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx8cjr3xtp8tf"]
+
+[ext_resource type="Script" uid="uid://cg458kgyvwrqw" path="res://scripts/SoundButton.cs" id="1_x4peo"]
+
+[node name="SoundButton" type="TextureButton"]
+offset_right = 7.0
+offset_bottom = 8.0
+script = ExtResource("1_x4peo")

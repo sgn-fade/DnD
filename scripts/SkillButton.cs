@@ -2,7 +2,7 @@ using Godot;
 using System;
 using DND;
 
-public partial class SkillButton : TextureButton
+public partial class SkillButton : SoundButton
 {
 
     public Node LinkedSkill { get; set; }

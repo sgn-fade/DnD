@@ -109,11 +109,12 @@ layout_mode = 2
 [node name="ActionButton3" parent="Actions" instance=ExtResource("3_15erd")]
 layout_mode = 2
 
-[node name="Enemy" type="Control" parent="." node_paths=PackedStringArray("_damageLabel", "_healthLabel", "_enemySprite")]
+[node name="Enemy" type="Control" parent="." node_paths=PackedStringArray("_nameLabel", "_damageLabel", "_healthLabel", "_enemySprite")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_x1her")
+_nameLabel = NodePath("name")
 _damageLabel = NodePath("DMG/dmg")
 _healthLabel = NodePath("Heart/hp")
 _enemySprite = NodePath("EnemySprite")

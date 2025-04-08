@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=17 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" uid="uid://dc65d7ngqbwci" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="Script" uid="uid://10qhhc6chaq1" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
@@ -15,12 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://c1xk843m3gu66" path="res://scenes/player_view.tscn" id="13_e0nws"]
 [ext_resource type="Script" uid="uid://cdjrgfspqf3l7" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
 [ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
+[ext_resource type="PackedScene" uid="uid://60w0tmgwawnx" path="res://scenes/action_button_group.tscn" id="15_ca42v"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi", "_diceRoller")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
 _battleManager = NodePath("BattleManager")
 _gameUi = NodePath("UI/GameUI")
-_diceRoller = NodePath("UI/SubViewportContainer/SubViewport/Node3D")
 
 [node name="TextureStorage" type="Node2D" parent="."]
 script = ExtResource("3_2troa")
@@ -33,13 +33,16 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="."]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_actionsController")]
 script = ExtResource("8_rrw85")
+_gameUi = NodePath("../UI/GameUI")
+_actionsController = NodePath("../UI/ActionButtonGroup")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="UI" instance=ExtResource("12_bdg28")]
+[node name="GameUI" parent="UI" node_paths=PackedStringArray("_battleActions") instance=ExtResource("12_bdg28")]
 _textSpawnSpeed = 0.03
+_battleActions = NodePath("../ActionButtonGroup")
 
 [node name="PlayerView" parent="UI" instance=ExtResource("13_e0nws")]
 mouse_filter = 1
@@ -56,6 +59,15 @@ size = Vector2i(1832, 1077)
 render_target_update_mode = 4
 
 [node name="Node3D" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("14_p61aq")]
+
+[node name="ActionButtonGroup" parent="UI" node_paths=PackedStringArray("BattleManager") instance=ExtResource("15_ca42v")]
+visible = false
+offset_left = 1332.0
+offset_top = 841.0
+offset_right = 1423.0
+offset_bottom = 863.0
+scale = Vector2(4, 4)
+BattleManager = NodePath("../../BattleManager")
 
 [node name="Node" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
 script = ExtResource("14_hnhso")

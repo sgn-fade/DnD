@@ -15,13 +15,14 @@ public class PlayerData
     public string Name { get; set; } = "unknown";
     public PlayerClasses Class { get; set; } = PlayerClasses.Warrior;
 
-    public List<Stat> Stats { get; set; } = new()
-    {
-        new Stat("strength", 10),
-        new Stat("dexterity", 10),
-        new Stat("constitution", 10),
-        new Stat("intelligence", 10)
-    };
+
+    public List<Stat> Stats { get; set; } =
+    [
+        new("strength", 10),
+        new("dexterity", 10),
+        new("constitution", 10),
+        new("intelligence", 10)
+    ];
 
     public int Hp { get; set; } = 1;
     public int MaxHp { get; set; } = 1;

@@ -10,6 +10,11 @@ public partial class BattleManager : Node2D
     private PlayerViewModel _player;
     private Node _battleLog;
     private Enemy _enemy;
+    [Export] private BattleActionsController _actionsController;
+
+    public delegate void OnBattleEnded();
+    public delegate void OnPlayerDied();
+    public delegate void OnEnemyDied();
 
     public void StartBattleWith(Enemy enemy)
     {
@@ -19,6 +24,7 @@ public partial class BattleManager : Node2D
         var enemyUi = _gameUi.StartBattleMode();
         enemyUi.Enemy = enemy;
         _enemy = enemy;
+        _actionsController.CurrentEnemy = enemy;
     }
 
     private void LoadPlayerSkills()
@@ -53,6 +59,10 @@ public partial class BattleManager : Node2D
         NextTurn();
     }
 
+    public void AttackEnemy()
+    {
+        _enemy.TakeDamage(_player.GetDamage());
+    }
     private void AllowDoActions()
     {
 //TODO on player actions
@@ -65,12 +75,16 @@ public partial class BattleManager : Node2D
         //TODO off player actions
     }
 
-    private async void TryEscapeFromBattle()
+    public void TryEscapeFromBattle()
     {
-        var diceRoller = DiceRoller.Instance;
-        diceRoller.RollDice();
-        Variant[] result = await ToSignal(diceRoller, "DiceRolled");
-
-        //TODO check result with enemy power*
+        if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int) _enemy.GetEnemyPower())))
+        {
+            GD.Print("You escaped from battle");
+        }
+        else
+        {
+            GD.Print("escape failed!");
+        }
+        PlayerPressedAction();
     }
 }

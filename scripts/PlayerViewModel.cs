@@ -57,8 +57,14 @@ public partial class PlayerViewModel : Node
         if (stat.Type == null) return true;
         return stat.Value <= PlayerData.GetPlayerStat(stat.Type) + additionalBuff;
     }
+
     private void UpdateDataView()
     {
         _playerView.UpdateAll(PlayerData);
+    }
+
+    public int GetDamage()
+    {
+        return PlayerData.Damage;
     }
 }

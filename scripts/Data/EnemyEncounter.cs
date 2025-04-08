@@ -6,11 +6,11 @@ namespace DND;
  
 public partial class EnemyEncounter : Node
 {
-    public String Name { get; set; }
-    public String Description { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
     public Outcome OnBattleEnd { get; set; }
     public Outcome OnEnemyKilled { get; set; }
-    public List<String> Enemies { get; set; }
+    public List<string> Enemies { get; set; }
 
     public override string ToString()
     {

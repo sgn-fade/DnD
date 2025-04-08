@@ -18,10 +18,11 @@ public partial class GameUi : Control
     [Export] private Control _buttonsParent;
     [Export] private EnemyUI _enemyUi;
     [Export] private float _textSpawnSpeed;
+    [Export] private BattleActionsController _battleActions;
 
     public override void _Ready()
     {
-        _actionButtons = new List<ActionButtons>();
+        _actionButtons = [];
         foreach (var node in _buttonsParent.GetChildren())
         {
             if (node is ActionButtons buttons)
@@ -51,22 +52,17 @@ public partial class GameUi : Control
 
     private async void TypeText(string text)
     {
-        try
+        _eventDescription.Text = "";
+        foreach (var letter in text)
         {
-            _eventDescription.Text = "";
-            foreach (var letter in text)
-            {
-                _eventDescription.Text += letter;
-                await Task.Delay((int)(_textSpawnSpeed * 1000));
-            }
-        }
-        catch (Exception e)
-        {
-            throw; // TODO handle exception
+            _eventDescription.Text += letter;
+            await Task.Delay((int)(_textSpawnSpeed * 1000));
         }
     }
     public EnemyUI StartBattleMode()
     {
+        _buttonsParent.Visible = false;
+        _battleActions.Visible = true;
         return _enemyUi;
     }
 
