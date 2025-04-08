@@ -4,23 +4,17 @@ using DND;
 
 public partial class EnemyUI : Control
 {
-	private Enemy _enemy;
 	[Export] private Label _nameLabel;
     [Export] private Label _damageLabel;
     [Export] private Label _healthLabel;
     [Export] private TextureRect _enemySprite;
-	public Enemy Enemy
+
+
+	public void UpdateView(Enemy enemy)
 	{
-		get => _enemy;
-		set
-		{
-			if (value == null) return;
-			_enemy = value;
-			Visible = true;
-			_nameLabel.Text = value.Name;
-			_damageLabel.Text = value.Damage.ToString();
-			_healthLabel.Text = value.Hp.ToString();
-			_enemySprite.Texture = TextureStorage.Instance.GetEnemyIcon(_enemy.Type);
-		}
+		_nameLabel.Text = enemy.Name;
+		_damageLabel.Text = enemy.Damage.ToString();
+		_healthLabel.Text = enemy.CurrentHp.ToString();
+		_enemySprite.Texture = TextureStorage.Instance.GetEnemyIcon(enemy.Type);
 	}
 }

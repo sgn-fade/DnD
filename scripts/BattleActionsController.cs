@@ -4,7 +4,6 @@ namespace DND;
 
 public partial class BattleActionsController : Control
 {
-    public Enemy CurrentEnemy { get; set; }
     [Export] public BattleManager BattleManager { get; set; }
     [Export] public Control SkillsMenu { get; set; }
     [Export] public Control InventoryMenu { get; set; }

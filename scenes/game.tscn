@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=19 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" uid="uid://dc65d7ngqbwci" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="Script" uid="uid://10qhhc6chaq1" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://cdjrgfspqf3l7" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
 [ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
 [ext_resource type="PackedScene" uid="uid://60w0tmgwawnx" path="res://scenes/action_button_group.tscn" id="15_ca42v"]
+[ext_resource type="PackedScene" uid="uid://c1fuxmvhi4ogy" path="res://scenes/EnemyUI.tscn" id="16_ssvqc"]
+[ext_resource type="Script" uid="uid://dst3qae2av3oh" path="res://scripts/EnemyController.cs" id="18_264po"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
@@ -33,14 +35,15 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_actionsController")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemy")]
 script = ExtResource("8_rrw85")
 _gameUi = NodePath("../UI/GameUI")
-_actionsController = NodePath("../UI/ActionButtonGroup")
+_enemy = NodePath("../EnemyViewModel")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GameUI" parent="UI" node_paths=PackedStringArray("_battleActions") instance=ExtResource("12_bdg28")]
+[node name="GameUI" parent="UI" node_paths=PackedStringArray("_enemyUi", "_battleActions") instance=ExtResource("12_bdg28")]
+_enemyUi = NodePath("../EnemyView")
 _textSpawnSpeed = 0.03
 _battleActions = NodePath("../ActionButtonGroup")
 
@@ -69,6 +72,12 @@ offset_bottom = 863.0
 scale = Vector2(4, 4)
 BattleManager = NodePath("../../BattleManager")
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
+[node name="EnemyView" parent="UI" instance=ExtResource("16_ssvqc")]
+
+[node name="PlayerViewModel" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
 script = ExtResource("14_hnhso")
 _playerView = NodePath("../UI/PlayerView")
+
+[node name="EnemyViewModel" type="Node" parent="." node_paths=PackedStringArray("EnemyView")]
+script = ExtResource("18_264po")
+EnemyView = NodePath("../UI/EnemyView")

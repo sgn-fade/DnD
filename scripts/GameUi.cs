@@ -59,11 +59,16 @@ public partial class GameUi : Control
             await Task.Delay((int)(_textSpawnSpeed * 1000));
         }
     }
-    public EnemyUI StartBattleMode()
+    public void StartBattleMode()
     {
         _buttonsParent.Visible = false;
         _battleActions.Visible = true;
-        return _enemyUi;
+    }
+
+    public void EndBattleMode()
+    {
+        _buttonsParent.Visible = true;
+        _battleActions.Visible = false;
     }
 
     private void SwitchActionButtonsVisible(bool state)

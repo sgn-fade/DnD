@@ -68,8 +68,14 @@ public partial class Game : Node
                 var @event = _currentLocation.Events.FirstOrDefault(e => e.Name == outcome.Body);
                 if (@event == null)
                 {
-                    var encounter = _currentLocation.EnemyEncounters.FirstOrDefault(e => e.Name == outcome.Body);
-                    _battleManager.StartBattleWith(_scenario.GetEnemyByName(encounter?.Enemies.FirstOrDefault()));
+                    var encounter = _currentLocation.
+                        EnemyEncounters.
+                        FirstOrDefault(e => e.Name == outcome.Body);
+
+                    var enemyName = encounter?.Enemies.FirstOrDefault();
+                    var enemy = _scenario.GetEnemyByName(enemyName);
+                    _battleManager.StartBattleWith(enemy);
+
                 }
                 else
                     EventProcess(@event);

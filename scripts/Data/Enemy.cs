@@ -15,16 +15,4 @@ public partial class Enemy : Node
 
     public double Damage { get; set; }
 
-    public double GetEnemyPower() => CurrentHp / 2 + Damage;
-
-    [Signal]
-    public delegate void OnEnemyDiedEventHandler();
-    public void TakeDamage(int damage)
-    {
-        CurrentHp -= damage;
-        if (CurrentHp <= 0)
-        {
-            EmitSignalOnEnemyDied();
-        }
-    }
 }
