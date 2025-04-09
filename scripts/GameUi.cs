@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using DND;
 using Action = System.Action;
@@ -16,9 +17,11 @@ public partial class GameUi : Control
 
     private List<ActionButtons> _actionButtons;
     [Export] private Control _buttonsParent;
+    [Export] private Control _storyGroup;
     [Export] private EnemyUI _enemyUi;
     [Export] private float _textSpawnSpeed;
     [Export] private BattleActionsController _battleActions;
+    private CancellationTokenSource _typingCancellation;
 
     public override void _Ready()
     {
@@ -52,22 +55,26 @@ public partial class GameUi : Control
 
     private async void TypeText(string text)
     {
+        _typingCancellation?.Cancel();
+        _typingCancellation = new CancellationTokenSource();
+        var token = _typingCancellation.Token;
+
         _eventDescription.Text = "";
         foreach (var letter in text)
         {
             _eventDescription.Text += letter;
-            await Task.Delay((int)(_textSpawnSpeed * 1000));
+            await Task.Delay((int)(_textSpawnSpeed * 1000), token);
         }
     }
     public void StartBattleMode()
     {
-        _buttonsParent.Visible = false;
+        _storyGroup.Visible = false;
         _battleActions.Visible = true;
     }
 
     public void EndBattleMode()
     {
-        _buttonsParent.Visible = true;
+        _storyGroup.Visible = true;
         _battleActions.Visible = false;
     }
 
