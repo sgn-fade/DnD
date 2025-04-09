@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_bqlr4"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="3_15erd"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent", "_enemyUi")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent", "_storyGroup")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,9 +23,9 @@ _locationName = NodePath("LocationName")
 _locationDescription = NodePath("LocationDescription")
 _locationImage = NodePath("LocationImage")
 _eventName = NodePath("EventName")
-_eventDescription = NodePath("EventDescription")
-_buttonsParent = NodePath("Actions")
-_enemyUi = NodePath("")
+_eventDescription = NodePath("StoryGroup/EventDescription")
+_buttonsParent = NodePath("StoryGroup/Actions")
+_storyGroup = NodePath("StoryGroup")
 _textSpawnSpeed = 0.07
 
 [node name="Background" type="TextureRect" parent="."]
@@ -75,7 +75,38 @@ theme_override_font_sizes/font_size = 50
 text = "EVENT NAME"
 horizontal_alignment = 1
 
-[node name="EventDescription" type="Label" parent="."]
+[node name="StoryGroup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Actions" type="VBoxContainer" parent="StoryGroup"]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 799.0
+offset_right = 1895.0
+offset_bottom = 1074.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ActionButton" parent="StoryGroup/Actions" instance=ExtResource("3_15erd")]
+layout_mode = 2
+
+[node name="ActionButton2" parent="StoryGroup/Actions" instance=ExtResource("3_15erd")]
+layout_mode = 2
+
+[node name="ActionButton3" parent="StoryGroup/Actions" instance=ExtResource("3_15erd")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="StoryGroup"]
+layout_mode = 0
+offset_left = 1137.0
+offset_top = 83.0
+offset_right = 1877.0
+offset_bottom = 773.0
+color = Color(0.778431, 0.750957, 0.750957, 1)
+
+[node name="EventDescription" type="Label" parent="StoryGroup"]
 layout_mode = 0
 offset_left = 1190.0
 offset_top = 164.0
@@ -86,21 +117,3 @@ theme_override_fonts/font = ExtResource("2_bqlr4")
 theme_override_font_sizes/font_size = 30
 text = "text"
 autowrap_mode = 3
-
-[node name="Actions" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 1130.0
-offset_top = 799.0
-offset_right = 1895.0
-offset_bottom = 1074.0
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="ActionButton" parent="Actions" instance=ExtResource("3_15erd")]
-layout_mode = 2
-
-[node name="ActionButton2" parent="Actions" instance=ExtResource("3_15erd")]
-layout_mode = 2
-
-[node name="ActionButton3" parent="Actions" instance=ExtResource("3_15erd")]
-layout_mode = 2

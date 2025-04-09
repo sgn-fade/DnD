@@ -35,10 +35,10 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemy")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemyController")]
 script = ExtResource("8_rrw85")
 _gameUi = NodePath("../UI/GameUI")
-_enemy = NodePath("../EnemyViewModel")
+_enemyController = NodePath("../EnemyViewModel")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

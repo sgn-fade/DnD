@@ -22,11 +22,17 @@ public partial class EnemyController : Node
 		}
 	}
 
+	public override void _Ready()
+	{
+		EnemyView.Visible = false;
+	}
+
 	public void Link(Enemy enemy)
 	{
 		EnemyData = enemy;
 		EnemyData.CurrentHp = EnemyData.Hp;
 		EnemyView.UpdateView(EnemyData);
+		EnemyView.Visible = true;
 	}
 
 	public bool IsAlive() => EnemyData.Hp > 0;
