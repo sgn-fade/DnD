@@ -7,6 +7,8 @@ public partial class PlayerView : Control
 {
     [Export] private TextureRect _playerIcon;
     [Export] private TextureRect _weaponIcon;
+    [Export] private TextureProgressBar _hpBar;
+    [Export] private TextureProgressBar _xpBar;
     [Export] private Label _playerName;
     [Export] private Label _playerHealth;
     [Export] private Label _playerExp;
@@ -18,18 +20,19 @@ public partial class PlayerView : Control
     [Export] private Label _intelligence;
     [Export] private Label _goldCount;
 
-    public void UpdateXpStat(int currentExp, int maxExp)
+    public void UpdateXpStat(double currentExp, int maxExp)
     {
         _playerExp.Text = $"{currentExp}/{maxExp}";
+        _xpBar.Value = 
     }
     public void UpdateLevel(int newLevel)
     {
         _playerLevel.Text = newLevel.ToString();
     }
 
-    public void UpdateHpBar(int currentHp, int maxHp)
+    public void UpdateHpBar(double currentHp, double maxHp)
     {
-        _playerHealth.Text = $"{currentHp}/{maxHp}";
+        _playerHealth.Text = $"{currentHp} {maxHp}";
 
     }
     public void ShowExpText()

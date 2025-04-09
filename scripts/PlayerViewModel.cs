@@ -38,7 +38,7 @@ public partial class PlayerViewModel : Node
         PlayerData.Level++;
         _playerView.UpdateLevel(PlayerData.Level);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(double damage)
     {
         PlayerData.Hp -= damage;
         if (PlayerData.Hp <= 0)
@@ -63,7 +63,7 @@ public partial class PlayerViewModel : Node
         _playerView.UpdateAll(PlayerData);
     }
 
-    public int GetDamage()
+    public double GetDamage()
     {
         return PlayerData.Damage;
     }

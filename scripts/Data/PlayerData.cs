@@ -25,10 +25,10 @@ public class PlayerData
         new("intelligence", 10)
     ];
 
-    public int Hp { get; set; } = 1;
-    public int MaxHp { get; set; } = 1;
-    public int Damage { get; set; } = 1;
-    public int CurrentXp { get; set; }
+    public double Hp { get; set; } = 100;
+    public double MaxHp { get; set; } = 100;
+    public double Damage { get; set; } = 1;
+    public double CurrentXp { get; set; }
     public readonly int[] XpThresholds = { 0, 10, 50, 100, 150, 300, 500, 850, 1100, 1500 };
     public int Level { get; set; }
 

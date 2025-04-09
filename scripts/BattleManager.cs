@@ -10,6 +10,7 @@ public partial class BattleManager : Node2D
     private PlayerViewModel _player;
     [Export] private Node _battleLog;
     [Export] private EnemyController _enemyController;
+    [Export] private BattleActionsController _battleActionsController;
 
     [Signal]
     public delegate void OnBattleEndedEventHandler();
@@ -48,6 +49,8 @@ public partial class BattleManager : Node2D
         if (!_enemyController.IsAlive())
             PlayerWin();
 
+        _isPlayerTurn = !_isPlayerTurn;
+
         if (_isPlayerTurn)
         {
             AllowDoActions();
@@ -56,6 +59,7 @@ public partial class BattleManager : Node2D
         {
             EnemyTurn();
         }
+
     }
 
     private void PlayerWin()
@@ -67,7 +71,8 @@ public partial class BattleManager : Node2D
 
     private void EnemyTurn()
     {
-        _isPlayerTurn = true;
+        _player.TakeDamage(_enemyController.EnemyData.Damage);
+        GD.Print($"Enemy deal {_enemyController.EnemyData.Damage} to player");
         NextTurn();
     }
 
@@ -75,15 +80,15 @@ public partial class BattleManager : Node2D
     {
         GD.Print($"Player deal {_player.GetDamage()} damage! ");
         _enemyController.TakeDamage(_player.GetDamage());
+        PlayerPressedAction();
     }
     private void AllowDoActions()
     {
-//TODO on player actions
+        _battleActionsController.EnableButtons();
     }
 
     private void PlayerPressedAction()
     {
-        _isPlayerTurn = false;
         NextTurn();
         //TODO off player actions
     }

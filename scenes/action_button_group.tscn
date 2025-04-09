@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://crx111r7n11ai" path="res://scripts/BattleActionsController.cs" id="1_k8auy"]
 [ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="2_k8auy"]
 
-[node name="ActionButtonGroup" type="Control"]
+[node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("_buttonsToDisable")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 189.0
 offset_bottom = 121.0
 script = ExtResource("1_k8auy")
+_buttonsToDisable = [NodePath("HBoxContainer/Attack"), NodePath("HBoxContainer/Skill"), NodePath("HBoxContainer/Inventory"), NodePath("HBoxContainer/Escape")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0

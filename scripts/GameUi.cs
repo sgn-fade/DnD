@@ -60,10 +60,17 @@ public partial class GameUi : Control
         var token = _typingCancellation.Token;
 
         _eventDescription.Text = "";
-        foreach (var letter in text)
+        try
         {
-            _eventDescription.Text += letter;
-            await Task.Delay((int)(_textSpawnSpeed * 1000), token);
+            foreach (var letter in text)
+            {
+                _eventDescription.Text += letter;
+                await Task.Delay(TimeSpan.FromSeconds(_textSpawnSpeed), token);
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            // text interrupt
         }
     }
     public void StartBattleMode()
@@ -80,9 +87,6 @@ public partial class GameUi : Control
 
     private void SwitchActionButtonsVisible(bool state)
     {
-        foreach (var button in _actionButtons)
-        {
-            button.Visible = state;
-        }
+        _actionButtons.ForEach(button => button.Visible = state);
     }
 }

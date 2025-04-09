@@ -12,13 +12,14 @@ public partial class EnemyController : Node
 
 	[Signal]
 	public delegate void OnEnemyDiedEventHandler();
-	public void TakeDamage(int damage)
+	public void TakeDamage(double damage)
 	{
 		EnemyData.CurrentHp -= damage;
 		EnemyView.UpdateView(EnemyData);
 		if (EnemyData.CurrentHp <= 0)
 		{
 			EmitSignalOnEnemyDied();
+			EnemyView.Visible = false;
 		}
 	}
 
