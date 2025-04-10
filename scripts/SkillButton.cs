@@ -10,9 +10,9 @@ public partial class SkillButton : SoundButton
     [Signal]
     public delegate void SkillPressedEventHandler(Skill skill);
 
-    public override void _Ready()
+    public void OnButtonPressed()
     {
-
+        EmitSignalSkillPressed(LinkedSkill);
     }
 
     public void Link(Skill skill)

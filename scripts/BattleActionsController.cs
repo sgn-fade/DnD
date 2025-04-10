@@ -32,14 +32,28 @@ public partial class BattleActionsController : Control
         for (int i = 0; i < player.Skills.Count; i++)
         {
             _skillButtons[i].Link(player.Skills[i]);
+            _skillButtons[i].SkillPressed += OnSkillPressed;
         }
     }
+
+    private void OnSkillPressed(Skill skill)
+    {
+        BattleManager.UseSkill(skill);
+    }
+
+    public override void _ExitTree()
+    {
+        foreach (var button in _skillButtons)
+        {
+            button.SkillPressed -= OnSkillPressed;
+        }
+    }
+
     public void OnSkillsPressed() => ToggleMenu(SkillsMenu);
     public void OnInventoryPressed() => ToggleMenu(InventoryMenu);
 
     private void ToggleMenu(Control menu)
     {
-        HideAllMenus();
         menu.Visible = !menu.Visible;
     }
 
@@ -61,6 +75,7 @@ public partial class BattleActionsController : Control
         {
             textureButton.Disabled = true;
         }
+        HideAllMenus();
     }
     public void EnableButtons()
     {

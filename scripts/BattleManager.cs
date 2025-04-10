@@ -111,4 +111,10 @@ public partial class BattleManager : Node2D
             PlayerPressedAction();
         }
     }
+
+    public void UseSkill(Skill skill)
+    {
+        skill.Use(_player.PlayerData, _enemyController);
+        PlayerPressedAction();
+    }
 }

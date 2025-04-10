@@ -42,6 +42,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
 [node name="SkillButtons" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 39.0
 offset_right = 40.0
@@ -57,4 +58,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="pressed" from="MainButtons/Attack" to="." method="OnAttackPressed"]
+[connection signal="pressed" from="MainButtons/Skill" to="." method="OnSkillsPressed"]
 [connection signal="pressed" from="MainButtons/Escape" to="." method="OnEscapePressed"]
