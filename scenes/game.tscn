@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=20 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" uid="uid://dc65d7ngqbwci" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="Script" uid="uid://10qhhc6chaq1" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
 [ext_resource type="PackedScene" uid="uid://60w0tmgwawnx" path="res://scenes/action_button_group.tscn" id="15_ca42v"]
 [ext_resource type="PackedScene" uid="uid://c1fuxmvhi4ogy" path="res://scenes/EnemyUI.tscn" id="16_ssvqc"]
+[ext_resource type="Resource" uid="uid://b4ilwq5222yb5" path="res://resources/Skills/Warrior/HevyAttack.tres" id="18_1kice"]
 [ext_resource type="Script" uid="uid://dst3qae2av3oh" path="res://scripts/EnemyController.cs" id="18_264po"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
@@ -79,6 +80,7 @@ _buttonsToDisable = []
 [node name="PlayerViewModel" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
 script = ExtResource("14_hnhso")
 _playerView = NodePath("../UI/PlayerView")
+WarriorSkills = Array[Resource]([ExtResource("18_1kice")])
 
 [node name="EnemyViewModel" type="Node" parent="." node_paths=PackedStringArray("EnemyView")]
 script = ExtResource("18_264po")

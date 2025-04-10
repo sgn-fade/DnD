@@ -9,6 +9,7 @@ public partial class PlayerViewModel : Node
     public PlayerData PlayerData;
     public static PlayerViewModel Instance { get; set; }
     [Export] private PlayerView _playerView;
+    [Export] private Skill[] WarriorSkills;
 
     public override void _Ready()
     {
@@ -18,6 +19,7 @@ public partial class PlayerViewModel : Node
     public void Init(PlayerData playerData)
     {
         PlayerData = playerData;
+        PlayerData.AddSkill(WarriorSkills[0]);
         UpdateDataView();
     }
 
@@ -37,6 +39,10 @@ public partial class PlayerViewModel : Node
     {
         PlayerData.Level++;
         _playerView.UpdateLevel(PlayerData.Level);
+        if (PlayerData.LevelsThatGivesSkill.Contains(PlayerData.Level))
+        {
+            PlayerData.AddSkill(WarriorSkills[PlayerData.Skills.Count]);
+        }
     }
     public void TakeDamage(double damage)
     {

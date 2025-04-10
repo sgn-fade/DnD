@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HevyAttack" load_steps=3 format=3 uid="uid://b4ilwq5222yb5"]
+
+[ext_resource type="Script" uid="uid://dv5u5iatdh34s" path="res://scripts/Skills/Warrior/HevyAttack.cs" id="1_4ye66"]
+[ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="1_dimc5"]
+
+[resource]
+script = ExtResource("1_4ye66")
+Name = "Hevy Attack"
+Description = "Deals x1.5 damage"
+Icon = ExtResource("1_dimc5")
+Cooldown = 2
+metadata/_custom_type_script = "uid://dv5u5iatdh34s"

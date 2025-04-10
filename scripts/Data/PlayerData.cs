@@ -36,4 +36,13 @@ public class PlayerData
     {
         return Stats.Find(s => s.Type == type).Value;
     }
+
+    public List<Skill> Skills = [];
+
+    public void AddSkill(Skill skill)
+    {
+        Skills.Add(skill);
+    }
+
+    public readonly List<int> LevelsThatGivesSkill = [3, 5, 8];
 }

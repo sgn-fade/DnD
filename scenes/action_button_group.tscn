@@ -1,42 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://60w0tmgwawnx"]
+[gd_scene load_steps=5 format=3 uid="uid://60w0tmgwawnx"]
 
 [ext_resource type="PackedScene" uid="uid://dx8cjr3xtp8tf" path="res://scenes/sound_button.tscn" id="1_jlsdk"]
 [ext_resource type="Script" uid="uid://crx111r7n11ai" path="res://scripts/BattleActionsController.cs" id="1_k8auy"]
 [ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="2_k8auy"]
+[ext_resource type="PackedScene" uid="uid://do4w7pldrci3h" path="res://scenes/skill_button.tscn" id="4_knr0p"]
 
-[node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("_buttonsToDisable")]
+[node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("SkillsMenu", "InventoryMenu", "_buttonsToDisable")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 189.0
 offset_bottom = 121.0
 script = ExtResource("1_k8auy")
-_buttonsToDisable = [NodePath("HBoxContainer/Attack"), NodePath("HBoxContainer/Skill"), NodePath("HBoxContainer/Inventory"), NodePath("HBoxContainer/Escape")]
+SkillsMenu = NodePath("SkillButtons")
+InventoryMenu = NodePath("InventoryButtons")
+_buttonsToDisable = [NodePath("MainButtons/Attack"), NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MainButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 10
 
-[node name="Attack" parent="HBoxContainer" instance=ExtResource("1_jlsdk")]
+[node name="Attack" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(1, 0, 0, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
-[node name="Skill" parent="HBoxContainer" instance=ExtResource("1_jlsdk")]
+[node name="Skill" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0, 0.847059, 1, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
-[node name="Inventory" parent="HBoxContainer" instance=ExtResource("1_jlsdk")]
+[node name="Inventory" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0.552941, 0.552941, 0.552941, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
-[node name="Escape" parent="HBoxContainer" instance=ExtResource("1_jlsdk")]
+[node name="Escape" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0.994118, 1, 0, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
-[connection signal="pressed" from="HBoxContainer/Attack" to="." method="OnAttackPressed"]
-[connection signal="pressed" from="HBoxContainer/Escape" to="." method="OnEscapePressed"]
+[node name="SkillButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 40.0
+offset_bottom = 79.0
+
+[node name="SkillButton" parent="SkillButtons" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+texture_normal = null
+
+[node name="InventoryButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="MainButtons/Attack" to="." method="OnAttackPressed"]
+[connection signal="pressed" from="MainButtons/Escape" to="." method="OnEscapePressed"]

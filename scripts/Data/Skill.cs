@@ -4,12 +4,25 @@ namespace DND;
 
 public abstract partial class Skill : Resource
 {
-
     [Export] public string Name { get; set; }
     [Export] public string Description { get; set; }
 
     [Export] public Texture2D Icon { get; set; }
     [Export] public int Cooldown { get; set; }
+    public int CurrentCooldown { get; set; }
 
-    public abstract void Cast(Enemy enemy);
+    public bool IsReady => CurrentCooldown <= 0;
+
+    public virtual void UseSkill(PlayerData player, EnemyController enemy)
+    {
+        CurrentCooldown = Cooldown;
+        Cast(player, enemy);
+    }
+    protected abstract void Cast(PlayerData player, EnemyController enemy);
+
+    public virtual void OnTurnPassed()
+    {
+        if (CurrentCooldown > 0)
+            CurrentCooldown--;
+    }
 }

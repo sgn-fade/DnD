@@ -27,7 +27,7 @@ public partial class BattleManager : Node2D
 
     public override void _ExitTree()
     {
-        _enemyController.OnEnemyDied += PlayerWin;
+        _enemyController.OnEnemyDied -= PlayerWin;
     }
 
     public void StartBattleWith(Enemy enemy)
@@ -41,7 +41,7 @@ public partial class BattleManager : Node2D
 
     private void LoadPlayerSkills()
     {
-        //TODO buttons fill
+        _battleActionsController.InitSkillButtons(_player.PlayerData);
     }
 
     public void NextTurn()
@@ -94,8 +94,8 @@ public partial class BattleManager : Node2D
 
     private void PlayerPressedAction()
     {
+        _battleActionsController.DisableButtons();
         NextTurn();
-        //TODO off player actions
     }
 
     public void TryEscapeFromBattle()

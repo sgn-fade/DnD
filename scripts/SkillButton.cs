@@ -5,7 +5,7 @@ using DND;
 public partial class SkillButton : SoundButton
 {
 
-    public Node LinkedSkill { get; set; }
+    public Skill LinkedSkill { get; set; }
 
     [Signal]
     public delegate void SkillPressedEventHandler(Skill skill);
@@ -13,5 +13,11 @@ public partial class SkillButton : SoundButton
     public override void _Ready()
     {
 
+    }
+
+    public void Link(Skill skill)
+    {
+        LinkedSkill = skill;
+        TextureNormal = skill.Icon;
     }
 }
