@@ -20,7 +20,7 @@ public abstract partial class Skill : Resource
     }
     protected abstract void Cast(PlayerData player, EnemyController enemy);
 
-    public virtual void OnTurnPassed()
+    public virtual void DecreaseCooldown()
     {
         if (CurrentCooldown > 0)
             CurrentCooldown--;

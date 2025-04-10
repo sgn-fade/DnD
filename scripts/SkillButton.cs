@@ -4,7 +4,6 @@ using DND;
 
 public partial class SkillButton : SoundButton
 {
-
     public Skill LinkedSkill { get; set; }
 
     [Signal]
@@ -12,7 +11,10 @@ public partial class SkillButton : SoundButton
 
     public void OnButtonPressed()
     {
-        EmitSignalSkillPressed(LinkedSkill);
+        if (LinkedSkill.IsReady)
+            EmitSignalSkillPressed(LinkedSkill);
+        else
+            GD.Print("Skill is not ready!");
     }
 
     public void Link(Skill skill)

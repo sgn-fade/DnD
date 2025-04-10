@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Godot;
 
@@ -53,6 +54,7 @@ public partial class BattleManager : Node2D
 
         if (_isPlayerTurn)
         {
+            UpdateSpellsCooldowns();
             AllowDoActions();
         }
         else
@@ -60,6 +62,14 @@ public partial class BattleManager : Node2D
             EnemyTurn();
         }
 
+    }
+
+    private void UpdateSpellsCooldowns()
+    {
+        foreach (var skill in _player.PlayerData.Skills)
+        {
+            skill.DecreaseCooldown();
+        }
     }
 
     private void PlayerWin()
