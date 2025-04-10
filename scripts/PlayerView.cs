@@ -23,7 +23,7 @@ public partial class PlayerView : Control
     public void UpdateXpStat(double currentExp, int maxExp)
     {
         _playerExp.Text = $"{currentExp}/{maxExp}";
-        _xpBar.Value = 
+        _xpBar.Value = currentExp / maxExp * 100;
     }
     public void UpdateLevel(int newLevel)
     {
@@ -33,6 +33,7 @@ public partial class PlayerView : Control
     public void UpdateHpBar(double currentHp, double maxHp)
     {
         _playerHealth.Text = $"{currentHp} {maxHp}";
+        _hpBar.Value = currentHp / maxHp * 100;
 
     }
     public void ShowExpText()

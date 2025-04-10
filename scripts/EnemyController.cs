@@ -19,13 +19,13 @@ public partial class EnemyController : Node
 		if (EnemyData.CurrentHp <= 0)
 		{
 			EmitSignalOnEnemyDied();
-			EnemyView.Visible = false;
+			Hide();
 		}
 	}
 
 	public override void _Ready()
 	{
-		EnemyView.Visible = false;
+		Hide();
 	}
 
 	public void Link(Enemy enemy)
@@ -34,7 +34,12 @@ public partial class EnemyController : Node
 		EnemyData.CurrentHp = EnemyData.Hp;
 		EnemyView.UpdateView(EnemyData);
 		EnemyView.Visible = true;
+
 	}
 
+	public void Hide()
+	{
+		EnemyView.Visible = false;
+	}
 	public bool IsAlive() => EnemyData.Hp > 0;
 }

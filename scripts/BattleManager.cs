@@ -65,8 +65,7 @@ public partial class BattleManager : Node2D
     private void PlayerWin()
     {
         GD.Print("Player Win!!!");
-        EmitSignalOnBattleEnded();
-        _gameUi.EndBattleMode();
+        EndBattle();
     }
 
     private void EnemyTurn()
@@ -76,6 +75,12 @@ public partial class BattleManager : Node2D
         NextTurn();
     }
 
+    private void EndBattle()
+    {
+        EmitSignalOnBattleEnded();
+        _gameUi.EndBattleMode();
+        _enemyController.Hide();
+    }
     public void AttackEnemy()
     {
         GD.Print($"Player deal {_player.GetDamage()} damage! ");
@@ -98,12 +103,12 @@ public partial class BattleManager : Node2D
         if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int) _enemyController.GetEnemyPower())))
         {
             GD.Print("You escaped from battle");
-            EmitSignalOnBattleEnded();
+            EndBattle();
         }
         else
         {
             GD.Print("escape failed!");
+            PlayerPressedAction();
         }
-        PlayerPressedAction();
     }
 }
