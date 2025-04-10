@@ -16,6 +16,7 @@ _buttonsToDisable = [NodePath("HBoxContainer/Attack"), NodePath("HBoxContainer/S
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 10
 
 [node name="Attack" parent="HBoxContainer" instance=ExtResource("1_jlsdk")]
 modulate = Color(1, 0, 0, 0.996078)
