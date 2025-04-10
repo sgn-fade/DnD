@@ -23,7 +23,7 @@ public partial class PlayerViewModel : Node
         UpdateDataView();
     }
 
-    public void AddXp(int value)
+    public void AddXp(double value)
     {
         PlayerData.CurrentXp += value;
         while (PlayerData.Level < PlayerData.XpThresholds.Length &&

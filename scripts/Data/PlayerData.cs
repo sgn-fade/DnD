@@ -30,7 +30,7 @@ public class PlayerData
     public double Damage { get; set; } = 1;
     public double CurrentXp { get; set; }
     public readonly int[] XpThresholds = { 0, 10, 50, 100, 150, 300, 500, 850, 1100, 1500 };
-    public int Level { get; set; }
+    public int Level { get; set; } = 1;
 
     public int GetPlayerStat(String type)
     {

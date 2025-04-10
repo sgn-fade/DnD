@@ -75,6 +75,7 @@ public partial class BattleManager : Node2D
     private void PlayerWin()
     {
         GD.Print("Player Win!!!");
+        _player.AddXp(_enemyController.GetEnemyPower());
         EndBattle();
     }
 
