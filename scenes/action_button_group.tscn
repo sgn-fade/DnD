@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://60w0tmgwawnx"]
+[gd_scene load_steps=8 format=3 uid="uid://60w0tmgwawnx"]
 
 [ext_resource type="PackedScene" uid="uid://dx8cjr3xtp8tf" path="res://scenes/sound_button.tscn" id="1_jlsdk"]
 [ext_resource type="Script" uid="uid://crx111r7n11ai" path="res://scripts/BattleActionsController.cs" id="1_k8auy"]
 [ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="2_k8auy"]
 [ext_resource type="PackedScene" uid="uid://do4w7pldrci3h" path="res://scenes/skill_button.tscn" id="4_knr0p"]
+[ext_resource type="Texture2D" uid="uid://8lscatx28e33" path="res://sprites/Magic.png" id="4_r0fur"]
+[ext_resource type="Texture2D" uid="uid://cxgllt8v0f5wi" path="res://sprites/BackPack.png" id="5_44nye"]
+[ext_resource type="Texture2D" uid="uid://cy6etpvyegdxm" path="res://sprites/RunOut.png" id="6_6ni75"]
 
 [node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("SkillsMenu", "InventoryMenu", "_buttonsToDisable")]
 layout_mode = 3
@@ -29,17 +32,17 @@ texture_normal = ExtResource("2_k8auy")
 [node name="Skill" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0, 0.847059, 1, 0.996078)
 layout_mode = 2
-texture_normal = ExtResource("2_k8auy")
+texture_normal = ExtResource("4_r0fur")
 
 [node name="Inventory" parent="MainButtons" instance=ExtResource("1_jlsdk")]
-modulate = Color(0.552941, 0.552941, 0.552941, 0.996078)
+modulate = Color(1, 0.643494, 0.226563, 0.996078)
 layout_mode = 2
-texture_normal = ExtResource("2_k8auy")
+texture_normal = ExtResource("5_44nye")
 
 [node name="Escape" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0.994118, 1, 0, 0.996078)
 layout_mode = 2
-texture_normal = ExtResource("2_k8auy")
+texture_normal = ExtResource("6_6ni75")
 
 [node name="SkillButtons" type="HBoxContainer" parent="."]
 layout_mode = 0

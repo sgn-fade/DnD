@@ -17,7 +17,11 @@ public partial class BattleActionsController : Control
     {
         foreach (var node in SkillsMenu.GetChildren())
         {
-            if (node is SkillButton skillButton) _skillButtons.Add(skillButton);
+            if (node is SkillButton skillButton)
+            {
+                _skillButtons.Add(skillButton);
+                skillButton.SkillPressed += OnSkillPressed;
+            }
         }
     }
 
@@ -32,7 +36,7 @@ public partial class BattleActionsController : Control
         for (int i = 0; i < player.Skills.Count; i++)
         {
             _skillButtons[i].Link(player.Skills[i]);
-            _skillButtons[i].SkillPressed += OnSkillPressed;
+
         }
     }
 
