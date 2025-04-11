@@ -16,7 +16,7 @@ offset_bottom = 121.0
 script = ExtResource("1_k8auy")
 SkillsMenu = NodePath("SkillButtons")
 InventoryMenu = NodePath("InventoryButtons")
-_buttonsToDisable = [NodePath(""), NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
+_buttonsToDisable = [null, NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
 
 [node name="MainButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -68,9 +68,10 @@ texture_normal = null
 
 [node name="InventoryButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 43.0
-offset_right = 40.0
-offset_bottom = 83.0
+offset_left = -4.0
+offset_top = -50.0
+offset_right = 36.0
+offset_bottom = -10.0
 
 [connection signal="pressed" from="MainButtons/Skill" to="." method="OnAttackPressed"]
 [connection signal="pressed" from="MainButtons/Skill2" to="." method="OnSkillsPressed"]

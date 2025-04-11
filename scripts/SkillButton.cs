@@ -9,6 +9,8 @@ public partial class SkillButton : SoundButton
     [Signal]
     public delegate void SkillPressedEventHandler(Skill skill);
 
+    [Export] private DescriptionPopUp _descriptionPopUp;
+
     public void OnButtonPressed()
     {
         if (LinkedSkill.IsReady)
@@ -21,5 +23,15 @@ public partial class SkillButton : SoundButton
     {
         LinkedSkill = skill;
         TextureNormal = skill.Icon;
+    }
+
+    public void OnMouseEntered()
+    {
+        _descriptionPopUp.Show();
+        _descriptionPopUp.DisplayText(LinkedSkill.Name, LinkedSkill.Description);
+    }
+    public void OnMouseExited()
+    {
+        _descriptionPopUp.Hide();
     }
 }

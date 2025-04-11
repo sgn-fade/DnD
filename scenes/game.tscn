@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
 [ext_resource type="PackedScene" uid="uid://60w0tmgwawnx" path="res://scenes/action_button_group.tscn" id="15_ca42v"]
 [ext_resource type="PackedScene" uid="uid://c1fuxmvhi4ogy" path="res://scenes/EnemyUI.tscn" id="16_ssvqc"]
-[ext_resource type="Resource" uid="uid://b4ilwq5222yb5" path="res://resources/Skills/Warrior/HevyAttack.tres" id="18_1kice"]
+[ext_resource type="Resource" uid="uid://b4ilwq5222yb5" path="res://resources/Skills/Warrior/HeavyAttack.tres" id="18_1kice"]
 [ext_resource type="Script" uid="uid://dst3qae2av3oh" path="res://scripts/EnemyController.cs" id="18_264po"]
 [ext_resource type="Resource" uid="uid://b6wctivvslchy" path="res://resources/Skills/Warrior/Regen.tres" id="19_1kice"]
 

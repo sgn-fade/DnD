@@ -9,4 +9,3 @@ Name = "Heavy Attack"
 Description = "Deals x1.5 damage"
 Icon = ExtResource("1_dimc5")
 Cooldown = 2
-metadata/_custom_type_script = "uid://dv5u5iatdh34s"
