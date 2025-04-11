@@ -12,7 +12,7 @@ public partial class BattleManager : Node2D
     [Export] private Node _battleLog;
     [Export] private EnemyController _enemyController;
     [Export] private BattleActionsController _battleActionsController;
-    private int _currentTurn = 1;
+    private int _currentTurn;
 
     [Signal]
     public delegate void OnBattleEndedEventHandler();
@@ -39,7 +39,8 @@ public partial class BattleManager : Node2D
         LoadPlayerSkills();
         _gameUi.StartBattleMode();
         _enemyController.Link(enemy);
-        _gameUi.PushToBattleLog($"TURN {_currentTurn}\n");
+        _currentTurn = 1;
+        _gameUi.PushToBattleLog($"TURN {_currentTurn}");
         AllowDoActions();
     }
 
@@ -60,7 +61,7 @@ public partial class BattleManager : Node2D
             UpdateSpellsCooldowns();
             AllowDoActions();
             _currentTurn++;
-            _gameUi.PushToBattleLog($"TURN {_currentTurn}\n");
+            _gameUi.PushToBattleLog($"TURN {_currentTurn}");
         }
         else
         {
@@ -87,7 +88,7 @@ public partial class BattleManager : Node2D
     private void EnemyTurn()
     {
         _player.TakeDamage(_enemyController.EnemyData.Damage);
-        _gameUi.PushToBattleLog($"Enemy deal {_enemyController.EnemyData.Damage} to player\n");
+        _gameUi.PushToBattleLog($"Enemy deal {_enemyController.EnemyData.Damage} to player");
         NextTurn();
     }
 
@@ -99,7 +100,7 @@ public partial class BattleManager : Node2D
     }
     public void AttackEnemy()
     {
-        _gameUi.PushToBattleLog($"Player deal {_player.GetDamage()} damage! \n");
+        _gameUi.PushToBattleLog($"Player deal {_player.GetDamage()} damage!");
         _enemyController.TakeDamage(_player.GetDamage());
         PlayerPressedAction();
     }
@@ -118,12 +119,12 @@ public partial class BattleManager : Node2D
     {
         if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int) _enemyController.GetEnemyPower())))
         {
-            _gameUi.PushToBattleLog("You escaped from battle\n");
+            _gameUi.PushToBattleLog("You escaped from battle");
             EndBattle();
         }
         else
         {
-            _gameUi.PushToBattleLog("escape failed!\n");
+            _gameUi.PushToBattleLog("escape failed!");
             PlayerPressedAction();
         }
     }
@@ -131,6 +132,7 @@ public partial class BattleManager : Node2D
     public void UseSkill(Skill skill)
     {
         skill.Use(_player, _enemyController);
+        _gameUi.PushToBattleLog(skill.BattleLogText);
         PlayerPressedAction();
     }
 }

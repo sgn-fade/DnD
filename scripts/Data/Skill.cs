@@ -6,7 +6,6 @@ public abstract partial class Skill : Resource
 {
     [Export] public string Name { get; set; }
     [Export] public string Description { get; set; }
-
     [Export] public Texture2D Icon { get; set; }
     [Export] public int Cooldown { get; set; }
     public int CurrentCooldown { get; set; }
@@ -25,4 +24,5 @@ public abstract partial class Skill : Resource
         if (CurrentCooldown > 0)
             CurrentCooldown--;
     }
+    public string BattleLogText { get; set; }
 }

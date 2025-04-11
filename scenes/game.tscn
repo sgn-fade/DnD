@@ -68,10 +68,10 @@ render_target_update_mode = 4
 
 [node name="ActionButtonGroup" parent="UI" node_paths=PackedStringArray("BattleManager", "_buttonsToDisable") instance=ExtResource("15_ca42v")]
 visible = false
-offset_left = 1185.0
-offset_top = 674.0
-offset_right = 1276.0
-offset_bottom = 696.0
+offset_left = 1187.0
+offset_top = 776.0
+offset_right = 1278.0
+offset_bottom = 798.0
 scale = Vector2(4, 4)
 BattleManager = NodePath("../../BattleManager")
 _buttonsToDisable = []

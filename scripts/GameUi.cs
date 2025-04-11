@@ -58,6 +58,7 @@ public partial class GameUi : Control
     public void PushToBattleLog(string text)
     {
         _battleLog.Text += text;
+        _battleLog.Text += "\n";
     }
     private async void TypeText(string text)
     {
@@ -83,6 +84,7 @@ public partial class GameUi : Control
     {
         _storyGroup.Visible = false;
         _battleGroup.Visible = true;
+        _battleLog.Text = "";
         _battleActions.Visible = true;
     }
 
