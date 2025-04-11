@@ -125,7 +125,7 @@ public partial class BattleManager : Node2D
 
     public void UseSkill(Skill skill)
     {
-        skill.Use(_player.PlayerData, _enemyController);
+        skill.Use(_player, _enemyController);
         PlayerPressedAction();
     }
 }

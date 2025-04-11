@@ -42,13 +42,24 @@ layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
 [node name="SkillButtons" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 39.0
 offset_right = 40.0
 offset_bottom = 79.0
 
 [node name="SkillButton" parent="SkillButtons" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+texture_normal = null
+
+[node name="SkillButton2" parent="SkillButtons" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+texture_normal = null
+
+[node name="SkillButton3" parent="SkillButtons" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+texture_normal = null
+
+[node name="SkillButton4" parent="SkillButtons" instance=ExtResource("4_knr0p")]
 layout_mode = 2
 texture_normal = null
 

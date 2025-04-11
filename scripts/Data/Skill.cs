@@ -13,12 +13,12 @@ public abstract partial class Skill : Resource
 
     public bool IsReady => CurrentCooldown <= 0;
 
-    public virtual void Use(PlayerData player, EnemyController enemy)
+    public virtual void Use(PlayerViewModel player, EnemyController enemy)
     {
         CurrentCooldown = Cooldown;
         Cast(player, enemy);
     }
-    protected abstract void Cast(PlayerData player, EnemyController enemy);
+    protected abstract void Cast(PlayerViewModel player, EnemyController enemy);
 
     public virtual void DecreaseCooldown()
     {

@@ -73,4 +73,11 @@ public partial class PlayerViewModel : Node
     {
         return PlayerData.Damage;
     }
+
+    public void HealHp(int value)
+    {
+        PlayerData.Hp += value;
+        if (PlayerData.Hp > PlayerData.MaxHp) PlayerData.Hp = PlayerData.MaxHp;
+        _playerView.UpdateAll(PlayerData);
+    }
 }

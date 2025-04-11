@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Regen" load_steps=3 format=3 uid="uid://b6wctivvslchy"]
+
+[ext_resource type="Texture2D" uid="uid://85lykxr2ijac" path="res://sprites/RegenSkillIcon.png" id="1_f8rw6"]
+[ext_resource type="Script" path="res://scripts/Skills/Warrior/Regen.cs" id="2_7oj20"]
+
+[resource]
+script = ExtResource("2_7oj20")
+Name = "Heal"
+Description = "Heal for a 3 value"
+Icon = ExtResource("1_f8rw6")
+Cooldown = 4

@@ -8,7 +8,7 @@ public partial class EnemyController : Node
 
 	[Export] public EnemyUI EnemyView { get; set; }
 
-	public double GetEnemyPower() => EnemyData.CurrentHp / 2 + EnemyData.Damage;
+	public double GetEnemyPower() => EnemyData.CurrentHp + EnemyData.Damage * 10;
 
 	[Signal]
 	public delegate void OnEnemyDiedEventHandler();
