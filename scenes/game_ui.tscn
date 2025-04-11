@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_bqlr4"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="3_15erd"]
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent", "_storyGroup")]
+[node name="GameUI" type="Control" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_battleLog", "_buttonsParent", "_storyGroup", "_battleGroup")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,8 +24,10 @@ _locationDescription = NodePath("LocationDescription")
 _locationImage = NodePath("LocationImage")
 _eventName = NodePath("EventName")
 _eventDescription = NodePath("StoryGroup/EventDescription")
+_battleLog = NodePath("BattleGroup/BattleLog")
 _buttonsParent = NodePath("StoryGroup/Actions")
 _storyGroup = NodePath("StoryGroup")
+_battleGroup = NodePath("BattleGroup")
 _textSpawnSpeed = 0.07
 
 [node name="Background" type="TextureRect" parent="."]
@@ -117,3 +119,25 @@ theme_override_fonts/font = ExtResource("2_bqlr4")
 theme_override_font_sizes/font_size = 30
 text = "text"
 autowrap_mode = 3
+
+[node name="BattleGroup" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="BattleGroup"]
+layout_mode = 0
+offset_left = 1137.0
+offset_top = 83.0
+offset_right = 1877.0
+offset_bottom = 773.0
+color = Color(0.265625, 0.265625, 0.265625, 1)
+
+[node name="BattleLog" type="RichTextLabel" parent="BattleGroup"]
+layout_mode = 0
+offset_left = 1159.0
+offset_top = 107.0
+offset_right = 1850.0
+offset_bottom = 737.0
+theme_override_font_sizes/normal_font_size = 31

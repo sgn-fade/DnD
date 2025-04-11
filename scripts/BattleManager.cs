@@ -12,6 +12,7 @@ public partial class BattleManager : Node2D
     [Export] private Node _battleLog;
     [Export] private EnemyController _enemyController;
     [Export] private BattleActionsController _battleActionsController;
+    private int _currentTurn = 1;
 
     [Signal]
     public delegate void OnBattleEndedEventHandler();
@@ -38,6 +39,7 @@ public partial class BattleManager : Node2D
         LoadPlayerSkills();
         _gameUi.StartBattleMode();
         _enemyController.Link(enemy);
+        _gameUi.PushToBattleLog($"TURN {_currentTurn}\n");
         AllowDoActions();
     }
 
@@ -57,6 +59,8 @@ public partial class BattleManager : Node2D
         {
             UpdateSpellsCooldowns();
             AllowDoActions();
+            _currentTurn++;
+            _gameUi.PushToBattleLog($"TURN {_currentTurn}\n");
         }
         else
         {
@@ -83,7 +87,7 @@ public partial class BattleManager : Node2D
     private void EnemyTurn()
     {
         _player.TakeDamage(_enemyController.EnemyData.Damage);
-        GD.Print($"Enemy deal {_enemyController.EnemyData.Damage} to player");
+        _gameUi.PushToBattleLog($"Enemy deal {_enemyController.EnemyData.Damage} to player\n");
         NextTurn();
     }
 
@@ -95,7 +99,7 @@ public partial class BattleManager : Node2D
     }
     public void AttackEnemy()
     {
-        GD.Print($"Player deal {_player.GetDamage()} damage! ");
+        _gameUi.PushToBattleLog($"Player deal {_player.GetDamage()} damage! \n");
         _enemyController.TakeDamage(_player.GetDamage());
         PlayerPressedAction();
     }
@@ -114,12 +118,12 @@ public partial class BattleManager : Node2D
     {
         if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int) _enemyController.GetEnemyPower())))
         {
-            GD.Print("You escaped from battle");
+            _gameUi.PushToBattleLog("You escaped from battle\n");
             EndBattle();
         }
         else
         {
-            GD.Print("escape failed!");
+            _gameUi.PushToBattleLog("escape failed!\n");
             PlayerPressedAction();
         }
     }

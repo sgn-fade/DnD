@@ -14,10 +14,12 @@ public partial class GameUi : Control
 
     [Export] private Label _eventName;
     [Export] private Label _eventDescription;
+    [Export] private RichTextLabel _battleLog;
 
     private List<ActionButtons> _actionButtons;
     [Export] private Control _buttonsParent;
     [Export] private Control _storyGroup;
+    [Export] private Control _battleGroup;
     [Export] private EnemyUI _enemyUi;
     [Export] private float _textSpawnSpeed;
     [Export] private BattleActionsController _battleActions;
@@ -53,6 +55,10 @@ public partial class GameUi : Control
         }
     }
 
+    public void PushToBattleLog(string text)
+    {
+        _battleLog.Text += text;
+    }
     private async void TypeText(string text)
     {
         _typingCancellation?.Cancel();
@@ -76,12 +82,14 @@ public partial class GameUi : Control
     public void StartBattleMode()
     {
         _storyGroup.Visible = false;
+        _battleGroup.Visible = true;
         _battleActions.Visible = true;
     }
 
     public void EndBattleMode()
     {
         _storyGroup.Visible = true;
+        _battleGroup.Visible = false;
         _battleActions.Visible = false;
     }
 
