@@ -38,6 +38,7 @@ public partial class BattleManager : Node2D
         LoadPlayerSkills();
         _gameUi.StartBattleMode();
         _enemyController.Link(enemy);
+        AllowDoActions();
     }
 
     private void LoadPlayerSkills()

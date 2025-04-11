@@ -16,7 +16,7 @@ offset_bottom = 121.0
 script = ExtResource("1_k8auy")
 SkillsMenu = NodePath("SkillButtons")
 InventoryMenu = NodePath("InventoryButtons")
-_buttonsToDisable = [NodePath("MainButtons/Attack"), NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
+_buttonsToDisable = [NodePath(""), NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
 
 [node name="MainButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -24,12 +24,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 10
 
-[node name="Attack" parent="MainButtons" instance=ExtResource("1_jlsdk")]
-modulate = Color(1, 0, 0, 0.996078)
+[node name="Skill" parent="MainButtons" instance=ExtResource("1_jlsdk")]
+modulate = Color(1, 0.117188, 0, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("2_k8auy")
 
-[node name="Skill" parent="MainButtons" instance=ExtResource("1_jlsdk")]
+[node name="Skill2" parent="MainButtons" instance=ExtResource("1_jlsdk")]
 modulate = Color(0, 0.847059, 1, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("4_r0fur")
@@ -68,9 +68,10 @@ texture_normal = null
 
 [node name="InventoryButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
+offset_top = 43.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 83.0
 
-[connection signal="pressed" from="MainButtons/Attack" to="." method="OnAttackPressed"]
-[connection signal="pressed" from="MainButtons/Skill" to="." method="OnSkillsPressed"]
+[connection signal="pressed" from="MainButtons/Skill" to="." method="OnAttackPressed"]
+[connection signal="pressed" from="MainButtons/Skill2" to="." method="OnSkillsPressed"]
 [connection signal="pressed" from="MainButtons/Escape" to="." method="OnEscapePressed"]

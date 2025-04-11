@@ -132,7 +132,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_q0fmt")
 
 [node name="TextureRect2" type="TextureRect" parent="Stats/s2"]
-modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+modulate = Color(0.96875, 1, 0, 1)
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
@@ -166,7 +166,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_q0fmt")
 
 [node name="TextureRect2" type="TextureRect" parent="Stats/s3"]
-modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+modulate = Color(0.0078125, 0.62793, 1, 1)
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
@@ -200,7 +200,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_q0fmt")
 
 [node name="TextureRect2" type="TextureRect" parent="Stats/s4"]
-modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+modulate = Color(0.0304601, 0.980469, 0.0229797, 1)
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
