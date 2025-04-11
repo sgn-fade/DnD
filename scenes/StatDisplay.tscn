@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://5bus8pb1taob"]
+
+[ext_resource type="Texture2D" uid="uid://civjxvenaw1ev" path="res://sprites/statBackground.png" id="1_ia1hi"]
+[ext_resource type="Script" uid="uid://buv7ss2qsdin6" path="res://scripts/StatDisplay.cs" id="1_j5wif"]
+[ext_resource type="Texture2D" uid="uid://dagheccsrmnga" path="res://sprites/statBack.png" id="2_6xqme"]
+[ext_resource type="Texture2D" uid="uid://rvfdb0s57r65" path="res://sprites/UpgradeStat.png" id="4_mq0gc"]
+
+[node name="s" type="Control" node_paths=PackedStringArray("_upgradeButton", "_value", "_texture")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j5wif")
+_upgradeButton = NodePath("UpgradeButton")
+_value = NodePath("Label")
+_texture = NodePath("TextureRect2")
+StrColor = Color(1, 0, 0, 1)
+IntColor = Color(0, 0.684448, 0.984375, 1)
+DexColor = Color(0.733333, 0.858824, 0.00784314, 1)
+ConColor = Color(0, 0.921569, 0.0784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_ia1hi")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 31.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_6xqme")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 18.0
+offset_right = 155.0
+offset_bottom = 149.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 130
+text = "32"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 20.5
+offset_top = -31.0
+offset_right = 30.5
+offset_bottom = -21.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_mq0gc")
+
+[connection signal="pressed" from="UpgradeButton" to="." method="OnUpgradePressed"]

@@ -1,16 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1xk843m3gu66"]
+[gd_scene load_steps=9 format=3 uid="uid://c1xk843m3gu66"]
 
 [ext_resource type="Script" uid="uid://qx2epbeewyf6" path="res://scripts/PlayerView.cs" id="1_b3px6"]
 [ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="2_jqngf"]
-[ext_resource type="Texture2D" uid="uid://civjxvenaw1ev" path="res://sprites/statBackground.png" id="2_q0fmt"]
 [ext_resource type="Texture2D" uid="uid://bbh42ltiar7lf" path="res://sprites/GSword.png" id="3_os4jk"]
 [ext_resource type="Texture2D" uid="uid://d11bai08jatea" path="res://sprites/HpProgressUnder.png" id="4_7a3rm"]
 [ext_resource type="Texture2D" uid="uid://f7eg2ursq1nr" path="res://sprites/HpProgress.png" id="5_vhnee"]
 [ext_resource type="Texture2D" uid="uid://5eb1xykpylxm" path="res://sprites/XpBar-progress.png" id="5_xwr5r"]
 [ext_resource type="Texture2D" uid="uid://dqplha3lpno05" path="res://sprites/XpBar-bckground.png" id="6_trjnp"]
-[ext_resource type="Texture2D" uid="uid://dagheccsrmnga" path="res://sprites/statBack.png" id="7_7a3rm"]
+[ext_resource type="PackedScene" uid="uid://5bus8pb1taob" path="res://scenes/StatDisplay.tscn" id="6_v3da1"]
 
-[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_hpBar", "_xpBar", "_playerName", "_playerHealth", "_playerExp", "_playerLevel", "_strength", "_dexterity", "_constitution", "_intelligence")]
+[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_hpBar", "_xpBar", "_playerName", "_playerHealth", "_playerExp", "_playerLevel", "StatsDisplays")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -24,10 +23,7 @@ _playerName = NodePath("Name")
 _playerHealth = NodePath("HPbar/value")
 _playerExp = NodePath("exp")
 _playerLevel = NodePath("Level")
-_strength = NodePath("Stats/s/Label")
-_dexterity = NodePath("Stats/s2/Label")
-_constitution = NodePath("Stats/s3/Label")
-_intelligence = NodePath("Stats/s4/Label")
+StatsDisplays = [NodePath("Stats/s"), NodePath("Stats/s2"), NodePath("Stats/s3"), NodePath("Stats/s4")]
 
 [node name="PlayerIcon" type="TextureRect" parent="."]
 layout_mode = 0
@@ -87,141 +83,20 @@ offset_right = 725.0
 offset_bottom = 1140.0
 theme_override_constants/separation = 90
 
-[node name="s" type="Control" parent="Stats"]
+[node name="s" parent="Stats" instance=ExtResource("6_v3da1")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Stats/s"]
-layout_mode = 0
-offset_right = 14.0
-offset_bottom = 14.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_q0fmt")
-
-[node name="TextureRect2" type="TextureRect" parent="Stats/s"]
-modulate = Color(0.759804, 0.0223472, 0.0223472, 1)
-layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 31.0
-offset_bottom = 31.0
-scale = Vector2(3, 3)
-texture = ExtResource("7_7a3rm")
-
-[node name="Label" type="Label" parent="Stats/s"]
+[node name="s2" parent="Stats" instance=ExtResource("6_v3da1")]
 layout_mode = 2
-offset_left = 12.0
-offset_top = 16.0
-offset_right = 155.0
-offset_bottom = 159.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 130
-text = "32
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+LinkedStat = 1
 
-[node name="s2" type="Control" parent="Stats"]
+[node name="s3" parent="Stats" instance=ExtResource("6_v3da1")]
 layout_mode = 2
+LinkedStat = 2
 
-[node name="TextureRect" type="TextureRect" parent="Stats/s2"]
-layout_mode = 0
-offset_right = 14.0
-offset_bottom = 14.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_q0fmt")
-
-[node name="TextureRect2" type="TextureRect" parent="Stats/s2"]
-modulate = Color(0.96875, 1, 0, 1)
-layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 31.0
-offset_bottom = 31.0
-scale = Vector2(3, 3)
-texture = ExtResource("7_7a3rm")
-
-[node name="Label" type="Label" parent="Stats/s2"]
+[node name="s4" parent="Stats" instance=ExtResource("6_v3da1")]
 layout_mode = 2
-offset_left = 12.0
-offset_top = 16.0
-offset_right = 155.0
-offset_bottom = 159.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 130
-text = "32
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="s3" type="Control" parent="Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Stats/s3"]
-layout_mode = 0
-offset_right = 14.0
-offset_bottom = 14.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_q0fmt")
-
-[node name="TextureRect2" type="TextureRect" parent="Stats/s3"]
-modulate = Color(0.0078125, 0.62793, 1, 1)
-layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 31.0
-offset_bottom = 31.0
-scale = Vector2(3, 3)
-texture = ExtResource("7_7a3rm")
-
-[node name="Label" type="Label" parent="Stats/s3"]
-layout_mode = 2
-offset_left = 12.0
-offset_top = 16.0
-offset_right = 155.0
-offset_bottom = 159.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 130
-text = "32
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="s4" type="Control" parent="Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Stats/s4"]
-layout_mode = 0
-offset_right = 14.0
-offset_bottom = 14.0
-scale = Vector2(3, 3)
-texture = ExtResource("2_q0fmt")
-
-[node name="TextureRect2" type="TextureRect" parent="Stats/s4"]
-modulate = Color(0.0304601, 0.980469, 0.0229797, 1)
-layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 31.0
-offset_bottom = 31.0
-scale = Vector2(3, 3)
-texture = ExtResource("7_7a3rm")
-
-[node name="Label" type="Label" parent="Stats/s4"]
-layout_mode = 2
-offset_left = 12.0
-offset_top = 16.0
-offset_right = 155.0
-offset_bottom = 159.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 130
-text = "32
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+LinkedStat = 3
 
 [node name="ExpProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
@@ -255,5 +130,5 @@ theme_override_font_sizes/font_size = 20
 text = "1/50
 "
 
-[connection signal="mouse_entered" from="ExpProgressBar" to="." method="ShowExpText"]
-[connection signal="mouse_exited" from="ExpProgressBar" to="." method="HideExpText"]
+[connection signal="mouse_entered" from="ExpProgressBar" to="exp" method="show"]
+[connection signal="mouse_exited" from="ExpProgressBar" to="exp" method="hide"]

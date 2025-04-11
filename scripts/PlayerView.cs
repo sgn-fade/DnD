@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DND;
 
 public partial class PlayerView : Control
@@ -14,17 +15,16 @@ public partial class PlayerView : Control
     [Export] private Label _playerExp;
     [Export] private Label _playerLevel;
 
-    [Export] private Label _strength;
-    [Export] private Label _dexterity;
-    [Export] private Label _constitution;
-    [Export] private Label _intelligence;
     [Export] private Label _goldCount;
+    [Export] public StatDisplay[] StatsDisplays = [];
+
 
     public void UpdateXpStat(double currentExp, int maxExp)
     {
         _playerExp.Text = $"{currentExp}/{maxExp}";
         _xpBar.Value = currentExp / maxExp * 100;
     }
+
     public void UpdateLevel(int newLevel)
     {
         _playerLevel.Text = newLevel.ToString();
@@ -34,24 +34,32 @@ public partial class PlayerView : Control
     {
         _playerHealth.Text = $"{currentHp} {maxHp}";
         _hpBar.Value = currentHp / maxHp * 100;
+    }
 
-    }
-    public void ShowExpText()
+    public void ShowUpgradeStatButtons()
     {
-        _playerExp.Visible = true;
+        foreach (var statDisplay in StatsDisplays)
+        {
+            statDisplay.ShowUpgrade();
+        }
     }
-    public void HideExpText()
+    public void HideUpgradeStatButtons()
     {
-        _playerExp.Visible = false;
+        foreach (var statDisplay in StatsDisplays)
+        {
+            statDisplay.HideUpgrade();
+        }
     }
 
     public void UpdateStats(List<Stat> stats)
     {
-        _strength.Text = $"{stats[0].Value}";
-        _dexterity.Text = $"{stats[1].Value}";
-        _constitution.Text = $"{stats[2].Value}";
-        _intelligence.Text = $"{stats[3].Value}";
+        foreach (var t in stats)
+        {
+            var stat = StatsDisplays.First(display => display.LinkedStat.ToString() == t.Type);
+            stat.ChangeTextValue(t.Value);
+        }
     }
+
     public void UpdateAll(PlayerData data)
     {
         _playerIcon.Texture = TextureStorage.Instance.GetPlayerIcon(data.Class);
