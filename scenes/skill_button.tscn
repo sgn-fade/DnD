@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://do4w7pldrci3h"]
+
+[ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="1_xafvn"]
+[ext_resource type="Script" uid="uid://l33cvvfur7tf" path="res://scripts/SkillButton.cs" id="2_ka5vw"]
+[ext_resource type="PackedScene" uid="uid://cjxx54ry2o2w0" path="res://scenes/description_pop_up.tscn" id="3_ka5vw"]
+
+[node name="SkillButton" type="TextureButton" node_paths=PackedStringArray("_descriptionPopUp")]
+offset_left = -9.5
+offset_top = -9.5
+offset_right = 9.5
+offset_bottom = 9.5
+pivot_offset = Vector2(9.5, 9.5)
+texture_normal = ExtResource("1_xafvn")
+script = ExtResource("2_ka5vw")
+_descriptionPopUp = NodePath("DescriptionPopUp")
+
+[node name="DescriptionPopUp" parent="." instance=ExtResource("3_ka5vw")]
+visible = false
+layout_mode = 1
+offset_left = -15.5
+offset_top = -64.5
+offset_right = -15.5
+offset_bottom = -64.5
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
+[connection signal="pressed" from="." to="." method="OnButtonPressed"]

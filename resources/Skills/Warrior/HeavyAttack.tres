@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HeavyAttack" load_steps=3 format=3 uid="uid://b4ilwq5222yb5"]
+
+[ext_resource type="Script" uid="uid://c178sbvk0jk4x" path="res://scripts/Skills/Warrior/HeavyAttack.cs" id="1_4ye66"]
+[ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="1_dimc5"]
+
+[resource]
+script = ExtResource("1_4ye66")
+Name = "Heavy Attack"
+Description = "Deals x1.5 damage"
+Icon = ExtResource("1_dimc5")
+Cooldown = 2

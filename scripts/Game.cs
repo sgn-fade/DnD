@@ -9,70 +9,84 @@ namespace DND;
 public partial class Game : Node
 {
     private Scenario _scenario;
-    [Export] private UI _gameUI;
     private Location _currentLocation;
     [Export] private BattleManager _battleManager;
+    [Export] private GameUi _gameUi;
 
     public override void _Ready()
     {
+        PlayerViewModel.Instance.Init(new PlayerData());
         _scenario = LoadScenarioFromFile("scripts/the_long_way.json");
-        Console.WriteLine(_scenario);
         StartGame(_scenario);
-
         ActionButtons.OnActionPressed += OnActionButtonPressed;
     }
 
     public void StartGame(Scenario scenario)
     {
-        scenario.Locations.ForEach(LoopLocation);
-        Player.Instance.Start();
+        ProcessLocation(scenario.Locations.First());
     }
 
-    public void LoopLocation(Location location)
+    public void ProcessLocation(Location location)
     {
         _currentLocation = location;
-        _gameUI.ChangeLocation(location);
+        _gameUi.ChangeLocation(location);
         EventProcess(location.Events.First());
     }
 
     public void EventProcess(Event @event)
     {
-        _gameUI.ChangeEvent(@event);
+        _gameUi.ChangeEvent(@event);
     }
 
-    public void OnActionButtonPressed(Action action)
+    public async void OnActionButtonPressed(Action action)
     {
-        var outcome = (action.RequiredStat == null || CheckPlayerStat(action.RequiredStat))
-            ? action.PositiveOutcome
-            : action.NegativeOutcome;
+        Outcome outcome;
+        if (!PlayerViewModel.Instance.CheckStat(action.RequiredStat) && action.RequiredStat != null)
+        {
+            var diceRoller = DiceRoller.Instance;
+            diceRoller.RollDice();
+            Variant[] result = await ToSignal(diceRoller, "DiceRolled");
+            int diceValue = (int)result[0];
 
+            outcome = PlayerViewModel.Instance.CheckStat(action.RequiredStat, diceValue)
+                ? action.PositiveOutcome
+                : action.NegativeOutcome;
+        }
+        else
+        {
+            outcome = action.PositiveOutcome;
+        }
+
+        ResolveOutcome(outcome);
+    }
+
+    private void ResolveOutcome(Outcome outcome)
+    {
         switch (outcome.Type)
         {
             case "next_event":
                 var @event = _currentLocation.Events.FirstOrDefault(e => e.Name == outcome.Body);
                 if (@event == null)
                 {
-                    var encounter = _currentLocation.EnemyEncounters.FirstOrDefault(e => e.Name == outcome.Body);
+                    var encounter = _currentLocation.
+                        EnemyEncounters.
+                        FirstOrDefault(e => e.Name == outcome.Body);
 
-                    _battleManager.StartBattleWith(_scenario.GetEnemyByName(encounter.Enemies.FirstOrDefault()));
-                    return;
+                    var enemyName = encounter?.Enemies.FirstOrDefault();
+                    var enemy = _scenario.GetEnemyByName(enemyName);
+                    _battleManager.StartBattleWith(enemy);
+
                 }
-                EventProcess(@event);
+                else
+                    EventProcess(@event);
                 break;
             case "change_location":
-                LoopLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
+                ProcessLocation(_scenario.Locations.First(l => l.Name == outcome.Body));
                 break;
             case "death":
                 EndGame();
                 break;
-            default: return;
         }
-    }
-
-    public bool CheckPlayerStat(Stat stat)
-    {
-        if (stat.Type == null) return true;
-        return stat.Value <= Player.Instance.GetPlayerStat(stat.Type);
     }
 
     public Scenario LoadScenarioFromFile(string filename)
@@ -83,6 +97,7 @@ public partial class Game : Node
 
     public void EndGame()
     {
+        GD.PrintRich("[color=red]YOU DIED!![/color]");
         GetTree().Quit();
     }
 }

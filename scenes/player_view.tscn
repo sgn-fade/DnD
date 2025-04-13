@@ -1,0 +1,134 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1xk843m3gu66"]
+
+[ext_resource type="Script" uid="uid://qx2epbeewyf6" path="res://scripts/PlayerView.cs" id="1_b3px6"]
+[ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="2_jqngf"]
+[ext_resource type="Texture2D" uid="uid://bbh42ltiar7lf" path="res://sprites/GSword.png" id="3_os4jk"]
+[ext_resource type="Texture2D" uid="uid://d11bai08jatea" path="res://sprites/HpProgressUnder.png" id="4_7a3rm"]
+[ext_resource type="Texture2D" uid="uid://f7eg2ursq1nr" path="res://sprites/HpProgress.png" id="5_vhnee"]
+[ext_resource type="Texture2D" uid="uid://5eb1xykpylxm" path="res://sprites/XpBar-progress.png" id="5_xwr5r"]
+[ext_resource type="Texture2D" uid="uid://dqplha3lpno05" path="res://sprites/XpBar-bckground.png" id="6_trjnp"]
+[ext_resource type="PackedScene" uid="uid://5bus8pb1taob" path="res://scenes/StatDisplay.tscn" id="6_v3da1"]
+
+[node name="PlayerView" type="Control" node_paths=PackedStringArray("_playerIcon", "_weaponIcon", "_hpBar", "_xpBar", "_playerName", "_playerHealth", "_playerExp", "_playerLevel", "StatsDisplays")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_b3px6")
+_playerIcon = NodePath("PlayerIcon")
+_weaponIcon = NodePath("PlayerIcon")
+_hpBar = NodePath("HPbar")
+_xpBar = NodePath("ExpProgressBar")
+_playerName = NodePath("Name")
+_playerHealth = NodePath("HPbar/value")
+_playerExp = NodePath("exp")
+_playerLevel = NodePath("Level")
+StatsDisplays = [NodePath("Stats/s"), NodePath("Stats/s2"), NodePath("Stats/s3"), NodePath("Stats/s4")]
+
+[node name="PlayerIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 890.0
+offset_right = 192.0
+offset_bottom = 1063.0
+texture = ExtResource("2_jqngf")
+stretch_mode = 4
+
+[node name="WeaponIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 890.0
+offset_right = 375.0
+offset_bottom = 1063.0
+texture = ExtResource("3_os4jk")
+stretch_mode = 4
+
+[node name="HPbar" type="TextureProgressBar" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 391.0
+offset_top = 938.0
+offset_right = 491.0
+offset_bottom = 947.0
+scale = Vector2(3, 3)
+value = 43.0
+texture_under = ExtResource("4_7a3rm")
+texture_progress = ExtResource("5_vhnee")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="value" type="Label" parent="HPbar"]
+layout_mode = 0
+offset_left = 81.6667
+offset_right = 525.667
+offset_bottom = 100.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 100
+text = "100 100"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 872.0
+offset_right = 206.0
+offset_bottom = 903.0
+theme_override_font_sizes/font_size = 30
+text = "PLAYER NAME"
+horizontal_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 980.0
+offset_right = 725.0
+offset_bottom = 1140.0
+theme_override_constants/separation = 90
+
+[node name="s" parent="Stats" instance=ExtResource("6_v3da1")]
+layout_mode = 2
+
+[node name="s2" parent="Stats" instance=ExtResource("6_v3da1")]
+layout_mode = 2
+LinkedStat = 1
+
+[node name="s3" parent="Stats" instance=ExtResource("6_v3da1")]
+layout_mode = 2
+LinkedStat = 2
+
+[node name="s4" parent="Stats" instance=ExtResource("6_v3da1")]
+layout_mode = 2
+LinkedStat = 3
+
+[node name="ExpProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 893.0
+offset_right = 490.0
+offset_bottom = 903.0
+scale = Vector2(3, 3)
+value = 56.0
+texture_under = ExtResource("6_trjnp")
+texture_progress = ExtResource("5_xwr5r")
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 896.0
+offset_right = 717.0
+offset_bottom = 927.0
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="exp" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 649.0
+offset_top = 871.0
+offset_right = 692.0
+offset_bottom = 891.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "1/50
+"
+
+[connection signal="mouse_entered" from="ExpProgressBar" to="exp" method="show"]
+[connection signal="mouse_exited" from="ExpProgressBar" to="exp" method="hide"]

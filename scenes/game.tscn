@@ -1,23 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=21 format=3 uid="uid://c183fqxsgtm5f"]
 
-[ext_resource type="Script" uid="uid://cp6v8xjb3cirq" path="res://scripts/Game.cs" id="1_kfrmt"]
-[ext_resource type="PackedScene" uid="uid://ynrvfkiwdjvi" path="res://scenes/UI.tscn" id="2_jjhn5"]
-[ext_resource type="Script" uid="uid://b1ap0yrqu4lgq" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
+[ext_resource type="Script" uid="uid://dc65d7ngqbwci" path="res://scripts/Game.cs" id="1_kfrmt"]
+[ext_resource type="Script" uid="uid://10qhhc6chaq1" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="4_tdosb"]
 [ext_resource type="Texture2D" uid="uid://dxrgc1tsa447s" path="res://sprites/bridge.png" id="5_32cxt"]
 [ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="6_rm2q3"]
 [ext_resource type="Texture2D" uid="uid://ctlbgyfqenni4" path="res://sprites/RogueIcon.png" id="7_wwlh8"]
 [ext_resource type="Texture2D" uid="uid://burrthly1f81" path="res://sprites/skeleton.png" id="8_cbeen"]
 [ext_resource type="Texture2D" uid="uid://ckr0x7rf4vxy5" path="res://sprites/mage_icon.png" id="8_ipygt"]
-[ext_resource type="Script" uid="uid://biee6qhw872qv" path="res://scripts/BattleManager.cs" id="8_rrw85"]
+[ext_resource type="Script" uid="uid://c78a20ebcgk4q" path="res://scripts/BattleManager.cs" id="8_rrw85"]
 [ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="9_7i45f"]
 [ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="10_8vk0g"]
+[ext_resource type="PackedScene" uid="uid://bpbk5scyi3bpf" path="res://scenes/game_ui.tscn" id="12_bdg28"]
+[ext_resource type="PackedScene" uid="uid://c1xk843m3gu66" path="res://scenes/player_view.tscn" id="13_e0nws"]
+[ext_resource type="Script" uid="uid://cdjrgfspqf3l7" path="res://scripts/PlayerViewModel.cs" id="14_hnhso"]
+[ext_resource type="PackedScene" uid="uid://b5vumecwl6g46" path="res://scenes/test.tscn" id="14_p61aq"]
+[ext_resource type="PackedScene" uid="uid://60w0tmgwawnx" path="res://scenes/action_button_group.tscn" id="15_ca42v"]
+[ext_resource type="PackedScene" uid="uid://c1fuxmvhi4ogy" path="res://scenes/EnemyUI.tscn" id="16_ssvqc"]
+[ext_resource type="Resource" uid="uid://b4ilwq5222yb5" path="res://resources/Skills/Warrior/HeavyAttack.tres" id="18_1kice"]
+[ext_resource type="Script" uid="uid://dst3qae2av3oh" path="res://scripts/EnemyController.cs" id="18_264po"]
+[ext_resource type="Resource" uid="uid://b6wctivvslchy" path="res://resources/Skills/Warrior/Regen.tres" id="19_1kice"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_gameUI")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
-_gameUI = NodePath("UI")
-
-[node name="UI" parent="." instance=ExtResource("2_jjhn5")]
+_battleManager = NodePath("BattleManager")
+_gameUi = NodePath("UI/GameUI")
 
 [node name="TextureStorage" type="Node2D" parent="."]
 script = ExtResource("3_2troa")
@@ -30,6 +37,52 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUI")]
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemyController", "_battleActionsController")]
 script = ExtResource("8_rrw85")
-_gameUI = NodePath("../UI")
+_gameUi = NodePath("../UI/GameUI")
+_enemyController = NodePath("../EnemyViewModel")
+_battleActionsController = NodePath("../UI/ActionButtonGroup")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" node_paths=PackedStringArray("_enemyUi", "_battleActions") instance=ExtResource("12_bdg28")]
+_enemyUi = NodePath("../EnemyView")
+_textSpawnSpeed = 0.03
+_battleActions = NodePath("../ActionButtonGroup")
+
+[node name="PlayerView" parent="UI" instance=ExtResource("13_e0nws")]
+mouse_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1832, 1077)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("14_p61aq")]
+
+[node name="ActionButtonGroup" parent="UI" node_paths=PackedStringArray("BattleManager", "_buttonsToDisable") instance=ExtResource("15_ca42v")]
+visible = false
+offset_left = 1187.0
+offset_top = 776.0
+offset_right = 1278.0
+offset_bottom = 798.0
+scale = Vector2(4, 4)
+BattleManager = NodePath("../../BattleManager")
+_buttonsToDisable = []
+
+[node name="EnemyView" parent="UI" instance=ExtResource("16_ssvqc")]
+
+[node name="PlayerViewModel" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
+script = ExtResource("14_hnhso")
+_playerView = NodePath("../UI/PlayerView")
+WarriorSkills = Array[Resource]([ExtResource("18_1kice"), ExtResource("19_1kice")])
+
+[node name="EnemyViewModel" type="Node" parent="." node_paths=PackedStringArray("EnemyView")]
+script = ExtResource("18_264po")
+EnemyView = NodePath("../UI/EnemyView")

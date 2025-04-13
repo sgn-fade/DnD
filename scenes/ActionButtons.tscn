@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhf4ifkun8uhb"]
 
 [ext_resource type="Texture2D" uid="uid://dtwfflo18np1r" path="res://sprites/button.png" id="1_424wy"]
-[ext_resource type="Script" uid="uid://c7f87v5hv0vbv" path="res://scripts/ActionButtons.cs" id="2_6x05e"]
+[ext_resource type="Script" uid="uid://dp4gbpfdiluuy" path="res://scripts/ActionButtons.cs" id="2_6x05e"]
 
 [node name="Action" type="TextureButton" node_paths=PackedStringArray("_actionDescription")]
 self_modulate = Color(0.990975, 0.868123, 0.799655, 1)
@@ -17,10 +17,14 @@ offset_left = 23.0
 offset_top = 36.0
 offset_right = 1305.0
 offset_bottom = 174.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.1, 0.1)
 mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 70
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.0941176)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_offset_y = 50
+theme_override_font_sizes/normal_font_size = 300
 text = "action desc"
 fit_content = true
 scroll_active = false
