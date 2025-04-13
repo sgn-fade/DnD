@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://drgwohpxha8xp"]
+[gd_scene load_steps=18 format=3 uid="uid://drgwohpxha8xp"]
 
-[ext_resource type="Script" path="res://scripts/PlayerCreationUI.cs" id="1_k2pds"]
+[ext_resource type="Script" uid="uid://bial7lc05gbja" path="res://scripts/PlayerCreationUI.cs" id="1_k2pds"]
 [ext_resource type="Texture2D" uid="uid://b00djl7cwvyak" path="res://sprites/heroChoiceBackground.png" id="2_s05dh"]
 [ext_resource type="Texture2D" uid="uid://b27iyqow6m6dx" path="res://sprites/heroChoiceButton.png" id="3_kwee0"]
 [ext_resource type="Texture2D" uid="uid://dvopupr1k8uvu" path="res://sprites/heroChoiceButtonPressed.png" id="4_u4sm7"]
-[ext_resource type="Script" path="res://scripts/SwitchButton.cs" id="5_bdnec"]
-[ext_resource type="Script" path="res://scripts/Data/TextureStorage.cs" id="6_qlke8"]
+[ext_resource type="Script" uid="uid://hlgro0gcckrn" path="res://scripts/SwitchButton.cs" id="5_bdnec"]
+[ext_resource type="Script" uid="uid://b1ap0yrqu4lgq" path="res://scripts/Data/TextureStorage.cs" id="6_qlke8"]
 [ext_resource type="Texture2D" uid="uid://b611gj5qxwwuw" path="res://sprites/forest.png" id="7_5qmgs"]
 [ext_resource type="Texture2D" uid="uid://dxrgc1tsa447s" path="res://sprites/bridge.png" id="8_matgn"]
 [ext_resource type="Texture2D" uid="uid://gpo1tn6se1aq" path="res://sprites/KnightIcon.png" id="9_2334n"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dsd5oh2m5att3" path="res://sprites/slime.png" id="13_ok7kh"]
 [ext_resource type="Texture2D" uid="uid://lnogvi4yg010" path="res://sprites/plant.png" id="14_7o7d4"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="15_agk8e"]
+[ext_resource type="PackedScene" uid="uid://bgh8ual5g6ght" path="res://scenes/ArrowButton.tscn" id="16_t4kaa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5h1o"]
 
@@ -28,16 +29,16 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_s05dh")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 700.0
-offset_top = 269.0
-offset_right = 768.0
-offset_bottom = 285.0
-scale = Vector2(7, 7)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 705.0
+offset_top = 213.0
+offset_right = 773.0
+offset_bottom = 229.0
+scale = Vector2(4, 4)
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="WarriorButton" type="TextureButton" parent="VBoxContainer"]
+[node name="WarriorButton" type="TextureButton" parent="HBoxContainer"]
 self_modulate = Color(0.592157, 0, 0, 1)
 layout_mode = 2
 toggle_mode = true
@@ -45,7 +46,7 @@ texture_normal = ExtResource("3_kwee0")
 texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/WarriorButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/WarriorButton"]
 visible = false
 layout_mode = 0
 offset_left = 44.8571
@@ -61,7 +62,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RogueButton" type="TextureButton" parent="VBoxContainer"]
+[node name="RogueButton" type="TextureButton" parent="HBoxContainer"]
 self_modulate = Color(0, 0.443137, 0, 1)
 layout_mode = 2
 toggle_mode = true
@@ -70,7 +71,7 @@ texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 _linkedClasses = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/RogueButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/RogueButton"]
 visible = false
 layout_mode = 0
 offset_left = 53.4286
@@ -86,7 +87,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="MageButton" type="TextureButton" parent="VBoxContainer"]
+[node name="MageButton" type="TextureButton" parent="HBoxContainer"]
 modulate = Color(0, 0.176471, 0.541176, 1)
 layout_mode = 2
 toggle_mode = true
@@ -95,7 +96,7 @@ texture_disabled = ExtResource("4_u4sm7")
 script = ExtResource("5_bdnec")
 _linkedClasses = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MageButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/MageButton"]
 visible = false
 layout_mode = 0
 offset_left = 53.1429
@@ -112,10 +113,10 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="ClassDescription" type="Label" parent="."]
-offset_left = 902.0
-offset_top = 404.0
-offset_right = 1538.0
-offset_bottom = 870.0
+offset_left = 67.0
+offset_top = 235.0
+offset_right = 703.0
+offset_bottom = 701.0
 
 [node name="ClassIcon" type="TextureRect" parent="."]
 offset_left = 537.0
@@ -151,6 +152,28 @@ deselect_on_focus_loss_enabled = false
 caret_blink = true
 caret_blink_interval = 0.55
 
-[connection signal="toggled" from="VBoxContainer/WarriorButton" to="." method="OnWarriorButtonToggle"]
-[connection signal="toggled" from="VBoxContainer/RogueButton" to="." method="OnRogueButtonToggle"]
-[connection signal="toggled" from="VBoxContainer/MageButton" to="." method="OnMageButtonToggle"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 657.0
+offset_top = 264.0
+offset_right = -765.0
+offset_bottom = -579.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="ArrowButton" parent="VBoxContainer2" instance=ExtResource("16_t4kaa")]
+layout_mode = 2
+
+[node name="ArrowButton2" parent="VBoxContainer2" instance=ExtResource("16_t4kaa")]
+layout_mode = 2
+
+[node name="ArrowButton3" parent="VBoxContainer2" instance=ExtResource("16_t4kaa")]
+layout_mode = 2
+
+[node name="ArrowButton4" parent="VBoxContainer2" instance=ExtResource("16_t4kaa")]
+layout_mode = 2

@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://ynrvfkiwdjvi"]
 
 [ext_resource type="Texture2D" uid="uid://cl2ymycwbbeik" path="res://sprites/background.png" id="1_6bhrj"]
-[ext_resource type="Script" path="res://scripts/UI.cs" id="1_b7tif"]
+[ext_resource type="Script" uid="uid://btbxwa4rrbd73" path="res://scripts/UI.cs" id="1_b7tif"]
 [ext_resource type="FontFile" uid="uid://dvxtemfj51dsa" path="res://Pixellari.ttf" id="2_4ikvk"]
 [ext_resource type="Texture2D" uid="uid://cgtj1bxeuatfi" path="res://sprites/pabapepe.png" id="3_fp1a0"]
 [ext_resource type="Texture2D" uid="uid://cfsfwn4y7cp44" path="res://sprites/Sword.png" id="4_ej0i7"]
 [ext_resource type="Texture2D" uid="uid://crmum6fg4c5bl" path="res://sprites/heart.png" id="5_0sea5"]
-[ext_resource type="Script" path="res://scripts/PlayerUI.cs" id="5_4nfjf"]
+[ext_resource type="Script" uid="uid://ccmugk0khi2uo" path="res://scripts/PlayerUI.cs" id="5_4nfjf"]
 [ext_resource type="PackedScene" uid="uid://dhf4ifkun8uhb" path="res://scenes/ActionButtons.tscn" id="5_371ss"]
-[ext_resource type="Script" path="res://scripts/EnemyUI.cs" id="6_uisg5"]
+[ext_resource type="Script" uid="uid://1pbn1jjcaocc" path="res://scripts/EnemyUI.cs" id="6_uisg5"]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_locationName", "_locationDescription", "_locationImage", "_eventName", "_eventDescription", "_buttonsParent")]
 follow_viewport_enabled = true
