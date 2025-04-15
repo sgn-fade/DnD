@@ -10,4 +10,8 @@
   <ItemGroup>
     <Content Include="scripts\the_long_way.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts\Skills\Mage\" />
+    <Folder Include="scripts\Skills\Rogue\" />
+  </ItemGroup>
 </Project>

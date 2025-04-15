@@ -11,6 +11,8 @@ public partial class PlayerViewModel : Node
     public static PlayerViewModel Instance { get; set; }
     [Export] private PlayerView _playerView;
     [Export] private Skill[] WarriorSkills;
+    [Export] private Skill[] RogueSkills;
+    [Export] private Skill[] MageSkills;
 
     public override void _Ready()
     {
