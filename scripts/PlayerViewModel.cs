@@ -76,7 +76,7 @@ public partial class PlayerViewModel : Node
             return;
         }
 
-        _playerView.UpdateAll(PlayerData);
+        RefreshUi();
     }
 
     private void Die()
@@ -92,7 +92,7 @@ public partial class PlayerViewModel : Node
 
     private void UpdateDataView()
     {
-        _playerView.UpdateAll(PlayerData);
+        RefreshUi();
     }
 
     public double GetDamage()
@@ -104,6 +104,8 @@ public partial class PlayerViewModel : Node
     {
         PlayerData.Hp += value;
         if (PlayerData.Hp > PlayerData.MaxHp) PlayerData.Hp = PlayerData.MaxHp;
-        _playerView.UpdateAll(PlayerData);
+        RefreshUi();
     }
+    private void RefreshUi() => _playerView.UpdateAll(PlayerData);
+
 }
