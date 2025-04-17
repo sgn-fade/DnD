@@ -9,6 +9,8 @@ public abstract partial class Skill : Resource
     [Export] public Texture2D Icon { get; set; }
     [Export] public int Cooldown { get; set; }
     public int CurrentCooldown { get; set; }
+    public string BattleLogText { get; set; }
+
 
     public bool IsReady => CurrentCooldown <= 0;
 
@@ -24,5 +26,4 @@ public abstract partial class Skill : Resource
         if (CurrentCooldown > 0)
             CurrentCooldown--;
     }
-    public string BattleLogText { get; set; }
 }

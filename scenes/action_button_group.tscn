@@ -45,6 +45,7 @@ layout_mode = 2
 texture_normal = ExtResource("6_6ni75")
 
 [node name="SkillButtons" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 39.0
 offset_right = 40.0
@@ -67,6 +68,7 @@ layout_mode = 2
 texture_normal = null
 
 [node name="InventoryButtons" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -4.0
 offset_top = -50.0
