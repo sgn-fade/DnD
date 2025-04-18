@@ -35,6 +35,7 @@ class Action
     {
       description: @description,
       required_stat: @required_stat.nil? ? {} : @required_stat.to_hash,
+      required_tag: @required_tag,
       positive_outcome: @positive_outcome.nil? ? {} : @positive_outcome.to_hash,
       negative_outcome: @negative_outcome.nil? ? {} : @negative_outcome.to_hash,
     }

@@ -24,9 +24,26 @@
 			  "description": "Start your path",
 			  "required_stat": {
 			  },
+			  "required_tag": null,
 			  "positive_outcome": {
 				"type": "next_event",
 				"body": "big_tree",
+				"tag_to_give": null,
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			},
+			{
+			  "description": "Get tag",
+			  "required_stat": {
+			  },
+			  "required_tag": null,
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "big_tree",
+				"tag_to_give": "tag1",
 				"item_to_give": {
 				}
 			  },
@@ -39,9 +56,11 @@
 				"type": "strength",
 				"value": 99
 			  },
+			  "required_tag": null,
 			  "positive_outcome": {
 				"type": "death",
 				"body": null,
+				"tag_to_give": null,
 				"item_to_give": {
 				}
 			  },
@@ -58,17 +77,20 @@
 			  "description": "Climb a tree to look around",
 			  "required_stat": {
 				"type": "dexterity",
-				"value": 18
+				"value": 9
 			  },
+			  "required_tag": null,
 			  "positive_outcome": {
 				"type": "next_event",
 				"body": "Tree's crown",
+				"tag_to_give": null,
 				"item_to_give": {
 				}
 			  },
 			  "negative_outcome": {
 				"type": "death",
 				"body": null,
+				"tag_to_give": null,
 				"item_to_give": {
 				}
 			  }
@@ -77,9 +99,26 @@
 			  "description": "To take your road",
 			  "required_stat": {
 			  },
+			  "required_tag": null,
 			  "positive_outcome": {
 				"type": "next_event",
 				"body": "goblin_encounter",
+				"tag_to_give": null,
+				"item_to_give": {
+				}
+			  },
+			  "negative_outcome": {
+			  }
+			},
+			{
+			  "description": "Check tag",
+			  "required_stat": {
+			  },
+			  "required_tag": "tag1",
+			  "positive_outcome": {
+				"type": "next_event",
+				"body": "goblin_encounter",
+				"tag_to_give": null,
 				"item_to_give": {
 				}
 			  },
@@ -96,9 +135,11 @@
 			  "description": "go downstairs",
 			  "required_stat": {
 			  },
+			  "required_tag": null,
 			  "positive_outcome": {
 				"type": "next_event",
 				"body": "big_tree",
+				"tag_to_give": null,
 				"item_to_give": {
 				}
 			  },
@@ -118,12 +159,14 @@
 		  "battle_outcome": {
 			"type": "next_event",
 			"body": "goblin_encounter",
+			"tag_to_give": null,
 			"item_to_give": {
 			}
 		  },
 		  "win_outcome": {
-			"type": "give_item",
+			"type": null,
 			"body": null,
+			"tag_to_give": null,
 			"item_to_give": {
 			  "type": "gold",
 			  "body": "5"

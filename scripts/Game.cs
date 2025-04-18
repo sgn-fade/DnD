@@ -62,23 +62,22 @@ public partial class Game : Node
 
     private void ResolveOutcome(Outcome outcome)
     {
+        if (outcome.TagToGive != null) PlayerViewModel.Instance.AddTag(outcome.TagToGive);
         switch (outcome.Type)
         {
             case "next_event":
                 var @event = _currentLocation.Events.FirstOrDefault(e => e.Name == outcome.Body);
                 if (@event == null)
                 {
-                    var encounter = _currentLocation.
-                        EnemyEncounters.
-                        FirstOrDefault(e => e.Name == outcome.Body);
+                    var encounter = _currentLocation.EnemyEncounters.FirstOrDefault(e => e.Name == outcome.Body);
 
                     var enemyName = encounter?.Enemies.FirstOrDefault();
                     var enemy = _scenario.GetEnemyByName(enemyName);
                     _battleManager.StartBattleWith(enemy);
-
                 }
                 else
                     EventProcess(@event);
+
                 break;
             case "change_location":
                 ProcessLocation(_scenario.Locations.First(l => l.Name == outcome.Body));

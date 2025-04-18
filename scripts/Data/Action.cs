@@ -20,12 +20,19 @@ public partial class Action : Node
         set => PositiveOutcome = value;
     }
 
+
     public Outcome negative_outcome {
         get => NegativeOutcome;
         set => NegativeOutcome = value;
     }
     public Outcome PositiveOutcome { get; set; }
     public Outcome NegativeOutcome { get; set; }
+    public string RequiredTag { get; set; }
+    public string @required_tag
+    {
+        get => RequiredTag;
+        set => RequiredTag = value;
+    }
 
     public override string ToString()
     {

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DND;
 
 public partial class ActionButtons : TextureButton
 {
@@ -7,6 +8,7 @@ public partial class ActionButtons : TextureButton
     private DND.Action _linkedAction;
 
     public delegate void ActionPressed(DND.Action action);
+
     public static event ActionPressed OnActionPressed;
 
     public override void _Ready()
@@ -17,19 +19,47 @@ public partial class ActionButtons : TextureButton
     public void ChangeAction(DND.Action newAction)
     {
         _linkedAction = newAction;
-        if (_linkedAction != null)
-        {
-            _actionDescription.Text = _linkedAction.Description;
-            if (_linkedAction.RequiredStat.Type != null)
-            {
-                var color = GetColorByStatType(_linkedAction.RequiredStat.Type);
-                _actionDescription.AppendText($"[color={color}] [outline_size={80}]" +
-                                              $"[{_linkedAction.RequiredStat.Value}]" +
-                                              $"[/outline_size][/color]");
-            }
-        }
         Visible = _linkedAction != null;
+
+        if (_linkedAction == null)
+            return;
+
+        UpdateActionDescription();
+        HandleStat();
+        HandleTag();
     }
+
+    private void UpdateActionDescription()
+    {
+        _actionDescription.Text = _linkedAction.Description;
+    }
+
+    private void HandleStat()
+    {
+        var requiredStat = _linkedAction.RequiredStat;
+        if (requiredStat?.Type != null)
+        {
+            var color = GetColorByStatType(requiredStat.Type);
+            _actionDescription.AppendText(
+                $"[color={color}][outline_size=80][{requiredStat.Value}][/outline_size][/color]");
+        }
+    }
+
+    private void HandleTag()
+    {
+        var tag = _linkedAction.RequiredTag;
+        if (string.IsNullOrEmpty(tag))
+            return;
+
+        if (!PlayerViewModel.Instance.CheckTag(tag))
+        {
+            Visible = false;
+            return;
+        }
+
+        _actionDescription.AppendText($"[outline_size=80][{tag}][/outline_size]");
+    }
+
 
     public void OnButtonPressed()
     {

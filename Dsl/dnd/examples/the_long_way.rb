@@ -20,6 +20,14 @@ DND::scenario :the_long_way do
         in_case_of_success do
           transfer_to_event :big_tree
         end
+        end
+      action do
+        desc "Get tag"
+
+        in_case_of_success do
+          give_tag :tag1
+          transfer_to_event :big_tree
+        end
       end
       action do
         desc "Stay home under the covers"
@@ -43,6 +51,13 @@ DND::scenario :the_long_way do
       end
       action do
         desc "To take your road"
+        in_case_of_success do
+          transfer_to_event :goblin_encounter
+        end
+        end
+      action do
+        desc "Check tag"
+        required_tag "tag1"
         in_case_of_success do
           transfer_to_event :goblin_encounter
         end

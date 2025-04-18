@@ -45,6 +45,7 @@ public class PlayerData
     }
 
     public List<Skill> Skills = [];
+    public List<string> Tags = [];
 
     public void AddSkill(Skill skill)
     {

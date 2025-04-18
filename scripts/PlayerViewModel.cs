@@ -108,4 +108,10 @@ public partial class PlayerViewModel : Node
     }
     private void RefreshUi() => _playerView.UpdateAll(PlayerData);
 
+    public void AddTag(string tag)
+    {
+        PlayerData.Tags.Add(tag);
+    }
+
+    public bool CheckTag(string tag) => PlayerData.Tags.Contains(tag);
 }

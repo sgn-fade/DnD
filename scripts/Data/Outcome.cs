@@ -7,6 +7,11 @@ public class Outcome
 {
     public String Type { get; set; }
     public String Body { get; set; }
+    public String tag_to_give {
+        get => TagToGive;
+        set => TagToGive = value;
+    }
+    public String TagToGive { get; set; }
 
     public override string ToString()
     {
