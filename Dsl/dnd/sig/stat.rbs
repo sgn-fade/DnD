@@ -1,0 +1,12 @@
+class Stat
+  TYPES: Array[Symbol]
+
+  @type: Symbol
+  @value: Integer
+
+  def stat: (Symbol stat_type, Integer value) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def validate: -> untyped
+end

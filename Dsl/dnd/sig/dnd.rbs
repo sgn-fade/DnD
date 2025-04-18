@@ -1,0 +1,5 @@
+module DND
+  VERSION: String
+
+  def self.scenario: -> untyped
+end

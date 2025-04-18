@@ -1,0 +1,19 @@
+class Event
+  @actions: Array[Action]
+  @description: String | nil
+  @name: Symbol
+
+  def action: (String description) -> untyped
+
+  def desc: (String description) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def validate: -> untyped
+
+  private
+
+  def get_possible_outcomes: -> Array[Symbol]
+
+  def get_references: -> Array[Symbol]
+end

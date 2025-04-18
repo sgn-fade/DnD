@@ -1,0 +1,21 @@
+class Weapon
+
+  TYPES: Array[Symbol]
+
+  @name: Symbol
+  @description: String | nil
+  @type: Symbol | nil
+  @stat: Stat | nil
+
+  def desc: (String description) -> untyped
+
+  def stat: (Symbol stat_type) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def type: (Symbol type) -> untyped
+
+  def validate: -> untyped
+
+  def weapon: (Symbol name) -> untyped
+end

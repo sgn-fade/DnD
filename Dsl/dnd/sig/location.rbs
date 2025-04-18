@@ -1,0 +1,33 @@
+class Location
+  TYPES: Array[Symbol]
+
+  @events: Array[Event]
+  @enemy_encounters: Array[EnemyEncounter]
+  @name: Symbol
+  @tier: Integer | nil
+  @description: String | nil
+  @type: Symbol | nil
+
+  def enemy_encounter: -> untyped
+
+  def event: (String name, String description) -> untyped
+
+  def tier: (Integer tier) -> untyped
+
+  def desc: (String description) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def type: (LocationTypes type)-> untyped
+
+  def validate: -> untyped
+
+  private
+
+  def validate_event_transitions: -> untyped
+
+  def validate_random_encounter_transitions: -> untyped
+
+  def validate_transitions: -> untyped
+
+end

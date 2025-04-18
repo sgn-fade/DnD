@@ -1,0 +1,23 @@
+class Enemy
+
+  TYPES: Array[Symbol]
+
+  @name: Symbol
+  @description: String | nil
+  @type: Symbol | nil
+  @hp: Integer | nil
+  @damage: Integer | nil
+
+  def desc: (String description) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def type: (Symbol type) -> untyped
+
+  def hp: (Integer hp) -> untyped
+
+  def damage: (Integer damage) -> untyped
+
+  def validate: -> untyped
+
+end

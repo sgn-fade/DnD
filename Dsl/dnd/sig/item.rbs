@@ -1,0 +1,12 @@
+class Item
+  TYPES: Array[Symbol]
+
+  @body: Weapon | Integer
+  @type: Symbol
+
+  def gold: -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def weapon: -> untyped
+end

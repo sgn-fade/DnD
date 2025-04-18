@@ -1,0 +1,29 @@
+class Scenario
+  @locations: Array[Location]
+  @name: Symbol
+  @weapons: Array[Weapon]
+  @enemies: Array[Enemy]
+
+  def enemy: (Symbol name) -> untyped
+
+  def event: (Symbol name) -> untyped
+
+  def location: (Symbol name, Symbol type) -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def validate: -> untyped
+
+  def weapon: (Symbol name) -> untyped
+
+  private
+
+  def validate_references: (Symbol field, Symbol reference_type, Array[Symbol] valid_references) -> untyped
+
+  def validate_location_references: -> untyped
+
+  def validate_enemy_references: -> untyped
+
+  def validate_weapon_references: -> untyped
+
+end

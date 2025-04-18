@@ -1,0 +1,25 @@
+class EnemyEncounter
+
+  @battle_outcome: Outcome | nil
+  @description: String | nil
+  @enemies: Array[Symbol]
+  @name: Symbol
+  @win_outcome: Outcome | nil
+
+  def desc: (String description) -> untyped
+
+  def encounter_one_of: (Array[Symbol]) -> untyped
+
+  def enemy: (Symbol) -> untyped
+  def on_battle_end: (Outcome outcome) -> untyped
+
+  def on_enemy_killed: (Outcome outcome)  -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def validate: -> untyped
+
+  private
+
+  def get_references: -> Array[Symbol]
+end

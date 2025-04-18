@@ -1,0 +1,22 @@
+class Action
+  @description: String | nil
+  @negative_outcome: Outcome | nil
+  @positive_outcome: Outcome | nil
+  @required_stat: Stat | nil
+  @required_tag: String | nil
+
+  def desc: (String description) -> untyped
+
+  def in_case_of_failure: -> untyped
+
+  def in_case_of_success: -> untyped
+
+  def require_to_have: (Symbol stat_type, Integer value) -> untyped
+
+  def required_tag: -> untyped
+
+  def to_hash: -> Hash[Symbol, untyped]
+
+  def validate: -> untyped
+
+end
