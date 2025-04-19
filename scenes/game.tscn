@@ -37,13 +37,8 @@ Skeleton = ExtResource("8_cbeen")
 Slime = ExtResource("9_7i45f")
 Plant = ExtResource("10_8vk0g")
 
-[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemyController", "_battleActionsController")]
-script = ExtResource("8_rrw85")
-_gameUi = NodePath("../UI/GameUI")
-_enemyController = NodePath("../EnemyViewModel")
-_battleActionsController = NodePath("../UI/ActionButtonGroup")
-
 [node name="UI" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="GameUI" parent="UI" node_paths=PackedStringArray("_enemyUi", "_battleActions") instance=ExtResource("12_bdg28")]
 _enemyUi = NodePath("../EnemyView")
@@ -86,3 +81,15 @@ WarriorSkills = Array[Resource]([ExtResource("18_1kice"), ExtResource("19_1kice"
 [node name="EnemyViewModel" type="Node" parent="." node_paths=PackedStringArray("EnemyView")]
 script = ExtResource("18_264po")
 EnemyView = NodePath("../UI/EnemyView")
+
+[node name="BattleManager" type="Node2D" parent="." node_paths=PackedStringArray("_gameUi", "_enemyPos", "_enemyController", "_battleActionsController")]
+z_as_relative = false
+position = Vector2(-2, -11)
+script = ExtResource("8_rrw85")
+_gameUi = NodePath("../UI/GameUI")
+_enemyPos = NodePath("EnemyPos")
+_enemyController = NodePath("../EnemyViewModel")
+_battleActionsController = NodePath("../UI/ActionButtonGroup")
+
+[node name="EnemyPos" type="Marker2D" parent="BattleManager"]
+position = Vector2(656, 593)

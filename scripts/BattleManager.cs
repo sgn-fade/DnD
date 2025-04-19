@@ -9,7 +9,7 @@ public partial class BattleManager : Node2D
     [Export] private GameUi _gameUi;
     private bool _isPlayerTurn;
     private PlayerViewModel _player;
-    [Export] private Node _battleLog;
+    [Export] private Marker2D _enemyPos;
     [Export] private EnemyController _enemyController;
     [Export] private BattleActionsController _battleActionsController;
     private int _currentTurn;
@@ -132,6 +132,9 @@ public partial class BattleManager : Node2D
     {
         skill.Use(_player, _enemyController);
         _gameUi.PushToBattleLog(skill.BattleLogText);
+        var skillScene = skill.SceneToSpawn.Instantiate<Node2D>();
+        skillScene.GlobalPosition = _enemyPos.GlobalPosition;
+        AddChild(skillScene);
         PlayerPressedAction();
     }
 }
