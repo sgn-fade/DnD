@@ -67,7 +67,6 @@ public partial class BattleManager : Node2D
         {
             EnemyTurn();
         }
-
     }
 
     private void UpdateSpellsCooldowns()

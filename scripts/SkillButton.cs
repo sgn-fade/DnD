@@ -10,6 +10,13 @@ public partial class SkillButton : SoundButton
     public delegate void SkillPressedEventHandler(Skill skill);
 
     [Export] private DescriptionPopUp _descriptionPopUp;
+    [Export] private TextureRect _skillIcon;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Disabled = true;
+    }
 
     public void OnButtonPressed()
     {
@@ -21,14 +28,18 @@ public partial class SkillButton : SoundButton
 
     public void Link(Skill skill)
     {
+        Disabled = false;
         LinkedSkill = skill;
-        TextureNormal = skill.Icon;
+        _skillIcon.Texture = skill.Icon;
     }
 
     public void OnMouseEntered()
     {
-        _descriptionPopUp.Show();
-        _descriptionPopUp.DisplayText(LinkedSkill.Name, LinkedSkill.Description);
+        if(LinkedSkill != null)
+        {
+            _descriptionPopUp.Show();
+            _descriptionPopUp.DisplayText(LinkedSkill.Name, LinkedSkill.Description);
+        }
     }
     public void OnMouseExited()
     {

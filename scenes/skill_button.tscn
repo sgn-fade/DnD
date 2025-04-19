@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://do4w7pldrci3h"]
+[gd_scene load_steps=8 format=3 uid="uid://do4w7pldrci3h"]
 
-[ext_resource type="Texture2D" uid="uid://dfbsmy8es1php" path="res://sprites/statCore.png" id="1_xafvn"]
+[ext_resource type="Texture2D" uid="uid://bd50et64sh0pu" path="res://sprites/Buttons/ButtonBackgroundNormal.png" id="1_8yom1"]
+[ext_resource type="Texture2D" uid="uid://cnftwscgr7xax" path="res://sprites/Buttons/ButtonBackgroundPressed.png" id="2_0wcdv"]
 [ext_resource type="Script" uid="uid://l33cvvfur7tf" path="res://scripts/SkillButton.cs" id="2_ka5vw"]
+[ext_resource type="Texture2D" uid="uid://pgmgdjlymvsu" path="res://sprites/Buttons/ButtonBackgroundHovered.png" id="3_ak5jy"]
 [ext_resource type="PackedScene" uid="uid://cjxx54ry2o2w0" path="res://scenes/description_pop_up.tscn" id="3_ka5vw"]
+[ext_resource type="AudioStream" uid="uid://2ofq1tmwmlyn" path="res://Sound/Fantasy UI SFX/Fantasy/Fantasy_UI (4).wav" id="4_p80kq"]
+[ext_resource type="Texture2D" uid="uid://cqnu2cquejkek" path="res://sprites/Buttons/Icons/Attack.png" id="6_0wcdv"]
 
-[node name="SkillButton" type="TextureButton" node_paths=PackedStringArray("_descriptionPopUp")]
+[node name="SkillButton" type="TextureButton" node_paths=PackedStringArray("_descriptionPopUp", "_skillIcon", "_player")]
 offset_left = -9.5
 offset_top = -9.5
 offset_right = 9.5
 offset_bottom = 9.5
 pivot_offset = Vector2(9.5, 9.5)
-texture_normal = ExtResource("1_xafvn")
+texture_normal = ExtResource("1_8yom1")
+texture_pressed = ExtResource("2_0wcdv")
+texture_hover = ExtResource("3_ak5jy")
 script = ExtResource("2_ka5vw")
 _descriptionPopUp = NodePath("DescriptionPopUp")
+_skillIcon = NodePath("Icon")
+_player = NodePath("AudioStreamPlayer")
 
 [node name="DescriptionPopUp" parent="." instance=ExtResource("3_ka5vw")]
 visible = false
@@ -21,6 +29,18 @@ offset_left = -15.5
 offset_top = -64.5
 offset_right = -15.5
 offset_bottom = -64.5
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 40.5
+offset_bottom = 40.5
+texture = ExtResource("6_0wcdv")
+stretch_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p80kq")
 
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
