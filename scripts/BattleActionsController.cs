@@ -36,7 +36,6 @@ public partial class BattleActionsController : Control
         for (int i = 0; i < player.Skills.Count; i++)
         {
             _skillButtons[i].Link(player.Skills[i]);
-
         }
     }
 
@@ -79,13 +78,24 @@ public partial class BattleActionsController : Control
         {
             textureButton.Disabled = true;
         }
+
         HideAllMenus();
     }
+
     public void EnableButtons()
     {
         foreach (var textureButton in _buttonsToDisable)
         {
             textureButton.Disabled = false;
+        }
+    }
+
+    public void UpdateSkillButtonsView()
+    {
+        foreach (var skillButton in _skillButtons)
+        {
+            if(skillButton.LinkedSkill != null)
+                skillButton.UpdateView();
         }
     }
 }

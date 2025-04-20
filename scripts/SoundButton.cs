@@ -3,14 +3,14 @@ using System;
 
 public partial class SoundButton : TextureButton
 {
-    [Export] private AudioStreamPlayer _player;
+    [Export] protected AudioStreamPlayer _defaultAudioPlayer;
     public override void _Ready()
     {
         Pressed += OnPressed;
     }
 
-    private void OnPressed()
+    protected virtual void OnPressed()
     {
-        _player.Play();
+        _defaultAudioPlayer.Play();
     }
 }

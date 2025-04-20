@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://do4w7pldrci3h"]
+[gd_scene load_steps=9 format=3 uid="uid://do4w7pldrci3h"]
 
 [ext_resource type="Texture2D" uid="uid://bd50et64sh0pu" path="res://sprites/Buttons/ButtonBackgroundNormal.png" id="1_8yom1"]
 [ext_resource type="Texture2D" uid="uid://cnftwscgr7xax" path="res://sprites/Buttons/ButtonBackgroundPressed.png" id="2_0wcdv"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cjxx54ry2o2w0" path="res://scenes/description_pop_up.tscn" id="3_ka5vw"]
 [ext_resource type="AudioStream" uid="uid://2ofq1tmwmlyn" path="res://Sound/Fantasy UI SFX/Fantasy/Fantasy_UI (4).wav" id="4_p80kq"]
 [ext_resource type="Texture2D" uid="uid://cqnu2cquejkek" path="res://sprites/Buttons/Icons/Attack.png" id="6_0wcdv"]
+[ext_resource type="AudioStream" uid="uid://cuq58fopjry4a" path="res://Sound/Fantasy UI SFX/Fantasy/SKillNotReady.wav" id="8_ak5jy"]
 
-[node name="SkillButton" type="TextureButton" node_paths=PackedStringArray("_descriptionPopUp", "_skillIcon", "_player")]
+[node name="SkillButton" type="TextureButton" node_paths=PackedStringArray("_descriptionPopUp", "_skillNotReadyAudioPlayer", "_skillIcon", "_cdBack", "_cdText", "_defaultAudioPlayer")]
 offset_left = -9.5
 offset_top = -9.5
 offset_right = 9.5
@@ -19,8 +20,11 @@ texture_pressed = ExtResource("2_0wcdv")
 texture_hover = ExtResource("3_ak5jy")
 script = ExtResource("2_ka5vw")
 _descriptionPopUp = NodePath("DescriptionPopUp")
+_skillNotReadyAudioPlayer = NodePath("SkillNotReady")
 _skillIcon = NodePath("Icon")
-_player = NodePath("AudioStreamPlayer")
+_cdBack = NodePath("CdBackg")
+_cdText = NodePath("CdValue")
+_defaultAudioPlayer = NodePath("SkillReady")
 
 [node name="DescriptionPopUp" parent="." instance=ExtResource("3_ka5vw")]
 visible = false
@@ -39,8 +43,31 @@ offset_bottom = 40.5
 texture = ExtResource("6_0wcdv")
 stretch_mode = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SkillReady" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_p80kq")
+
+[node name="SkillNotReady" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ak5jy")
+
+[node name="CdValue" type="Label" parent="."]
+visible = false
+modulate = Color(0.0546875, 0.0540466, 0.0540466, 1)
+layout_mode = 0
+offset_left = 11.5
+offset_top = 9.5
+offset_right = 51.5
+offset_bottom = 25.5
+text = "1"
+
+[node name="CdBackg" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 31.0
+mouse_filter = 2
+color = Color(0.286275, 0.286275, 0.286275, 0.490196)
 
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

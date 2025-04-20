@@ -43,6 +43,7 @@ public partial class BattleManager : Node2D
         _enemyController.Link(enemy);
         _currentTurn = 1;
         _gameUi.PushToBattleLog($"TURN {_currentTurn}");
+        _battleActionsController.UpdateSkillButtonsView();
         AllowDoActions();
     }
 
@@ -77,6 +78,7 @@ public partial class BattleManager : Node2D
         {
             skill.DecreaseCooldown();
         }
+        _battleActionsController.UpdateSkillButtonsView();
     }
 
     private void PlayerWin()
