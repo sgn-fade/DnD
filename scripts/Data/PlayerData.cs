@@ -31,9 +31,15 @@ public class PlayerData
         new(PlayerStats.intelligence.ToString(), 7)
     ];
 
-    public double Hp { get; set; } = 100;
-    public double MaxHp { get; set; } = 100;
-    public double Damage { get; set; } = 1;
+    public PlayerData()
+    {
+        Hp = MaxHp;
+    }
+
+    public double Hp { get; set; }
+    public double MaxHp => GetPlayerStat(PlayerStats.constitution.ToString()) * 10;
+    public double Damage => Math.Round(GetPlayerStat(PlayerStats.strength.ToString()) / 4.0, 1);
+    public double ChanceToDodgeAttack => GetPlayerStat(PlayerStats.dexterity.ToString()) * 0.05;
     public double CurrentXp { get; set; }
     public readonly int[] XpThresholds = [0, 10, 50, 100, 150, 300, 500, 850, 1100, 1500];
     public int Level { get; set; } = 1;

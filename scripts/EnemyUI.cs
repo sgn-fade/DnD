@@ -13,8 +13,8 @@ public partial class EnemyUI : Control
 	public void UpdateView(Enemy enemy)
 	{
 		_nameLabel.Text = enemy.Name;
-		_damageLabel.Text = enemy.Damage.ToString();
-		_healthLabel.Text = enemy.CurrentHp.ToString();
+		_damageLabel.Text = $"{enemy.Damage:0.#}";
+		_healthLabel.Text = $"{enemy.CurrentHp:0.#}";
 		_enemySprite.Texture = TextureStorage.Instance.GetEnemyIcon(enemy.Type);
 	}
 }

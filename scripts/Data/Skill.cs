@@ -11,8 +11,6 @@ public abstract partial class Skill : Resource
     [Export] public int Cooldown { get; set; }
     public int CurrentCooldown { get; set; }
     public string BattleLogText { get; set; }
-
-
     public bool IsReady => CurrentCooldown <= 0;
 
     public virtual void Use(PlayerViewModel player, EnemyController enemy)

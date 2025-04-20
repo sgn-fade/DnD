@@ -16,8 +16,10 @@ public partial class BattleManager : Node2D
 
     [Signal]
     public delegate void OnBattleEndedEventHandler();
+
     [Signal]
     public delegate void OnPlayerDiedEventHandler();
+
     [Signal]
     public delegate void OnEnemyDiedEventHandler();
 
@@ -86,8 +88,16 @@ public partial class BattleManager : Node2D
 
     private void EnemyTurn()
     {
-        _player.TakeDamage(_enemyController.EnemyData.Damage);
-        _gameUi.PushToBattleLog($"Enemy deal {_enemyController.EnemyData.Damage} to player");
+        if (GD.Randf() <= _player.PlayerData.ChanceToDodgeAttack)
+        {
+            _gameUi.PushToBattleLog($"Player dodged attack!");
+        }
+        else
+        {
+            _player.TakeDamage(_enemyController.EnemyData.Damage);
+            _gameUi.PushToBattleLog($"Enemy deal {_enemyController.EnemyData.Damage} to player");
+        }
+
         NextTurn();
     }
 
@@ -97,12 +107,14 @@ public partial class BattleManager : Node2D
         _gameUi.EndBattleMode();
         _enemyController.Hide();
     }
+
     public void AttackEnemy()
     {
         _gameUi.PushToBattleLog($"Player deal {_player.GetDamage()} damage!");
         _enemyController.TakeDamage(_player.GetDamage());
         PlayerPressedAction();
     }
+
     private void AllowDoActions()
     {
         _battleActionsController.EnableButtons();
@@ -116,7 +128,7 @@ public partial class BattleManager : Node2D
 
     public void TryEscapeFromBattle()
     {
-        if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int) _enemyController.GetEnemyPower())))
+        if (PlayerViewModel.Instance.CheckStat(new Stat("dexterity", (int)_enemyController.GetEnemyPower())))
         {
             _gameUi.PushToBattleLog("You escaped from battle");
             EndBattle();
