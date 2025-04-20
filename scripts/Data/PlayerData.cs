@@ -58,5 +58,5 @@ public class PlayerData
         Skills.Add(skill);
     }
 
-    public readonly List<int> LevelsThatGivesSkill = [3, 5, 8];
+    public readonly List<int> LevelsThatGivesSkill = [2, 3, 4];
 }

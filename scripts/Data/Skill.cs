@@ -25,4 +25,9 @@ public abstract partial class Skill : Resource
         if (CurrentCooldown > 0)
             CurrentCooldown--;
     }
+
+    public virtual void Reset()
+    {
+        CurrentCooldown = 0;
+    }
 }

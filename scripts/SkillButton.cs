@@ -29,6 +29,7 @@ public partial class SkillButton : SoundButton
     public void Link(Skill skill)
     {
         Disabled = false;
+        Show();
         LinkedSkill = skill;
         _skillIcon.Texture = skill.Icon;
     }

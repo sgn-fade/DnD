@@ -39,6 +39,8 @@ public partial class PlayerViewModel : Node
     {
         PlayerData = playerData;
         PlayerData.AddSkill(WarriorSkills[0]);
+        PlayerData.AddSkill(WarriorSkills[1]);
+        PlayerData.AddSkill(WarriorSkills[2]);
         UpdateDataView();
     }
 
@@ -61,7 +63,9 @@ public partial class PlayerViewModel : Node
         PlayerData.LevelUpPoints++;
         _playerView.UpdateLevel(PlayerData.Level);
         _playerView.ShowUpgradeStatButtons();
-        if (PlayerData.LevelsThatGivesSkill.Contains(PlayerData.Level))
+        
+        if (PlayerData.LevelsThatGivesSkill.Contains(PlayerData.Level)
+            && PlayerData.Skills.Count < WarriorSkills.Length)
         {
             PlayerData.AddSkill(WarriorSkills[PlayerData.Skills.Count]);
         }
@@ -113,5 +117,12 @@ public partial class PlayerViewModel : Node
         PlayerData.Tags.Add(tag);
     }
 
+    public void ResetAllSkills()
+    {
+        foreach (var skill in PlayerData.Skills)
+        {
+            skill.Reset();
+        }
+    }
     public bool CheckTag(string tag) => PlayerData.Tags.Contains(tag);
 }

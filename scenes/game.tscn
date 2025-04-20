@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c183fqxsgtm5f"]
+[gd_scene load_steps=22 format=3 uid="uid://c183fqxsgtm5f"]
 
 [ext_resource type="Script" uid="uid://dc65d7ngqbwci" path="res://scripts/Game.cs" id="1_kfrmt"]
 [ext_resource type="Script" uid="uid://10qhhc6chaq1" path="res://scripts/Data/TextureStorage.cs" id="3_2troa"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://b4ilwq5222yb5" path="res://resources/Skills/Warrior/HeavyAttack.tres" id="18_1kice"]
 [ext_resource type="Script" uid="uid://dst3qae2av3oh" path="res://scripts/EnemyController.cs" id="18_264po"]
 [ext_resource type="Resource" uid="uid://b6wctivvslchy" path="res://resources/Skills/Warrior/Regen.tres" id="19_1kice"]
+[ext_resource type="Resource" uid="uid://bci6vopmsyo3m" path="res://resources/Skills/Warrior/BloodyExchange.tres" id="19_5newe"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("_battleManager", "_gameUi")]
 script = ExtResource("1_kfrmt")
@@ -76,7 +77,7 @@ _buttonsToDisable = []
 [node name="PlayerViewModel" type="Node" parent="." node_paths=PackedStringArray("_playerView")]
 script = ExtResource("14_hnhso")
 _playerView = NodePath("../UI/PlayerView")
-WarriorSkills = Array[Resource]([ExtResource("18_1kice"), ExtResource("19_1kice")])
+WarriorSkills = Array[Resource]([ExtResource("18_1kice"), ExtResource("19_1kice"), ExtResource("19_5newe")])
 
 [node name="EnemyViewModel" type="Node" parent="." node_paths=PackedStringArray("EnemyView")]
 script = ExtResource("18_264po")

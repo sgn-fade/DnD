@@ -104,6 +104,7 @@ public partial class BattleManager : Node2D
     private void EndBattle()
     {
         EmitSignalOnBattleEnded();
+        _player.ResetAllSkills();
         _gameUi.EndBattleMode();
         _enemyController.Hide();
     }
@@ -144,9 +145,12 @@ public partial class BattleManager : Node2D
     {
         skill.Use(_player, _enemyController);
         _gameUi.PushToBattleLog(skill.BattleLogText);
-        var skillScene = skill.SceneToSpawn.Instantiate<Node2D>();
-        skillScene.GlobalPosition = _enemyPos.GlobalPosition;
-        AddChild(skillScene);
+        if (skill.SceneToSpawn != null)
+        {
+            var skillScene = skill.SceneToSpawn.Instantiate<Node2D>();
+            skillScene.GlobalPosition = _enemyPos.GlobalPosition;
+            AddChild(skillScene);
+        }
         PlayerPressedAction();
     }
 }
