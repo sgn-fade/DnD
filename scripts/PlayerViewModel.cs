@@ -63,7 +63,7 @@ public partial class PlayerViewModel : Node
         PlayerData.LevelUpPoints++;
         _playerView.UpdateLevel(PlayerData.Level);
         _playerView.ShowUpgradeStatButtons();
-        
+
         if (PlayerData.LevelsThatGivesSkill.Contains(PlayerData.Level)
             && PlayerData.Skills.Count < WarriorSkills.Length)
         {
@@ -110,6 +110,7 @@ public partial class PlayerViewModel : Node
         if (PlayerData.Hp > PlayerData.MaxHp) PlayerData.Hp = PlayerData.MaxHp;
         RefreshUi();
     }
+
     private void RefreshUi() => _playerView.UpdateAll(PlayerData);
 
     public void AddTag(string tag)
@@ -117,12 +118,14 @@ public partial class PlayerViewModel : Node
         PlayerData.Tags.Add(tag);
     }
 
-    public void ResetAllSkills()
+    public void ResetAllSkills(Skill except = null)
     {
         foreach (var skill in PlayerData.Skills)
         {
-            skill.Reset();
+            if (except != skill)
+                skill.Reset();
         }
     }
+
     public bool CheckTag(string tag) => PlayerData.Tags.Contains(tag);
 }
