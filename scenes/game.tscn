@@ -62,15 +62,14 @@ render_target_update_mode = 4
 
 [node name="Node3D" parent="UI/SubViewportContainer/SubViewport" instance=ExtResource("14_p61aq")]
 
-[node name="ActionButtonGroup" parent="UI" node_paths=PackedStringArray("BattleManager", "_buttonsToDisable") instance=ExtResource("15_ca42v")]
+[node name="ActionButtonGroup" parent="UI" node_paths=PackedStringArray("BattleManager") instance=ExtResource("15_ca42v")]
 visible = false
-offset_left = 1187.0
-offset_top = 776.0
-offset_right = 1278.0
-offset_bottom = 798.0
+offset_left = 1135.0
+offset_top = 773.0
+offset_right = 1226.0
+offset_bottom = 795.0
 scale = Vector2(4, 4)
 BattleManager = NodePath("../../BattleManager")
-_buttonsToDisable = []
 
 [node name="EnemyView" parent="UI" instance=ExtResource("16_ssvqc")]
 

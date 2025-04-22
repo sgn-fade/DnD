@@ -7,9 +7,7 @@ public partial class BattleActionsController : Control
 {
     [Export] public BattleManager BattleManager { get; set; }
     [Export] public Control SkillsMenu { get; set; }
-    [Export] public Control InventoryMenu { get; set; }
 
-    [Export] public TextureButton[] _buttonsToDisable;
     private List<SkillButton> _skillButtons = [];
 
 
@@ -52,19 +50,6 @@ public partial class BattleActionsController : Control
         }
     }
 
-    public void OnSkillsPressed() => ToggleMenu(SkillsMenu);
-    public void OnInventoryPressed() => ToggleMenu(InventoryMenu);
-
-    private void ToggleMenu(Control menu)
-    {
-        menu.Visible = !menu.Visible;
-    }
-
-    private void HideAllMenus()
-    {
-        SkillsMenu.Visible = false;
-        InventoryMenu.Visible = false;
-    }
 
     public void OnEscapePressed()
     {
@@ -74,17 +59,15 @@ public partial class BattleActionsController : Control
 
     public void DisableButtons()
     {
-        foreach (var textureButton in _buttonsToDisable)
+        foreach (var textureButton in _skillButtons)
         {
             textureButton.Disabled = true;
         }
-
-        HideAllMenus();
     }
 
     public void EnableButtons()
     {
-        foreach (var textureButton in _buttonsToDisable)
+        foreach (var textureButton in _skillButtons)
         {
             textureButton.Disabled = false;
         }

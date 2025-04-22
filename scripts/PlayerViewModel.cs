@@ -64,8 +64,7 @@ public partial class PlayerViewModel : Node
         _playerView.UpdateLevel(PlayerData.Level);
         _playerView.ShowUpgradeStatButtons();
 
-        if (PlayerData.LevelsThatGivesSkill.Contains(PlayerData.Level)
-            && PlayerData.Skills.Count < WarriorSkills.Length)
+        if (PlayerData.Skills.Count < WarriorSkills.Length)
         {
             PlayerData.AddSkill(WarriorSkills[PlayerData.Skills.Count]);
         }

@@ -1,88 +1,62 @@
-[gd_scene load_steps=11 format=3 uid="uid://60w0tmgwawnx"]
+[gd_scene load_steps=8 format=3 uid="uid://60w0tmgwawnx"]
 
 [ext_resource type="PackedScene" uid="uid://dx8cjr3xtp8tf" path="res://scenes/sound_button.tscn" id="1_jlsdk"]
 [ext_resource type="Script" uid="uid://crx111r7n11ai" path="res://scripts/BattleActionsController.cs" id="1_k8auy"]
 [ext_resource type="PackedScene" uid="uid://do4w7pldrci3h" path="res://scenes/skill_button.tscn" id="4_knr0p"]
 [ext_resource type="Texture2D" uid="uid://bd50et64sh0pu" path="res://sprites/Buttons/ButtonBackgroundNormal.png" id="6_6ni75"]
-[ext_resource type="Texture2D" uid="uid://cqnu2cquejkek" path="res://sprites/Buttons/Icons/Attack.png" id="6_lomjh"]
 [ext_resource type="Texture2D" uid="uid://cnftwscgr7xax" path="res://sprites/Buttons/ButtonBackgroundPressed.png" id="7_lomjh"]
-[ext_resource type="Texture2D" uid="uid://8lscatx28e33" path="res://sprites/Buttons/Icons/Magic.png" id="7_r4kc0"]
-[ext_resource type="Texture2D" uid="uid://cxgllt8v0f5wi" path="res://sprites/Buttons/Icons/BackPack.png" id="8_e4lqt"]
 [ext_resource type="Texture2D" uid="uid://pgmgdjlymvsu" path="res://sprites/Buttons/ButtonBackgroundHovered.png" id="8_r4kc0"]
 [ext_resource type="Texture2D" uid="uid://dsw41pf60qpns" path="res://sprites/Buttons/Icons/RunFromBattle.png" id="9_jn38c"]
 
-[node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("SkillsMenu", "InventoryMenu", "_buttonsToDisable")]
+[node name="ActionButtonGroup" type="Control" node_paths=PackedStringArray("SkillsMenu")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 203.0
 offset_bottom = 111.0
 script = ExtResource("1_k8auy")
-SkillsMenu = NodePath("SkillButtons")
-InventoryMenu = NodePath("InventoryButtons")
-_buttonsToDisable = [null, NodePath("MainButtons/Skill"), NodePath("MainButtons/Inventory"), NodePath("MainButtons/Escape")]
+SkillsMenu = NodePath("GridContainer")
 
-[node name="MainButtons" type="HBoxContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/separation = 10
+columns = 5
 
-[node name="Skill" parent="MainButtons" instance=ExtResource("1_jlsdk")]
-modulate = Color(1, 0.117188, 0, 0.996078)
+[node name="SkillButton" parent="GridContainer" instance=ExtResource("4_knr0p")]
 layout_mode = 2
-texture_normal = ExtResource("6_6ni75")
-texture_pressed = ExtResource("7_lomjh")
-texture_hover = ExtResource("8_r4kc0")
 
-[node name="TextureRect" type="TextureRect" parent="MainButtons/Skill"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 33.0
-offset_bottom = 33.0
-texture = ExtResource("6_lomjh")
-stretch_mode = 2
-
-[node name="Skill2" parent="MainButtons" instance=ExtResource("1_jlsdk")]
-modulate = Color(0, 0.847059, 1, 0.996078)
+[node name="SkillButton2" parent="GridContainer" instance=ExtResource("4_knr0p")]
 layout_mode = 2
-texture_normal = ExtResource("6_6ni75")
-texture_pressed = ExtResource("7_lomjh")
-texture_hover = ExtResource("8_r4kc0")
 
-[node name="TextureRect2" type="TextureRect" parent="MainButtons/Skill2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 33.0
-offset_bottom = 33.0
-texture = ExtResource("7_r4kc0")
-stretch_mode = 2
-
-[node name="Inventory" parent="MainButtons" instance=ExtResource("1_jlsdk")]
-modulate = Color(1, 0.643494, 0.226563, 0.996078)
+[node name="SkillButton3" parent="GridContainer" instance=ExtResource("4_knr0p")]
 layout_mode = 2
-texture_normal = ExtResource("6_6ni75")
-texture_pressed = ExtResource("7_lomjh")
-texture_hover = ExtResource("8_r4kc0")
 
-[node name="TextureRect3" type="TextureRect" parent="MainButtons/Inventory"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 33.0
-offset_bottom = 33.0
-texture = ExtResource("8_e4lqt")
-stretch_mode = 2
+[node name="SkillButton4" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
 
-[node name="Escape" parent="MainButtons" instance=ExtResource("1_jlsdk")]
+[node name="SkillButton5" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+
+[node name="SkillButton6" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+
+[node name="SkillButton7" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+
+[node name="SkillButton8" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+
+[node name="SkillButton9" parent="GridContainer" instance=ExtResource("4_knr0p")]
+layout_mode = 2
+
+[node name="Escape" parent="GridContainer" instance=ExtResource("1_jlsdk")]
 modulate = Color(0.994118, 1, 0, 0.996078)
 layout_mode = 2
 texture_normal = ExtResource("6_6ni75")
 texture_pressed = ExtResource("7_lomjh")
 texture_hover = ExtResource("8_r4kc0")
 
-[node name="TextureRect4" type="TextureRect" parent="MainButtons/Escape"]
+[node name="TextureRect4" type="TextureRect" parent="GridContainer/Escape"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -91,36 +65,4 @@ offset_bottom = 33.0
 texture = ExtResource("9_jn38c")
 stretch_mode = 2
 
-[node name="SkillButtons" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_top = 39.0
-offset_right = 40.0
-offset_bottom = 79.0
-theme_override_constants/separation = 10
-
-[node name="SkillButton" parent="SkillButtons" instance=ExtResource("4_knr0p")]
-layout_mode = 2
-
-[node name="SkillButton2" parent="SkillButtons" instance=ExtResource("4_knr0p")]
-visible = false
-layout_mode = 2
-
-[node name="SkillButton3" parent="SkillButtons" instance=ExtResource("4_knr0p")]
-visible = false
-layout_mode = 2
-
-[node name="SkillButton4" parent="SkillButtons" instance=ExtResource("4_knr0p")]
-visible = false
-layout_mode = 2
-
-[node name="InventoryButtons" type="HBoxContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -4.0
-offset_top = -50.0
-offset_right = 36.0
-offset_bottom = -10.0
-
-[connection signal="pressed" from="MainButtons/Skill" to="." method="OnAttackPressed"]
-[connection signal="pressed" from="MainButtons/Skill2" to="." method="OnSkillsPressed"]
-[connection signal="pressed" from="MainButtons/Escape" to="." method="OnEscapePressed"]
+[connection signal="pressed" from="GridContainer/Escape" to="." method="OnEscapePressed"]
