@@ -23,12 +23,6 @@ public partial class BattleActionsController : Control
         }
     }
 
-    public void OnAttackPressed()
-    {
-        BattleManager.AttackEnemy();
-        DisableButtons();
-    }
-
     public void InitSkillButtons(PlayerData player)
     {
         for (int i = 0; i < player.Skills.Count; i++)

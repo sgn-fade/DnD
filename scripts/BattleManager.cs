@@ -111,12 +111,6 @@ public partial class BattleManager : Node2D
         _enemyController.Hide();
     }
 
-    public void AttackEnemy()
-    {
-        _gameUi.PushToBattleLog($"Player deal {_player.GetDamage()} damage!");
-        _enemyController.TakeDamage(_player.GetDamage());
-        PlayerPressedAction();
-    }
 
     private void AllowDoActions()
     {

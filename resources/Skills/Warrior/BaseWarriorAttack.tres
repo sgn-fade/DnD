@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseWarriorAttack" load_steps=4 format=3 uid="uid://dso3etk50pk4v"]
+
+[ext_resource type="Texture2D" uid="uid://cqnu2cquejkek" path="res://sprites/Buttons/Icons/Attack.png" id="1_oorin"]
+[ext_resource type="PackedScene" uid="uid://bbvdl32183ybj" path="res://scenes/Skills/base_warrior_hit.tscn" id="2_hren5"]
+[ext_resource type="Script" uid="uid://npxpp0uerbci" path="res://scripts/Skills/Warrior/BaseWarriorAttack.cs" id="3_w8rhk"]
+
+[resource]
+script = ExtResource("3_w8rhk")
+Name = "Base attack"
+Description = "deals damage to enemy"
+Icon = ExtResource("1_oorin")
+SceneToSpawn = ExtResource("2_hren5")
+Cooldown = 0
+metadata/_custom_type_script = "uid://b5rkd6welxeem"
